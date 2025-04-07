@@ -1,0 +1,703 @@
+id,Age,"
+Perceived Control ",Stress Frequency and Intensity (Weight: 15%),"
+Emotional Regulation ",Physical Symptoms of Stress,"
+  
+Cognitive Stress (Negative Self-Thoughts)","
+Behavioral Response ",Work-Related Stress Factors (Weight: 10%) ,Concentration and Productivity (Weight: 10%),Available Time,"Suicidal Thoughts (Optional, Use with Caution)"
+1,24,1,Sometimes (2-3 times),Several days,Several days,Rarely,Rarely,2,Several days,50,Several days
+2,30,3,Sometimes (2-3 times),Several days,Not at all,Sometimes,Sometimes,2,Several days,120,Not at all
+3,24,1,Rarely  (0-1 times),Several days,Not at all,Never,Never,1,Not at all,120,Not at all
+4,28,3,Sometimes (2-3 times),Several days,Not at all,Rarely,Sometimes,3,Several days,300,Several days
+5,24,3,Sometimes (2-3 times),Several days,Several days,Sometimes,Sometimes,5,Several days,120,Several days
+6,22,3,Often  (4-5 times),Several days,Several days,Sometimes,Sometimes,4,Several days,180,Not at all
+7,24,1,Sometimes (2-3 times),Several days,Not at all,Rarely,Sometimes,3,Several days,100,Not at all
+8,25,3,Often  (4-5 times),Several days,Several days,Sometimes,Sometimes,3,Several days,240,Not at all
+9,26,4,Sometimes (2-3 times),Several days,Several days,Sometimes,Sometimes,4,Several days,30,Several days
+10,23,3,Sometimes (2-3 times),Several days,Several days,Sometimes,Sometimes,3,Not at all,45,Several days
+11,25,4,Sometimes (2-3 times),Several days,Not at all,Rarely,Never,4,Several days,150,Not at all
+12,26,3,Sometimes (2-3 times),Not at all,Not at all,Rarely,Rarely,4,Several days,150,Not at all
+13,24,3,Sometimes (2-3 times),Several days,Several days,Rarely,Sometimes,2,Several days,15,Several days
+14,24,3,Sometimes (2-3 times),Several days,Several days,Often,Sometimes,4,Several days,120,Not at all
+15,24,5,Rarely  (0-1 times),Not at all,Not at all,Never,Never,2,Several days,45,Not at all
+16,31,5,Sometimes (2-3 times),Not at all,Not at all,Never,Never,2,Not at all,240,Not at all
+17,26,4,Sometimes (2-3 times),Not at all,Not at all,Rarely,Rarely,4,Not at all,120,Not at all
+18,25,3,Sometimes (2-3 times),Several days,Several days,Sometimes,Sometimes,3,Several days,30,Not at all
+19,23,3,Always (6+ times),More than half the days,More than half the days,Sometimes,Sometimes,5,More than half the days,60,More than half the days
+20,28,2,Often  (4-5 times),Several days,Nearly every day,Sometimes,Always,2,Several days,1,Several days
+21,25,4,Sometimes (2-3 times),Several days,Not at all,Often,Sometimes,3,Several days,60,Not at all
+22,25,1,Always (6+ times),Nearly every day,Several days,Sometimes,Rarely,1,Several days,120,Not at all
+23,25,2,Rarely  (0-1 times),Not at all,Several days,Rarely,Rarely,3,Several days,120,Not at all
+24,20,2,Sometimes (2-3 times),Nearly every day,Nearly every day,Always,Always,5,Nearly every day,1,Nearly every day
+25,24,3,Rarely  (0-1 times),Not at all,Several days,Sometimes,Sometimes,1,Not at all,30,Several days
+26,20,2,Often  (4-5 times),Several days,Several days,Sometimes,Sometimes,3,Several days,30,Several days
+27,25,3,Often  (4-5 times),Not at all,More than half the days,Sometimes,Sometimes,3,Several days,60,Several days
+28,25,1,Sometimes (2-3 times),Not at all,Several days,Sometimes,Sometimes,3,Several days,10,Several days
+29,23,2,Sometimes (2-3 times),Not at all,Several days,Never,Rarely,1,Not at all,60,Several days
+30,25,3,Always (6+ times),Nearly every day,Not at all,Rarely,Rarely,5,Several days,240,Not at all
+31,39,3,Sometimes (2-3 times),Not at all,Not at all,Never,Never,3,Not at all,30,Not at all
+32,24,2,Sometimes (2-3 times),Not at all,Not at all,Sometimes,Rarely,3,Several days,30,Not at all
+33,25,3,Sometimes (2-3 times),Several days,Not at all,Sometimes,Sometimes,3,Several days,1,Several days
+34,23,4,Always (6+ times),Nearly every day,Several days,Rarely,Sometimes,4,More than half the days,20,More than half the days
+35,23,3,Sometimes (2-3 times),Several days,Several days,Often,Sometimes,5,Several days,60,More than half the days
+36,24,3,Often  (4-5 times),Several days,Several days,Sometimes,Sometimes,2,Not at all,6,More than half the days
+37,24,4,Sometimes (2-3 times),Several days,Several days,Rarely,Sometimes,4,Several days,120,Not at all
+38,26,2,Sometimes (2-3 times),Not at all,Several days,Rarely,Rarely,3,Several days,300,Not at all
+39,24,4,Always (6+ times),Several days,Not at all,Sometimes,Never,5,Not at all,1,Not at all
+40,25,3,Often  (4-5 times),Several days,More than half the days,Sometimes,Sometimes,5,Several days,45,Several days
+41,25,3,Sometimes (2-3 times),Several days,Several days,Sometimes,Sometimes,2,Several days,360,Not at all
+42,22,5,Sometimes (2-3 times),More than half the days,More than half the days,Sometimes,Sometimes,2,Not at all,360,Not at all
+43,21,3,Sometimes (2-3 times),More than half the days,More than half the days,Sometimes,Often,4,More than half the days,60,Not at all
+44,21,4,Sometimes (2-3 times),Several days,Not at all,Sometimes,Often,,Not at all,120,Several days
+45,26,3,Sometimes (2-3 times),Several days,Several days,Rarely,Sometimes,4,Several days,120,Not at all
+46,26,3,Sometimes (2-3 times),Several days,Several days,Rarely,Rarely,4,Several days,60,Several days
+47,21,2,Sometimes (2-3 times),More than half the days,Not at all,Sometimes,Sometimes,3,Not at all,120,Several days
+48,26,3,Often  (4-5 times),Several days,Several days,Sometimes,Sometimes,,Several days,60,Several days
+49,25,3,Rarely  (0-1 times),Several days,Several days,Rarely,Sometimes,4,Several days,120,Not at all
+50,27,3,Sometimes (2-3 times),Several days,Several days,Sometimes,Sometimes,3,Several days,180,Several days
+51,44,3,Sometimes (2-3 times),Several days,Several days,Rarely,Rarely,4,Several days,106,Nearly every day
+52,40,3,Sometimes (2-3 times),Not at all,Not at all,Rarely,Sometimes,4,Several days,60,Not at all
+53,41,3,Sometimes (2-3 times),Several days,More than half the days,Sometimes,Sometimes,3,Not at all,74,Not at all
+54,44,3,Always (6+ times),Several days,Several days,Always,Often,3,More than half the days,61,Several days
+55,27,4,Sometimes (2-3 times),Several days,Several days,Rarely,Rarely,3,Several days,3,Several days
+56,27,1,Rarely  (0-1 times),Not at all,Not at all,Rarely,Never,1,Not at all,10,Not at all
+57,24,2,Often  (4-5 times),Several days,Several days,Sometimes,Rarely,3,Several days,1000,Not at all
+58,43,4,Rarely  (0-1 times),Nearly every day,Nearly every day,Sometimes,Always,3,More than half the days,103,Several days
+59,43,4,Rarely  (0-1 times),More than half the days,Nearly every day,Never,Always,4,Not at all,63,Not at all
+60,32,3,Sometimes (2-3 times),Nearly every day,Several days,Rarely,Rarely,2,Several days,500,Not at all
+61,50,1,Rarely  (0-1 times),Not at all,Not at all,Never,Never,1,Not at all,1000,Not at all
+62,37,2,Sometimes (2-3 times),Not at all,Not at all,Rarely,Rarely,2,Not at all,2,Not at all
+63,32,3,Rarely  (0-1 times),Not at all,Not at all,Never,Sometimes,5,Not at all,92,Several days
+64,48,4,Often  (4-5 times),Not at all,Not at all,Always,Sometimes,3,Nearly every day,64,Several days
+65,47,2,Often  (4-5 times),Several days,Not at all,Sometimes,Often,2,Nearly every day,55,Nearly every day
+66,41,5,Always (6+ times),More than half the days,Not at all,Always,Rarely,2,More than half the days,63,Not at all
+67,44,5,Often  (4-5 times),Not at all,More than half the days,Sometimes,,3,Several days,99,Several days
+68,46,1,Always (6+ times),Not at all,Not at all,Often,Rarely,4,Several days,55,More than half the days
+69,34,4,Sometimes (2-3 times),Not at all,Several days,Always,Rarely,4,Not at all,55,More than half the days
+70,42,3,Often  (4-5 times),Nearly every day,Nearly every day,Never,Rarely,1,Nearly every day,111,Several days
+71,43,3,Often  (4-5 times),Nearly every day,Nearly every day,Rarely,Never,5,Several days,120,Several days
+72,30,2,Sometimes (2-3 times),Several days,Nearly every day,,Sometimes,5,Several days,116,Several days
+73,50,3,Rarely  (0-1 times),Not at all,Not at all,Never,Never,1,Not at all,300,Not at all
+74,24,3,Rarely  (0-1 times),Not at all,Not at all,Rarely,Never,1,Not at all,30,Not at all
+75,32,3,Always (6+ times),More than half the days,More than half the days,Rarely,Always,3,More than half the days,30,Several days
+76,42,2,Sometimes (2-3 times),Not at all,Not at all,Never,Never,2,Several days,15,Not at all
+77,37,2,Rarely  (0-1 times),Nearly every day,Not at all,Sometimes,Rarely,4,Nearly every day,63,Not at all
+78,31,1,Often  (4-5 times),Several days,Several days,Rarely,Never,5,More than half the days,80,Several days
+79,46,3,Often  (4-5 times),Several days,Several days,Never,Sometimes,3,Nearly every day,92,Not at all
+80,33,3,Often  (4-5 times),More than half the days,Several days,Sometimes,Rarely,5,Not at all,106,Several days
+81,48,3,Always (6+ times),Not at all,Nearly every day,Sometimes,Always,1,Nearly every day,60,Several days
+82,36,5,Always (6+ times),Not at all,More than half the days,Never,Never,2,Several days,32,More than half the days
+83,40,3,Sometimes (2-3 times),Several days,Several days,Sometimes,Rarely,4,Several days,2,Not at all
+84,41,4,Always (6+ times),Nearly every day,Nearly every day,Never,Rarely,5,Several days,76,More than half the days
+85,30,3,Often  (4-5 times),Several days,More than half the days,Rarely,Never,2,Several days,98,More than half the days
+86,27,4,Sometimes (2-3 times),Several days,Not at all,Sometimes,Rarely,2,Several days,45,Not at all
+87,24,3,Sometimes (2-3 times),Not at all,Not at all,Rarely,Rarely,3,Not at all,120,Not at all
+88,24,2,Sometimes (2-3 times),Several days,Several days,Sometimes,Sometimes,2,More than half the days,120,
+89,27,3,Sometimes (2-3 times),Several days,Several days,Sometimes,Sometimes,3,Not at all,30,Not at all
+90,36,5,Rarely  (0-1 times),Nearly every day,Not at all,Sometimes,Always,4,Nearly every day,60,Several days
+91,45,4,Sometimes (2-3 times),Several days,Several days,Rarely,Often,3,More than half the days,120,Not at all
+92,48,2,Sometimes (2-3 times),Not at all,Several days,Often,Sometimes,2,Nearly every day,94,Several days
+93,48,2,Sometimes (2-3 times),Not at all,Several days,Often,Sometimes,2,Several days,90,Several days
+94,36,3,Rarely  (0-1 times),More than half the days,More than half the days,Rarely,Rarely,3,Several days,70,Several days
+95,30,1,Sometimes (2-3 times),Several days,Not at all,Sometimes,Never,3,Several days,90,Several days
+96,41,2,Always (6+ times),Nearly every day,Nearly every day,Sometimes,Never,3,Several days,120,Several days
+97,23,2,Sometimes (2-3 times),Several days,Several days,Sometimes,Rarely,2,Several days,60,More than half the days
+98,25,3,Sometimes (2-3 times),Not at all,Several days,Sometimes,Rarely,3,Not at all,8,Not at all
+99,35,1,Sometimes (2-3 times),Not at all,Not at all,Never,Often,1,Not at all,2,Not at all
+100,24,3,Often  (4-5 times),Several days,Several days,Often,Often,4,Several days,120,Not at all
+101,25,3,Sometimes (2-3 times),Several days,Not at all,Never,Rarely,4,Several days,60,Not at all
+102,23,2,Rarely  (0-1 times),Several days,Several days,Sometimes,Rarely,1,Several days,20,Several days
+103,26,3,Often  (4-5 times),Not at all,More than half the days,Rarely,Rarely,3,Several days,90,Several days
+104,28,2,Often  (4-5 times),Several days,Several days,Sometimes,Rarely,3,Several days,10,Several days
+105,26,3,Sometimes (2-3 times),Several days,Several days,Sometimes,Sometimes,3,Several days,1,Not at all
+106,24,3,Sometimes (2-3 times),Several days,More than half the days,Always,Sometimes,4,Several days,60,Not at all
+107,22,3,Sometimes (2-3 times),Several days,More than half the days,Sometimes,Sometimes,3,Several days,120,Several days
+108,26,3,Sometimes (2-3 times),Several days,Several days,Sometimes,Sometimes,2,Several days,120,Not at all
+109,27,3,Sometimes (2-3 times),Not at all,Not at all,Rarely,Rarely,2,Several days,120,Not at all
+110,25,5,Sometimes (2-3 times),Not at all,Not at all,Rarely,Rarely,1,Not at all,120,Not at all
+111,34,4,Sometimes (2-3 times),Not at all,Several days,Rarely,Rarely,3,Not at all,120,Not at all
+112,27,4,Sometimes (2-3 times),Not at all,Several days,Rarely,Sometimes,3,Several days,8,Not at all
+113,25,4,Rarely  (0-1 times),Not at all,Not at all,Rarely,Rarely,3,Several days,180,Not at all
+114,26,2,Rarely  (0-1 times),Not at all,Not at all,Never,Never,3,Not at all,10,Not at all
+115,38,3,Sometimes (2-3 times),Several days,Several days,Rarely,Often,4,More than half the days,180,More than half the days
+116,40,4,Rarely  (0-1 times),Not at all,Several days,Sometimes,Rarely,4,Several days,25,Several days
+117,36,3,Sometimes (2-3 times),More than half the days,Several days,Often,Rarely,3,Several days,60,More than half the days
+118,46,3,Sometimes (2-3 times),Not at all,Several days,Rarely,Sometimes,4,More than half the days,120,More than half the days
+119,48,5,Sometimes (2-3 times),Nearly every day,Several days,Rarely,Always,5,Not at all,100,Nearly every day
+120,49,5,Sometimes (2-3 times),Not at all,More than half the days,Always,Sometimes,,Not at all,50,More than half the days
+121,38,2,Always (6+ times),Several days,Several days,Often,Often,2,More than half the days,20,Several days
+122,42,2,Sometimes (2-3 times),More than half the days,Several days,Rarely,Sometimes,3,Several days,40,Several days
+123,36,3,Sometimes (2-3 times),Several days,Not at all,Rarely,Sometimes,3,Several days,50,More than half the days
+124,36,4,Rarely  (0-1 times),More than half the days,Several days,Rarely,Sometimes,3,Several days,60,Nearly every day
+125,27,5,Sometimes (2-3 times),Not at all,Not at all,Rarely,Never,1,Several days,180,Not at all
+126,30,3,Sometimes (2-3 times),Not at all,Not at all,Never,Rarely,3,Not at all,120,Not at all
+127,37,4,Rarely  (0-1 times),Not at all,Nearly every day,Always,Often,5,Nearly every day,120,Several days
+128,49,4,Rarely  (0-1 times),Not at all,Several days,Rarely,Sometimes,1,Not at all,120,More than half the days
+129,41,4,Rarely  (0-1 times),Nearly every day,Several days,Never,Always,4,Several days,110,Nearly every day
+130,37,3,Often  (4-5 times),Not at all,Nearly every day,Often,Sometimes,3,Nearly every day,120,More than half the days
+131,45,1,Often  (4-5 times),Several days,More than half the days,Sometimes,Sometimes,3,Nearly every day,60,Nearly every day
+132,47,1,Rarely  (0-1 times),Nearly every day,More than half the days,Sometimes,Sometimes,5,Not at all,60,Several days
+133,37,5,Always (6+ times),Nearly every day,Several days,,Always,4,Nearly every day,75,Nearly every day
+134,48,5,Sometimes (2-3 times),More than half the days,More than half the days,Rarely,Always,5,Several days,120,Several days
+135,27,3,Sometimes (2-3 times),Several days,Several days,Rarely,Rarely,3,Several days,120,Not at all
+136,27,2,Sometimes (2-3 times),Several days,Not at all,Never,,,Not at all,40,
+137,48,3,Always (6+ times),More than half the days,Not at all,Never,Rarely,2,Several days,120,Several days
+138,33,4,,Not at all,Nearly every day,,Often,2,Several days,75,Nearly every day
+139,30,4,Sometimes (2-3 times),Not at all,Not at all,Never,Sometimes,2,Several days,120,Not at all
+140,35,1,Sometimes (2-3 times),Not at all,More than half the days,Rarely,Never,4,Not at all,240,Several days
+141,34,4,Often  (4-5 times),Nearly every day,More than half the days,Often,Never,1,Not at all,120,More than half the days
+142,30,2,Always (6+ times),Not at all,Several days,Often,Often,2,Not at all,90,More than half the days
+143,41,2,Always (6+ times),Several days,Several days,Rarely,Never,4,Nearly every day,93,Nearly every day
+144,33,5,Always (6+ times),Nearly every day,More than half the days,Rarely,Sometimes,4,Nearly every day,180,Not at all
+145,25,4,Often  (4-5 times),Several days,Not at all,Rarely,Rarely,4,Several days,30,Not at all
+146,42,1,Often  (4-5 times),Nearly every day,More than half the days,Often,Rarely,2,Not at all,117,Several days
+147,40,4,Always (6+ times),Nearly every day,Several days,Sometimes,Never,3,More than half the days,60,Nearly every day
+148,43,3,Always (6+ times),More than half the days,More than half the days,Sometimes,Often,1,Not at all,103,Nearly every day
+149,45,1,Always (6+ times),Not at all,Nearly every day,Always,Never,1,Several days,30,Several days
+150,39,4,Sometimes (2-3 times),Several days,Not at all,Always,Never,1,More than half the days,180,More than half the days
+151,22,3,Sometimes (2-3 times),Not at all,Several days,Rarely,Rarely,3,Several days,30,Several days
+152,22,3,Sometimes (2-3 times),Several days,More than half the days,Sometimes,Often,2,Not at all,30,Not at all
+153,40,4,Sometimes (2-3 times),Several days,Not at all,Always,Never,1,More than half the days,120,More than half the days
+154,32,5,Sometimes (2-3 times),Not at all,Several days,Sometimes,Never,3,More than half the days,90,Not at all
+155,31,4,Always (6+ times),Nearly every day,Not at all,Often,Sometimes,2,More than half the days,120,Nearly every day
+156,25,2,Sometimes (2-3 times),Several days,Several days,Sometimes,Sometimes,3,Several days,20,Not at all
+157,24,4,Sometimes (2-3 times),Not at all,Not at all,Rarely,Rarely,2,Not at all,180,Not at all
+158,32,4,Always (6+ times),Nearly every day,Not at all,Often,Sometimes,2,More than half the days,90,Nearly every day
+159,36,4,Always (6+ times),Several days,Several days,Often,Rarely,5,More than half the days,90,More than half the days
+160,34,1,Sometimes (2-3 times),Several days,Not at all,Sometimes,Rarely,2,Nearly every day,106,Nearly every day
+161,25,3,Often  (4-5 times),Not at all,Several days,Never,Never,3,Not at all,60,Not at all
+162,27,3,Sometimes (2-3 times),Several days,Several days,Sometimes,Sometimes,3,Nearly every day,120,Several days
+163,25,4,Often  (4-5 times),Several days,Several days,Sometimes,Sometimes,,Not at all,120,Not at all
+164,24,3,Sometimes (2-3 times),Several days,Several days,Sometimes,Sometimes,4,Several days,20,Several days
+165,33,2,Rarely  (0-1 times),Nearly every day,Nearly every day,Rarely,Rarely,5,Nearly every day,90,Nearly every day
+166,48,2,Always (6+ times),More than half the days,More than half the days,Often,Rarely,4,More than half the days,80,Nearly every day
+167,41,1,Often  (4-5 times),Several days,Not at all,Sometimes,Rarely,4,More than half the days,90,Nearly every day
+168,46,3,Often  (4-5 times),More than half the days,Not at all,Sometimes,Always,1,Not at all,115,More than half the days
+169,46,2,Often  (4-5 times),Nearly every day,Several days,Sometimes,Always,2,More than half the days,180,More than half the days
+170,28,4,Often  (4-5 times),Nearly every day,Nearly every day,Sometimes,Always,5,More than half the days,120,More than half the days
+171,44,3,Sometimes (2-3 times),More than half the days,More than half the days,Often,Rarely,3,More than half the days,120,Nearly every day
+172,33,5,Often  (4-5 times),Nearly every day,More than half the days,Often,Rarely,5,More than half the days,120,Several days
+173,49,4,Sometimes (2-3 times),Nearly every day,Nearly every day,Often,Sometimes,5,More than half the days,150,Several days
+174,38,3,Sometimes (2-3 times),Nearly every day,More than half the days,Sometimes,Often,2,Not at all,90,More than half the days
+175,47,5,Rarely  (0-1 times),More than half the days,Nearly every day,Often,Always,3,Not at all,110,Nearly every day
+176,29,2,Often  (4-5 times),Several days,More than half the days,Rarely,Often,5,Nearly every day,120,More than half the days
+177,41,1,Rarely  (0-1 times),More than half the days,Not at all,Always,Never,3,Several days,120,Not at all
+178,44,4,Sometimes (2-3 times),More than half the days,Not at all,Sometimes,Often,1,Several days,150,More than half the days
+179,40,3,Always (6+ times),Not at all,Not at all,Never,Always,4,Not at all,120,More than half the days
+180,39,4,Always (6+ times),Not at all,Not at all,Never,Always,4,Not at all,180,Nearly every day
+181,41,4,Rarely  (0-1 times),Nearly every day,Several days,Rarely,Often,3,Several days,170,Nearly every day
+182,28,2,Often  (4-5 times),Several days,Not at all,Never,Never,2,Not at all,180,Nearly every day
+183,50,3,Often  (4-5 times),Several days,Not at all,Rarely,Always,4,Several days,190,More than half the days
+184,47,1,Always (6+ times),Not at all,Not at all,Often,Sometimes,2,Not at all,240,Not at all
+185,25,5,Often  (4-5 times),Not at all,Not at all,Never,Rarely,4,Several days,60,Not at all
+186,25,1,Sometimes (2-3 times),Several days,Not at all,Sometimes,Sometimes,5,Several days,30,Not at all
+187,40,1,Sometimes (2-3 times),Nearly every day,Nearly every day,Sometimes,Sometimes,3,Several days,160,Not at all
+188,25,,,Not at all,Not at all,Rarely,Never,1,Not at all,3,Not at all
+189,23,3,Always (6+ times),Nearly every day,Several days,Often,Sometimes,4,Several days,60,More than half the days
+190,24,3,Sometimes (2-3 times),Several days,Not at all,Sometimes,Sometimes,3,Several days,200,Not at all
+191,40,1,Sometimes (2-3 times),Nearly every day,Nearly every day,Rarely,Always,4,More than half the days,150,More than half the days
+192,39,3,Sometimes (2-3 times),Nearly every day,More than half the days,Often,Sometimes,5,Nearly every day,120,Nearly every day
+193,49,3,Sometimes (2-3 times),Nearly every day,More than half the days,Often,Sometimes,1,Nearly every day,90,More than half the days
+194,26,4,Sometimes (2-3 times),Several days,More than half the days,Often,Rarely,5,Not at all,60,Not at all
+195,34,2,Always (6+ times),More than half the days,More than half the days,Never,Never,4,Not at all,90,Not at all
+196,30,5,Often  (4-5 times),Not at all,Not at all,Often,Often,4,Several days,120,Several days
+197,34,3,Sometimes (2-3 times),More than half the days,More than half the days,Sometimes,Never,1,Nearly every day,120,Nearly every day
+198,46,2,Rarely  (0-1 times),Several days,Not at all,Never,Often,3,Not at all,105,Nearly every day
+199,32,4,Often  (4-5 times),Not at all,Not at all,Sometimes,Sometimes,4,Nearly every day,90,More than half the days
+200,24,4,Sometimes (2-3 times),Several days,Not at all,Rarely,Rarely,1,Not at all,120,Not at all
+201,26,3,Rarely  (0-1 times),Several days,Not at all,Never,Never,2,Several days,60,Several days
+202,32,4,Often  (4-5 times),Not at all,Not at all,Sometimes,Sometimes,4,Nearly every day,80,More than half the days
+203,35,2,Rarely  (0-1 times),Not at all,Nearly every day,Never,Often,5,Several days,210,Nearly every day
+204,25,2,Rarely  (0-1 times),Not at all,Not at all,Never,Never,2,Not at all,50,Not at all
+205,30,1,Sometimes (2-3 times),Nearly every day,Several days,Often,Always,1,More than half the days,90,Several days
+206,45,5,Rarely  (0-1 times),More than half the days,Several days,Never,Never,1,Several days,105,More than half the days
+207,46,4,Rarely  (0-1 times),Nearly every day,More than half the days,Rarely,Sometimes,3,Several days,120,Several days
+208,40,2,Always (6+ times),Not at all,Several days,Never,Always,2,More than half the days,120,Nearly every day
+209,41,4,Always (6+ times),More than half the days,Not at all,Never,Never,3,Not at all,240,More than half the days
+210,38,4,Sometimes (2-3 times),Nearly every day,Several days,Always,Always,2,Several days,4,Several days
+211,49,4,Often  (4-5 times),Nearly every day,More than half the days,Sometimes,Rarely,2,Not at all,15,Nearly every day
+212,44,3,Sometimes (2-3 times),Nearly every day,Not at all,Never,Rarely,4,Not at all,12,More than half the days
+213,30,4,Sometimes (2-3 times),Not at all,Not at all,Rarely,,4,Nearly every day,10,
+214,38,1,Sometimes (2-3 times),Not at all,Nearly every day,Never,Often,3,Several days,240,More than half the days
+215,37,2,Often  (4-5 times),Nearly every day,Nearly every day,Often,Sometimes,3,Nearly every day,15,Nearly every day
+216,42,1,Sometimes (2-3 times),Not at all,Not at all,Sometimes,Rarely,4,Nearly every day,180,Several days
+217,34,3,Rarely  (0-1 times),Several days,More than half the days,Always,Rarely,5,Not at all,120,More than half the days
+218,47,5,Rarely  (0-1 times),Nearly every day,More than half the days,Often,Always,2,Not at all,90,Not at all
+219,47,4,Rarely  (0-1 times),Nearly every day,Nearly every day,Always,Rarely,2,More than half the days,30,Nearly every day
+220,24,2,Sometimes (2-3 times),Several days,Not at all,Rarely,Rarely,2,Not at all,30,Not at all
+221,25,4,Sometimes (2-3 times),Several days,Not at all,Rarely,Rarely,3,Several days,120,Not at all
+222,24,2,Often  (4-5 times),Several days,Several days,Rarely,Sometimes,2,Several days,60,Not at all
+223,44,1,Sometimes (2-3 times),Several days,Several days,Always,Sometimes,2,More than half the days,240,Several days
+224,49,2,Sometimes (2-3 times),Nearly every day,Not at all,Never,Often,3,Not at all,210,Several days
+225,34,5,Often  (4-5 times),Several days,Not at all,Always,Always,2,Not at all,108,Not at all
+226,38,5,Often  (4-5 times),More than half the days,Several days,Sometimes,Rarely,1,Several days,120,Nearly every day
+227,42,1,Rarely  (0-1 times),Nearly every day,Nearly every day,Always,Rarely,4,Several days,120,Several days
+228,36,1,Rarely  (0-1 times),More than half the days,Several days,Always,Often,1,Not at all,60,Nearly every day
+229,37,2,Always (6+ times),More than half the days,More than half the days,Never,Rarely,3,Nearly every day,120,Several days
+230,30,1,Sometimes (2-3 times),Not at all,Several days,Often,Rarely,2,More than half the days,75,Nearly every day
+231,30,1,Sometimes (2-3 times),Not at all,Several days,Often,Rarely,2,More than half the days,75,Nearly every day
+232,44,3,Sometimes (2-3 times),Nearly every day,Not at all,Never,Rarely,4,Not at all,120,More than half the days
+233,35,1,Always (6+ times),Not at all,Not at all,Always,Always,1,Several days,210,Not at all
+234,48,5,Often  (4-5 times),More than half the days,Nearly every day,Sometimes,Rarely,3,More than half the days,120,Not at all
+235,48,1,Rarely  (0-1 times),Several days,More than half the days,Often,Always,3,More than half the days,125,Not at all
+236,27,3,Always (6+ times),Not at all,More than half the days,Often,Never,3,Nearly every day,90,More than half the days
+237,49,3,Rarely  (0-1 times),Not at all,Nearly every day,Sometimes,Rarely,5,More than half the days,90,Several days
+238,48,4,Always (6+ times),More than half the days,Nearly every day,Often,Sometimes,4,Not at all,120,Nearly every day
+239,38,3,Always (6+ times),Nearly every day,Not at all,Always,Rarely,1,More than half the days,120,More than half the days
+240,31,3,Sometimes (2-3 times),Nearly every day,Not at all,Rarely,Always,3,Not at all,160,More than half the days
+241,32,5,Sometimes (2-3 times),Several days,Several days,Often,Sometimes,2,Nearly every day,60,Several days
+242,47,2,Always (6+ times),More than half the days,Several days,Never,Sometimes,2,Nearly every day,90,Several days
+243,33,3,Rarely  (0-1 times),Not at all,Not at all,Never,Never,5,Not at all,105,Not at all
+244,25,3,Often  (4-5 times),Several days,Several days,Sometimes,Sometimes,3,Several days,30,Several days
+245,28,2,Rarely  (0-1 times),Not at all,Several days,Often,Never,2,Not at all,105,More than half the days
+246,22,4,Always (6+ times),More than half the days,More than half the days,Sometimes,Always,5,Several days,90,Not at all
+247,26,5,Rarely  (0-1 times),Several days,Not at all,Never,Rarely,5,Nearly every day,180,Not at all
+248,40,5,Sometimes (2-3 times),Not at all,More than half the days,,Never,5,Not at all,120,Several days
+249,35,5,Sometimes (2-3 times),Several days,More than half the days,Sometimes,Never,4,Several days,60,Several days
+250,29,2,Always (6+ times),Nearly every day,Several days,Often,Rarely,2,Several days,60,Not at all
+251,43,2,Always (6+ times),More than half the days,More than half the days,Often,Often,2,More than half the days,170,Not at all
+252,34,1,Sometimes (2-3 times),More than half the days,Nearly every day,Sometimes,Always,1,Several days,150,Not at all
+253,45,2,Sometimes (2-3 times),Nearly every day,Not at all,Often,Often,1,Several days,163,Not at all
+254,49,2,Rarely  (0-1 times),More than half the days,Not at all,Never,Often,4,Nearly every day,167,Nearly every day
+255,21,1,Sometimes (2-3 times),Not at all,Not at all,Rarely,Sometimes,4,Not at all,180,Several days
+256,29,1,Sometimes (2-3 times),More than half the days,More than half the days,Sometimes,Often,5,Several days,105,Several days
+257,45,1,Rarely  (0-1 times),Not at all,Several days,Often,Often,3,Not at all,104,Several days
+258,32,1,Always (6+ times),Not at all,Nearly every day,Often,Often,3,Several days,106,More than half the days
+259,39,1,Rarely  (0-1 times),Nearly every day,Several days,Sometimes,Always,3,Several days,120,Nearly every day
+260,36,,Always (6+ times),Several days,Nearly every day,Never,Sometimes,2,Not at all,120,Several days
+261,33,4,Rarely  (0-1 times),More than half the days,Not at all,Sometimes,Never,2,Not at all,60,More than half the days
+262,40,5,Often  (4-5 times),Nearly every day,Not at all,Always,Always,1,Several days,60,More than half the days
+263,49,2,Sometimes (2-3 times),Not at all,Not at all,Always,Never,1,Not at all,132,Several days
+264,34,2,Rarely  (0-1 times),Several days,Several days,Always,Always,4,Not at all,178,Not at all
+265,37,3,Often  (4-5 times),Not at all,Not at all,Always,Always,1,Not at all,120,Not at all
+266,40,3,Rarely  (0-1 times),More than half the days,Several days,,Rarely,5,Not at all,150,Not at all
+267,31,1,Rarely  (0-1 times),More than half the days,Several days,Often,Never,2,Several days,120,Several days
+268,27,4,Always (6+ times),Not at all,More than half the days,Sometimes,Rarely,1,Not at all,210,Several days
+269,37,4,Always (6+ times),Not at all,More than half the days,Sometimes,Rarely,4,Not at all,120,Several days
+270,32,4,Always (6+ times),Not at all,More than half the days,Sometimes,Rarely,1,Not at all,178,Not at all
+271,34,1,Always (6+ times),Not at all,More than half the days,Sometimes,Never,5,Several days,134,Several days
+272,30,3,Sometimes (2-3 times),Several days,Not at all,Never,Never,3,Nearly every day,135,Nearly every day
+273,26,1,Rarely  (0-1 times),More than half the days,Several days,,Never,4,Not at all,60,Not at all
+274,37,5,Often  (4-5 times),Not at all,Not at all,Never,Often,5,Several days,120,Several days
+275,36,1,Always (6+ times),More than half the days,More than half the days,Sometimes,Sometimes,1,Not at all,120,Several days
+276,24,5,Sometimes (2-3 times),More than half the days,Nearly every day,Often,Always,5,Not at all,130,Several days
+277,20,1,Often  (4-5 times),Not at all,Nearly every day,Sometimes,Rarely,3,Not at all,165,Not at all
+278,35,1,Often  (4-5 times),Not at all,Not at all,Never,Often,5,Not at all,120,Several days
+279,49,5,Rarely  (0-1 times),Several days,Several days,Never,Rarely,1,Nearly every day,165,Several days
+280,45,2,Always (6+ times),Nearly every day,Several days,Never,Never,2,Several days,90,Not at all
+281,41,5,Rarely  (0-1 times),Not at all,Not at all,Often,Sometimes,3,More than half the days,200,Several days
+282,36,5,Rarely  (0-1 times),Not at all,Not at all,Often,Sometimes,3,Several days,90,Nearly every day
+283,48,1,Rarely  (0-1 times),Not at all,Not at all,Often,Often,2,Not at all,60,More than half the days
+284,25,2,Often  (4-5 times),Not at all,Several days,Often,Often,2,Several days,60,More than half the days
+285,31,2,Often  (4-5 times),Not at all,More than half the days,Sometimes,Sometimes,5,Several days,95,Several days
+286,44,2,Rarely  (0-1 times),More than half the days,More than half the days,Sometimes,Sometimes,2,Several days,175,Several days
+287,23,1,Sometimes (2-3 times),More than half the days,More than half the days,,Rarely,3,Not at all,163,Not at all
+288,30,4,Often  (4-5 times),Nearly every day,More than half the days,Always,Sometimes,3,Several days,164,Not at all
+289,36,5,Often  (4-5 times),Nearly every day,More than half the days,Always,Sometimes,3,Several days,174,Not at all
+290,43,5,Rarely  (0-1 times),Not at all,Several days,Often,Rarely,5,Not at all,102,Nearly every day
+291,28,2,Sometimes (2-3 times),More than half the days,More than half the days,Sometimes,Sometimes,1,Not at all,77,Several days
+292,32,3,Sometimes (2-3 times),More than half the days,More than half the days,Always,Rarely,3,More than half the days,174,Several days
+293,47,2,Always (6+ times),More than half the days,Several days,Never,Sometimes,2,Nearly every day,90,Several days
+294,33,3,Rarely  (0-1 times),Not at all,Not at all,Never,Never,5,Not at all,105,Not at all
+295,25,3,Often  (4-5 times),Several days,Several days,Sometimes,Sometimes,3,Several days,30,Several days
+296,28,2,Rarely  (0-1 times),Not at all,Several days,Often,Never,2,Not at all,105,More than half the days
+297,22,4,Always (6+ times),More than half the days,More than half the days,Sometimes,Always,5,Several days,90,Not at all
+298,26,5,Rarely  (0-1 times),Several days,Not at all,Never,Rarely,5,Nearly every day,180,Not at all
+299,40,5,Sometimes (2-3 times),Not at all,More than half the days,,Never,5,Not at all,120,Several days
+300,35,5,Sometimes (2-3 times),Several days,More than half the days,Sometimes,Never,4,Several days,60,Several days
+301,29,2,Always (6+ times),Nearly every day,Several days,Often,Rarely,2,Several days,60,Not at all
+302,43,2,Always (6+ times),More than half the days,More than half the days,Often,Often,2,More than half the days,170,Not at all
+303,34,1,Sometimes (2-3 times),More than half the days,Nearly every day,Sometimes,Always,1,Several days,150,Not at all
+304,45,2,Sometimes (2-3 times),Nearly every day,Not at all,Often,Often,1,Several days,163,Not at all
+305,49,2,Rarely  (0-1 times),More than half the days,Not at all,Never,Often,4,Nearly every day,167,Nearly every day
+306,21,1,Sometimes (2-3 times),Not at all,Not at all,Rarely,Sometimes,4,Not at all,180,Several days
+307,29,1,Sometimes (2-3 times),More than half the days,More than half the days,Sometimes,Often,5,Several days,105,Several days
+308,45,1,Rarely  (0-1 times),Not at all,Several days,Often,Often,3,Not at all,104,Several days
+309,32,1,Always (6+ times),Not at all,Nearly every day,Often,Often,3,Several days,106,More than half the days
+310,39,1,Rarely  (0-1 times),Nearly every day,Several days,Sometimes,Always,3,Several days,120,Nearly every day
+311,36,,Always (6+ times),Several days,Nearly every day,Never,Sometimes,2,Not at all,120,Several days
+312,33,4,Rarely  (0-1 times),More than half the days,Not at all,Sometimes,Never,2,Not at all,60,More than half the days
+313,40,5,Often  (4-5 times),Nearly every day,Not at all,Always,Always,1,Several days,60,More than half the days
+314,49,2,Sometimes (2-3 times),Not at all,Not at all,Always,Never,1,Not at all,132,Several days
+315,34,2,Rarely  (0-1 times),Several days,Several days,Always,Always,4,Not at all,178,Not at all
+316,37,3,Often  (4-5 times),Not at all,Not at all,Always,Always,1,Not at all,120,Not at all
+317,40,3,Rarely  (0-1 times),More than half the days,Several days,,Rarely,5,Not at all,150,Not at all
+318,31,1,Rarely  (0-1 times),More than half the days,Several days,Often,Never,2,Several days,120,Several days
+319,27,4,Always (6+ times),Not at all,More than half the days,Sometimes,Rarely,1,Not at all,210,Several days
+320,37,4,Always (6+ times),Not at all,More than half the days,Sometimes,Rarely,4,Not at all,120,Several days
+321,32,4,Always (6+ times),Not at all,More than half the days,Sometimes,Rarely,1,Not at all,178,Not at all
+322,34,1,Always (6+ times),Not at all,More than half the days,Sometimes,Never,5,Several days,134,Several days
+323,30,3,Sometimes (2-3 times),Several days,Not at all,Never,Never,3,Nearly every day,135,Nearly every day
+324,26,1,Rarely  (0-1 times),More than half the days,Several days,,Never,4,Not at all,60,Not at all
+325,37,5,Often  (4-5 times),Not at all,Not at all,Never,Often,5,Several days,120,Several days
+326,36,1,Always (6+ times),More than half the days,More than half the days,Sometimes,Sometimes,1,Not at all,120,Several days
+327,35,1,Often  (4-5 times),Not at all,Not at all,Never,Often,5,Not at all,120,Several days
+328,24,5,Sometimes (2-3 times),More than half the days,Nearly every day,Often,Always,5,Not at all,130,Several days
+329,20,1,Often  (4-5 times),Not at all,Nearly every day,Sometimes,Rarely,3,Not at all,165,Not at all
+330,49,5,Rarely  (0-1 times),Several days,Several days,Never,Rarely,1,Nearly every day,165,Several days
+331,45,2,Always (6+ times),Nearly every day,Several days,Never,Never,2,Several days,90,Not at all
+332,41,5,Rarely  (0-1 times),Not at all,Not at all,Often,Sometimes,3,More than half the days,200,Several days
+333,36,5,Rarely  (0-1 times),Not at all,Not at all,Often,Sometimes,3,Several days,90,Nearly every day
+334,48,1,Rarely  (0-1 times),Not at all,Not at all,Often,Often,2,Not at all,60,More than half the days
+335,25,2,Often  (4-5 times),Not at all,Several days,Often,Often,2,Several days,60,More than half the days
+336,31,2,Often  (4-5 times),Not at all,More than half the days,Sometimes,Sometimes,5,Several days,95,Several days
+337,44,2,Rarely  (0-1 times),More than half the days,More than half the days,Sometimes,Sometimes,2,Several days,175,Several days
+338,23,1,Sometimes (2-3 times),More than half the days,More than half the days,,Rarely,3,Not at all,163,Not at all
+339,30,4,Often  (4-5 times),Nearly every day,More than half the days,Always,Sometimes,3,Several days,164,Not at all
+340,36,5,Often  (4-5 times),Nearly every day,More than half the days,Always,Sometimes,3,Several days,174,Not at all
+341,43,5,Rarely  (0-1 times),Not at all,Several days,Often,Rarely,5,Not at all,102,Nearly every day
+342,28,2,Sometimes (2-3 times),More than half the days,More than half the days,Sometimes,Sometimes,1,Not at all,77,Several days
+343,32,3,Sometimes (2-3 times),More than half the days,More than half the days,Always,Rarely,3,More than half the days,174,Several days
+344,41,2,Always (6+ times),Several days,Several days,Rarely,Never,4,Nearly every day,93,Nearly every day
+345,33,5,Always (6+ times),Nearly every day,More than half the days,Rarely,Sometimes,4,Nearly every day,180,Not at all
+346,25,4,Often  (4-5 times),Several days,Not at all,Rarely,Rarely,4,Several days,30,Not at all
+347,42,1,Often  (4-5 times),Nearly every day,More than half the days,Often,Rarely,2,Not at all,117,Several days
+348,40,4,Always (6+ times),Nearly every day,Several days,Sometimes,Never,3,More than half the days,60,Nearly every day
+349,43,3,Always (6+ times),More than half the days,More than half the days,Sometimes,Often,1,Not at all,103,Nearly every day
+350,45,1,Always (6+ times),Not at all,Nearly every day,Always,Never,1,Several days,30,Several days
+351,39,4,Sometimes (2-3 times),Several days,Not at all,Always,Never,1,More than half the days,180,More than half the days
+352,22,3,Sometimes (2-3 times),Not at all,Several days,Rarely,Rarely,3,Several days,30,Several days
+353,22,3,Sometimes (2-3 times),Several days,More than half the days,Sometimes,Often,2,Not at all,30,Not at all
+354,40,4,Sometimes (2-3 times),Several days,Not at all,Always,Never,1,More than half the days,120,More than half the days
+355,25,1,Always (6+ times),Nearly every day,Several days,Sometimes,Rarely,1,Several days,120,Not at all
+356,25,2,Rarely  (0-1 times),Not at all,Several days,Rarely,Rarely,3,Several days,120,Not at all
+357,20,2,Sometimes (2-3 times),Nearly every day,Nearly every day,Always,Always,5,Nearly every day,1,Nearly every day
+358,24,3,Rarely  (0-1 times),Not at all,Several days,Sometimes,Sometimes,1,Not at all,30,Several days
+359,20,2,Often  (4-5 times),Several days,Several days,Sometimes,Sometimes,3,Several days,30,Several days
+360,25,3,Often  (4-5 times),Not at all,More than half the days,Sometimes,Sometimes,3,Several days,60,Several days
+361,25,1,Sometimes (2-3 times),Not at all,Several days,Sometimes,Sometimes,3,Several days,10,Several days
+362,23,2,Sometimes (2-3 times),Not at all,Several days,Never,Rarely,1,Not at all,60,Several days
+363,25,3,Always (6+ times),Nearly every day,Not at all,Rarely,Rarely,5,Several days,240,Not at all
+364,39,3,Sometimes (2-3 times),Not at all,Not at all,Never,Never,3,Not at all,30,Not at all
+365,24,2,Sometimes (2-3 times),Not at all,Not at all,Sometimes,Rarely,3,Several days,30,Not at all
+366,33,5,Often  (4-5 times),Nearly every day,More than half the days,Often,Rarely,5,More than half the days,120,Several days
+367,49,4,Sometimes (2-3 times),Nearly every day,Nearly every day,Often,Sometimes,5,More than half the days,150,Several days
+368,41,3,Sometimes (2-3 times),Nearly every day,More than half the days,Sometimes,Often,2,Not at all,90,More than half the days
+369,47,5,Rarely  (0-1 times),More than half the days,Nearly every day,Often,Always,3,Not at all,110,Nearly every day
+370,29,2,Often  (4-5 times),Several days,More than half the days,Rarely,Often,5,Nearly every day,120,More than half the days
+371,41,1,Rarely  (0-1 times),More than half the days,Not at all,Always,Never,3,Several days,120,Not at all
+372,44,4,Sometimes (2-3 times),More than half the days,Not at all,Sometimes,Often,1,Several days,150,More than half the days
+373,40,3,Always (6+ times),Not at all,Not at all,Never,Always,4,Not at all,120,More than half the days
+374,39,4,Always (6+ times),Not at all,Not at all,Never,Always,4,Not at all,180,Nearly every day
+375,41,4,Rarely  (0-1 times),Nearly every day,Several days,Rarely,Often,3,Several days,170,Nearly every day
+376,28,2,Often  (4-5 times),Several days,Not at all,Never,Never,2,Not at all,180,Nearly every day
+377,50,3,Often  (4-5 times),Several days,Not at all,Rarely,Always,4,Several days,190,More than half the days
+378,47,1,Always (6+ times),Not at all,Not at all,Often,Sometimes,2,Not at all,240,Not at all
+379,20,2,Sometimes (2-3 times),Nearly every day,Nearly every day,Always,Always,5,Nearly every day,1,Nearly every day
+380,24,3,Rarely  (0-1 times),Not at all,Several days,Sometimes,Sometimes,1,Not at all,30,Several days
+381,20,2,Often  (4-5 times),Several days,Several days,Sometimes,Sometimes,3,Several days,30,Several days
+382,25,3,Often  (4-5 times),Not at all,More than half the days,Sometimes,Sometimes,3,Several days,60,Several days
+383,25,1,Sometimes (2-3 times),Not at all,Several days,Sometimes,Sometimes,3,Several days,10,Several days
+384,23,2,Sometimes (2-3 times),Not at all,Several days,Never,Rarely,1,Not at all,60,Several days
+385,45,3,Always (6+ times),Nearly every day,Not at all,Rarely,Rarely,5,Several days,240,Not at all
+386,39,3,Sometimes (2-3 times),Not at all,Not at all,Never,Never,3,Not at all,30,Not at all
+387,24,2,Sometimes (2-3 times),Not at all,Not at all,Sometimes,Rarely,3,Several days,30,Not at all
+388,33,5,Often  (4-5 times),Nearly every day,More than half the days,Often,Rarely,5,More than half the days,120,Several days
+389,49,4,Sometimes (2-3 times),Nearly every day,Nearly every day,Often,Sometimes,5,More than half the days,150,Several days
+390,40,5,Often  (4-5 times),Nearly every day,Not at all,Always,Always,1,Several days,60,More than half the days
+391,49,2,Sometimes (2-3 times),Not at all,Not at all,Always,Never,1,Not at all,132,Several days
+392,34,2,Rarely  (0-1 times),Several days,Several days,Always,Always,4,Not at all,178,Not at all
+393,37,3,Often  (4-5 times),Not at all,Not at all,Always,Always,1,Not at all,120,Not at all
+394,40,3,Rarely  (0-1 times),More than half the days,Several days,,Rarely,5,Not at all,150,Not at all
+395,31,1,Rarely  (0-1 times),More than half the days,Several days,Often,Never,2,Several days,120,Several days
+396,27,4,Always (6+ times),Not at all,More than half the days,Sometimes,Rarely,1,Not at all,210,Several days
+397,39,4,Always (6+ times),Not at all,More than half the days,Sometimes,Rarely,4,Not at all,120,Several days
+398,42,4,Always (6+ times),Not at all,More than half the days,Sometimes,Rarely,1,Not at all,178,Not at all
+399,44,1,Always (6+ times),Not at all,More than half the days,Sometimes,Never,5,Several days,134,Several days
+400,40,3,Sometimes (2-3 times),Several days,Not at all,Never,Never,3,Nearly every day,135,Nearly every day
+401,27,1,Rarely  (0-1 times),More than half the days,Several days,,Never,4,Not at all,60,Not at all
+402,35,5,Often  (4-5 times),Not at all,Not at all,Never,Often,5,Several days,120,Several days
+403,36,1,Always (6+ times),More than half the days,More than half the days,Sometimes,Sometimes,1,Not at all,120,Several days
+404,34,5,Sometimes (2-3 times),More than half the days,Nearly every day,Often,Always,5,Not at all,130,Several days
+405,20,1,Often  (4-5 times),Not at all,Nearly every day,Sometimes,Rarely,3,Not at all,165,Not at all
+406,39,1,Often  (4-5 times),Not at all,Not at all,Never,Often,5,Not at all,120,Several days
+407,49,5,Rarely  (0-1 times),Several days,Several days,Never,Rarely,1,Nearly every day,165,Several days
+408,45,2,Always (6+ times),Nearly every day,Several days,Never,Never,2,Several days,90,Not at all
+409,41,5,Rarely  (0-1 times),Not at all,Not at all,Often,Sometimes,3,More than half the days,200,Several days
+410,45,5,Rarely  (0-1 times),Not at all,Not at all,Often,Sometimes,3,Several days,90,Nearly every day
+411,33,5,Often  (4-5 times),Nearly every day,More than half the days,Often,Rarely,5,More than half the days,120,Several days
+412,49,4,Sometimes (2-3 times),Nearly every day,Nearly every day,Often,Sometimes,5,More than half the days,150,Several days
+413,38,3,Sometimes (2-3 times),Nearly every day,More than half the days,Sometimes,Often,2,Not at all,90,More than half the days
+414,47,5,Rarely  (0-1 times),More than half the days,Nearly every day,Often,Always,3,Not at all,110,Nearly every day
+415,29,2,Often  (4-5 times),Several days,More than half the days,Rarely,Often,5,Nearly every day,120,More than half the days
+416,41,1,Rarely  (0-1 times),More than half the days,Not at all,Always,Never,3,Several days,120,Not at all
+417,44,4,Sometimes (2-3 times),More than half the days,Not at all,Sometimes,Often,1,Several days,150,More than half the days
+418,40,3,Always (6+ times),Not at all,Not at all,Never,Always,4,Not at all,120,More than half the days
+419,39,4,Always (6+ times),Not at all,Not at all,Never,Always,4,Not at all,180,Nearly every day
+420,41,4,Rarely  (0-1 times),Nearly every day,Several days,Rarely,Often,3,Several days,170,Nearly every day
+421,28,2,Often  (4-5 times),Several days,Not at all,Never,Never,2,Not at all,180,Nearly every day
+422,50,3,Often  (4-5 times),Several days,Not at all,Rarely,Always,4,Several days,190,More than half the days
+423,47,1,Always (6+ times),Not at all,Not at all,Often,Sometimes,2,Not at all,240,Not at all
+424,33,5,Always (6+ times),Nearly every day,More than half the days,Rarely,Sometimes,4,Nearly every day,180,Not at all
+425,25,4,Often  (4-5 times),Several days,Not at all,Rarely,Rarely,4,Several days,30,Not at all
+426,42,1,Often  (4-5 times),Nearly every day,More than half the days,Often,Rarely,2,Not at all,117,Several days
+427,40,4,Always (6+ times),Nearly every day,Several days,Sometimes,Never,3,More than half the days,60,Nearly every day
+428,44,3,Always (6+ times),More than half the days,More than half the days,Sometimes,Often,1,Not at all,103,Nearly every day
+429,43,1,Always (6+ times),Not at all,Nearly every day,Always,Never,1,Several days,30,Several days
+430,34,4,Sometimes (2-3 times),Several days,Not at all,Always,Never,1,More than half the days,180,More than half the days
+431,22,3,Sometimes (2-3 times),Not at all,Several days,Rarely,Rarely,3,Several days,30,Several days
+432,22,3,Sometimes (2-3 times),Several days,More than half the days,Sometimes,Often,2,Not at all,30,Not at all
+433,40,4,Sometimes (2-3 times),Several days,Not at all,Always,Never,1,More than half the days,120,More than half the days
+434,32,5,Sometimes (2-3 times),Not at all,Several days,Sometimes,Never,3,More than half the days,90,Not at all
+435,31,4,Always (6+ times),Nearly every day,Not at all,Often,Sometimes,2,More than half the days,120,Nearly every day
+436,25,2,Sometimes (2-3 times),Several days,Several days,Sometimes,Sometimes,3,Several days,20,Not at all
+437,24,4,Sometimes (2-3 times),Not at all,Not at all,Rarely,Rarely,2,Not at all,180,Not at all
+438,47,1,Rarely  (0-1 times),Nearly every day,More than half the days,Sometimes,Sometimes,5,Not at all,60,Several days
+439,37,5,Always (6+ times),Nearly every day,Several days,,Always,4,Nearly every day,75,Nearly every day
+440,48,5,Sometimes (2-3 times),More than half the days,More than half the days,Rarely,Always,5,Several days,120,Several days
+441,27,3,Sometimes (2-3 times),Several days,Several days,Rarely,Rarely,3,Several days,120,Not at all
+442,27,2,Sometimes (2-3 times),Several days,Not at all,Never,,,Not at all,40,
+443,48,3,Always (6+ times),More than half the days,Not at all,Never,Rarely,2,Several days,120,Several days
+444,39,4,Always (6+ times),Not at all,Not at all,Never,Always,4,Not at all,180,Nearly every day
+445,41,4,Rarely  (0-1 times),Nearly every day,Several days,Rarely,Often,3,Several days,170,Nearly every day
+446,38,2,Often  (4-5 times),Several days,Not at all,Never,Never,2,Not at all,180,Nearly every day
+447,40,3,Often  (4-5 times),Several days,Not at all,Rarely,Always,4,Several days,190,More than half the days
+448,47,1,Always (6+ times),Not at all,Not at all,Often,Sometimes,2,Not at all,240,Not at all
+449,43,5,Always (6+ times),Nearly every day,More than half the days,Rarely,Sometimes,4,Nearly every day,180,Not at all
+450,39,4,Often  (4-5 times),Several days,Not at all,Rarely,Rarely,4,Several days,30,Not at all
+451,46,1,Often  (4-5 times),Nearly every day,More than half the days,Often,Rarely,2,Not at all,117,Several days
+452,42,4,Always (6+ times),Nearly every day,Several days,Sometimes,Never,3,More than half the days,60,Nearly every day
+453,46,3,Always (6+ times),More than half the days,More than half the days,Sometimes,Often,1,Not at all,103,Nearly every day
+454,41,1,Always (6+ times),Not at all,Nearly every day,Always,Never,1,Several days,30,Several days
+455,30,2,Always (6+ times),Not at all,Several days,Often,Often,2,Not at all,90,More than half the days
+456,41,2,Always (6+ times),Several days,Several days,Rarely,Never,4,Nearly every day,93,Nearly every day
+457,33,5,Always (6+ times),Nearly every day,More than half the days,Rarely,Sometimes,4,Nearly every day,180,Not at all
+458,27,4,Often  (4-5 times),Several days,Not at all,Rarely,Rarely,4,Several days,30,Not at all
+459,42,1,Often  (4-5 times),Nearly every day,More than half the days,Often,Rarely,2,Not at all,117,Several days
+460,41,4,Always (6+ times),Nearly every day,Several days,Sometimes,Never,3,More than half the days,60,Nearly every day
+461,33,3,Always (6+ times),More than half the days,More than half the days,Sometimes,Often,1,Not at all,103,Nearly every day
+462,46,1,Always (6+ times),Not at all,Nearly every day,Always,Never,1,Several days,30,Several days
+463,49,4,Sometimes (2-3 times),Several days,Not at all,Always,Never,1,More than half the days,180,More than half the days
+464,26,3,Sometimes (2-3 times),Not at all,Several days,Rarely,Rarely,3,Several days,30,Several days
+465,28,3,Sometimes (2-3 times),Several days,Several days,Often,Sometimes,4,Several days,120,Not at all
+466,23,5,Rarely  (0-1 times),Not at all,Not at all,Never,Never,2,Several days,45,Not at all
+467,31,5,Sometimes (2-3 times),Not at all,Not at all,Never,Never,2,Not at all,240,Not at all
+468,27,4,Sometimes (2-3 times),Not at all,Not at all,Rarely,Rarely,4,Not at all,120,Not at all
+469,24,3,Sometimes (2-3 times),Several days,Several days,Sometimes,Sometimes,3,Several days,30,Not at all
+470,23,3,Always (6+ times),More than half the days,More than half the days,Sometimes,Sometimes,5,More than half the days,60,More than half the days
+471,29,2,Often  (4-5 times),Several days,Nearly every day,Sometimes,Always,2,Several days,1,Several days
+472,27,4,Sometimes (2-3 times),Several days,Not at all,Often,Sometimes,3,Several days,60,Not at all
+473,24,1,Always (6+ times),Nearly every day,Several days,Sometimes,Rarely,1,Several days,120,Not at all
+474,25,2,Rarely  (0-1 times),Not at all,Several days,Rarely,Rarely,3,Several days,120,Not at all
+475,21,2,Sometimes (2-3 times),Nearly every day,Nearly every day,Always,Always,5,Nearly every day,1,Nearly every day
+476,28,2,Often  (4-5 times),Several days,Several days,Sometimes,Rarely,3,Several days,10,Several days
+477,26,3,Sometimes (2-3 times),Several days,Several days,Sometimes,Sometimes,3,Several days,1,Not at all
+478,24,3,Sometimes (2-3 times),Several days,More than half the days,Always,Sometimes,4,Several days,60,Not at all
+479,22,3,Sometimes (2-3 times),Several days,More than half the days,Sometimes,Sometimes,3,Several days,120,Several days
+480,26,3,Sometimes (2-3 times),Several days,Several days,Sometimes,Sometimes,2,Several days,120,Not at all
+481,29,3,Sometimes (2-3 times),Not at all,Not at all,Rarely,Rarely,2,Several days,120,Not at all
+482,27,5,Sometimes (2-3 times),Not at all,Not at all,Rarely,Rarely,1,Not at all,120,Not at all
+483,35,4,Sometimes (2-3 times),Not at all,Several days,Rarely,Rarely,3,Not at all,120,Not at all
+484,25,4,Sometimes (2-3 times),Not at all,Several days,Rarely,Sometimes,3,Several days,8,Not at all
+485,26,4,Rarely  (0-1 times),Not at all,Not at all,Rarely,Rarely,3,Several days,180,Not at all
+486,27,2,Rarely  (0-1 times),Not at all,Not at all,Never,Never,3,Not at all,10,Not at all
+487,37,3,Sometimes (2-3 times),Several days,Several days,Rarely,Often,4,More than half the days,180,More than half the days
+488,41,4,Rarely  (0-1 times),Not at all,Several days,Sometimes,Rarely,4,Several days,25,Several days
+489,35,3,Sometimes (2-3 times),More than half the days,Several days,Often,Rarely,3,Several days,60,More than half the days
+490,47,3,Sometimes (2-3 times),Not at all,Several days,Rarely,Sometimes,4,More than half the days,120,More than half the days
+491,49,5,Rarely  (0-1 times),Several days,Several days,Never,Rarely,1,Nearly every day,165,Several days
+492,45,2,Always (6+ times),Nearly every day,Several days,Never,Never,2,Several days,90,Not at all
+493,41,5,Rarely  (0-1 times),Not at all,Not at all,Often,Sometimes,3,More than half the days,200,Several days
+494,45,5,Rarely  (0-1 times),Not at all,Not at all,Often,Sometimes,3,Several days,90,Nearly every day
+495,33,5,Often  (4-5 times),Nearly every day,More than half the days,Often,Rarely,5,More than half the days,120,Several days
+496,49,4,Sometimes (2-3 times),Nearly every day,Nearly every day,Often,Sometimes,5,More than half the days,150,Several days
+497,38,3,Sometimes (2-3 times),Nearly every day,More than half the days,Sometimes,Often,2,Not at all,90,More than half the days
+498,47,5,Rarely  (0-1 times),More than half the days,Nearly every day,Often,Always,3,Not at all,110,Nearly every day
+499,29,2,Often  (4-5 times),Several days,More than half the days,Rarely,Often,5,Nearly every day,120,More than half the days
+500,41,1,Rarely  (0-1 times),More than half the days,Not at all,Always,Never,3,Several days,120,Not at all
+501,44,4,Sometimes (2-3 times),More than half the days,Not at all,Sometimes,Often,1,Several days,150,More than half the days
+502,40,3,Always (6+ times),Not at all,Not at all,Never,Always,4,Not at all,120,More than half the days
+503,35,1,Sometimes (2-3 times),Not at all,Not at all,Never,Often,1,Not at all,2,Not at all
+504,24,3,Often  (4-5 times),Several days,Several days,Often,Often,4,Several days,120,Not at all
+505,25,3,Sometimes (2-3 times),Several days,Not at all,Never,Rarely,4,Several days,60,Not at all
+506,23,2,Rarely  (0-1 times),Several days,Several days,Sometimes,Rarely,1,Several days,20,Several days
+507,26,3,Often  (4-5 times),Not at all,More than half the days,Rarely,Rarely,3,Several days,90,Several days
+508,28,2,Often  (4-5 times),Several days,Several days,Sometimes,Rarely,3,Several days,10,Several days
+509,26,3,Sometimes (2-3 times),Several days,Several days,Sometimes,Sometimes,3,Several days,1,Not at all
+510,44,3,Sometimes (2-3 times),Several days,More than half the days,Always,Sometimes,4,Several days,60,Not at all
+511,22,3,Sometimes (2-3 times),Several days,More than half the days,Sometimes,Sometimes,3,Several days,120,Several days
+512,26,3,Sometimes (2-3 times),Several days,Several days,Sometimes,Sometimes,2,Several days,120,Not at all
+513,27,3,Sometimes (2-3 times),Not at all,Not at all,Rarely,Rarely,2,Several days,120,Not at all
+514,25,5,Sometimes (2-3 times),Not at all,Not at all,Rarely,Rarely,1,Not at all,120,Not at all
+515,34,4,Sometimes (2-3 times),Not at all,Several days,Rarely,Rarely,3,Not at all,120,Not at all
+516,27,4,Sometimes (2-3 times),Not at all,Several days,Rarely,Sometimes,3,Several days,8,Not at all
+517,25,4,Rarely  (0-1 times),Not at all,Not at all,Rarely,Rarely,3,Several days,180,Not at all
+518,26,2,Rarely  (0-1 times),Not at all,Not at all,Never,Never,3,Not at all,10,Not at all
+519,38,3,Sometimes (2-3 times),Several days,Several days,Rarely,Often,4,More than half the days,180,More than half the days
+520,40,4,Rarely  (0-1 times),Not at all,Several days,Sometimes,Rarely,4,Several days,25,Several days
+521,36,3,Sometimes (2-3 times),More than half the days,Several days,Often,Rarely,3,Several days,60,More than half the days
+522,46,3,Sometimes (2-3 times),Not at all,Several days,Rarely,Sometimes,4,More than half the days,120,More than half the days
+523,48,5,Sometimes (2-3 times),Nearly every day,Several days,Rarely,Always,5,Not at all,100,Nearly every day
+524,49,5,Sometimes (2-3 times),Not at all,More than half the days,Always,Sometimes,,Not at all,50,More than half the days
+525,38,2,Always (6+ times),Several days,Several days,Often,Often,2,More than half the days,20,Several days
+526,42,2,Sometimes (2-3 times),More than half the days,Several days,Rarely,Sometimes,3,Several days,40,Several days
+527,36,3,Sometimes (2-3 times),Several days,Not at all,Rarely,Sometimes,3,Several days,50,More than half the days
+528,36,4,Rarely  (0-1 times),More than half the days,Several days,Rarely,Sometimes,3,Several days,60,Nearly every day
+529,27,5,Sometimes (2-3 times),Not at all,Not at all,Rarely,Never,1,Several days,180,Not at all
+530,30,3,Sometimes (2-3 times),Not at all,Not at all,Never,Rarely,3,Not at all,120,Not at all
+531,37,4,Rarely  (0-1 times),Not at all,Nearly every day,Always,Often,5,Nearly every day,120,Several days
+532,44,5,Often  (4-5 times),Not at all,More than half the days,Sometimes,,3,Several days,99,Several days
+533,37,1,Always (6+ times),Not at all,Not at all,Often,Rarely,4,Several days,55,More than half the days
+534,34,4,Sometimes (2-3 times),Not at all,Several days,Always,Rarely,4,Not at all,55,More than half the days
+535,42,3,Often  (4-5 times),Nearly every day,Nearly every day,Never,Rarely,1,Nearly every day,111,Several days
+536,43,3,Often  (4-5 times),Nearly every day,Nearly every day,Rarely,Never,5,Several days,120,Several days
+537,30,2,Sometimes (2-3 times),Several days,Nearly every day,,Sometimes,5,Several days,116,Several days
+538,50,3,Rarely  (0-1 times),Not at all,Not at all,Never,Never,1,Not at all,300,Not at all
+539,24,3,Rarely  (0-1 times),Not at all,Not at all,Rarely,Never,1,Not at all,30,Not at all
+540,32,3,Always (6+ times),More than half the days,More than half the days,Rarely,Always,3,More than half the days,30,Several days
+541,42,2,Sometimes (2-3 times),Not at all,Not at all,Never,Never,2,Several days,15,Not at all
+542,37,2,Rarely  (0-1 times),Nearly every day,Not at all,Sometimes,Rarely,4,Nearly every day,63,Not at all
+543,31,1,Often  (4-5 times),Several days,Several days,Rarely,Never,5,More than half the days,80,Several days
+544,46,3,Often  (4-5 times),Several days,Several days,Never,Sometimes,3,Nearly every day,92,Not at all
+545,33,3,Often  (4-5 times),More than half the days,Several days,Sometimes,Rarely,5,Not at all,106,Several days
+546,48,3,Always (6+ times),Not at all,Nearly every day,Sometimes,Always,1,Nearly every day,60,Several days
+547,36,5,Always (6+ times),Not at all,More than half the days,Never,Never,2,Several days,32,More than half the days
+548,40,3,Sometimes (2-3 times),Several days,Several days,Sometimes,Rarely,4,Several days,2,Not at all
+549,41,4,Always (6+ times),Nearly every day,Nearly every day,Never,Rarely,5,Several days,76,More than half the days
+550,30,3,Often  (4-5 times),Several days,More than half the days,Rarely,Never,2,Several days,98,More than half the days
+551,27,4,Sometimes (2-3 times),Several days,Not at all,Sometimes,Rarely,2,Several days,45,Not at all
+552,24,3,Sometimes (2-3 times),Not at all,Not at all,Rarely,Rarely,3,Not at all,120,Not at all
+553,24,2,Sometimes (2-3 times),Several days,Several days,Sometimes,Sometimes,2,More than half the days,120,
+554,27,3,Sometimes (2-3 times),Several days,Several days,Sometimes,Sometimes,3,Not at all,30,Not at all
+555,36,5,Rarely  (0-1 times),Nearly every day,Not at all,Sometimes,Always,4,Nearly every day,60,Several days
+556,45,4,Sometimes (2-3 times),Several days,Several days,Rarely,Often,3,More than half the days,120,Not at all
+557,48,2,Sometimes (2-3 times),Not at all,Several days,Often,Sometimes,2,Nearly every day,94,Several days
+558,48,2,Sometimes (2-3 times),Not at all,Several days,Often,Sometimes,2,Several days,90,Several days
+559,36,3,Rarely  (0-1 times),More than half the days,More than half the days,Rarely,Rarely,3,Several days,70,Several days
+560,30,1,Sometimes (2-3 times),Several days,Not at all,Sometimes,Never,3,Several days,90,Several days
+561,31,2,Always (6+ times),Nearly every day,Nearly every day,Sometimes,Never,3,Several days,120,Several days
+562,23,2,Sometimes (2-3 times),Several days,Several days,Sometimes,Rarely,2,Several days,60,More than half the days
+563,25,3,Sometimes (2-3 times),Not at all,Several days,Sometimes,Rarely,3,Not at all,8,Not at all
+564,35,1,Sometimes (2-3 times),Not at all,Not at all,Never,Often,1,Not at all,2,Not at all
+565,24,3,Often  (4-5 times),Several days,Several days,Often,Often,4,Several days,120,Not at all
+566,25,3,Sometimes (2-3 times),Several days,Not at all,Never,Rarely,4,Several days,60,Not at all
+567,23,2,Rarely  (0-1 times),Several days,Several days,Sometimes,Rarely,1,Several days,20,Several days
+568,26,3,Often  (4-5 times),Not at all,More than half the days,Rarely,Rarely,3,Several days,90,Several days
+569,28,2,Often  (4-5 times),Several days,Several days,Sometimes,Rarely,3,Several days,10,Several days
+570,26,3,Sometimes (2-3 times),Several days,Several days,Sometimes,Sometimes,3,Several days,1,Not at all
+571,24,3,Sometimes (2-3 times),Several days,More than half the days,Always,Sometimes,4,Several days,60,Not at all
+572,22,3,Sometimes (2-3 times),Several days,More than half the days,Sometimes,Sometimes,3,Several days,120,Several days
+573,26,3,Sometimes (2-3 times),Several days,Several days,Sometimes,Sometimes,2,Several days,120,Not at all
+574,27,3,Sometimes (2-3 times),Not at all,Not at all,Rarely,Rarely,2,Several days,120,Not at all
+575,25,5,Sometimes (2-3 times),Not at all,Not at all,Rarely,Rarely,1,Not at all,120,Not at all
+576,34,4,Sometimes (2-3 times),Not at all,Several days,Rarely,Rarely,3,Not at all,120,Not at all
+577,27,4,Sometimes (2-3 times),Not at all,Several days,Rarely,Sometimes,3,Several days,8,Not at all
+578,25,4,Rarely  (0-1 times),Not at all,Not at all,Rarely,Rarely,3,Several days,180,Not at all
+579,26,2,Rarely  (0-1 times),Not at all,Not at all,Never,Never,3,Not at all,10,Not at all
+580,38,3,Sometimes (2-3 times),Several days,Several days,Rarely,Often,4,More than half the days,180,More than half the days
+581,40,4,Rarely  (0-1 times),Not at all,Several days,Sometimes,Rarely,4,Several days,25,Several days
+582,36,3,Sometimes (2-3 times),More than half the days,Several days,Often,Rarely,3,Several days,60,More than half the days
+583,46,3,Sometimes (2-3 times),Not at all,Several days,Rarely,Sometimes,4,More than half the days,120,More than half the days
+584,49,5,Sometimes (2-3 times),Nearly every day,Several days,Rarely,Always,5,Not at all,100,Nearly every day
+585,35,1,Sometimes (2-3 times),Not at all,Not at all,Never,Often,1,Not at all,2,Not at all
+586,24,3,Often  (4-5 times),Several days,Several days,Often,Often,4,Several days,120,Not at all
+587,25,3,Sometimes (2-3 times),Several days,Not at all,Never,Rarely,4,Several days,60,Not at all
+588,23,2,Rarely  (0-1 times),Several days,Several days,Sometimes,Rarely,1,Several days,20,Several days
+589,26,3,Often  (4-5 times),Not at all,More than half the days,Rarely,Rarely,3,Several days,90,Several days
+590,28,2,Often  (4-5 times),Several days,Several days,Sometimes,Rarely,3,Several days,10,Several days
+591,26,3,Sometimes (2-3 times),Several days,Several days,Sometimes,Sometimes,3,Several days,1,Not at all
+592,24,3,Sometimes (2-3 times),Several days,More than half the days,Always,Sometimes,4,Several days,60,Not at all
+593,22,3,Sometimes (2-3 times),Several days,More than half the days,Sometimes,Sometimes,3,Several days,120,Several days
+594,26,3,Sometimes (2-3 times),Several days,Several days,Sometimes,Sometimes,2,Several days,120,Not at all
+595,27,3,Sometimes (2-3 times),Not at all,Not at all,Rarely,Rarely,2,Several days,120,Not at all
+596,25,5,Sometimes (2-3 times),Not at all,Not at all,Rarely,Rarely,1,Not at all,120,Not at all
+597,34,4,Sometimes (2-3 times),Not at all,Several days,Rarely,Rarely,3,Not at all,120,Not at all
+598,27,4,Sometimes (2-3 times),Not at all,Several days,Rarely,Sometimes,3,Several days,8,Not at all
+599,25,4,Rarely  (0-1 times),Not at all,Not at all,Rarely,Rarely,3,Several days,180,Not at all
+600,26,2,Rarely  (0-1 times),Not at all,Not at all,Never,Never,3,Not at all,10,Not at all
+601,38,3,Sometimes (2-3 times),Several days,Several days,Rarely,Often,4,More than half the days,180,More than half the days
+602,40,4,Rarely  (0-1 times),Not at all,Several days,Sometimes,Rarely,4,Several days,25,Several days
+603,36,3,Sometimes (2-3 times),More than half the days,Several days,Often,Rarely,3,Several days,60,More than half the days
+604,46,3,Sometimes (2-3 times),Not at all,Several days,Rarely,Sometimes,4,More than half the days,120,More than half the days
+605,48,5,Sometimes (2-3 times),Nearly every day,Several days,Rarely,Always,5,Not at all,100,Nearly every day
+606,49,5,Sometimes (2-3 times),Not at all,More than half the days,Always,Sometimes,,Not at all,50,More than half the days
+607,38,2,Always (6+ times),Several days,Several days,Often,Often,2,More than half the days,20,Several days
+608,42,2,Sometimes (2-3 times),More than half the days,Several days,Rarely,Sometimes,3,Several days,40,Several days
+609,36,3,Sometimes (2-3 times),Several days,Not at all,Rarely,Sometimes,3,Several days,50,More than half the days
+610,36,4,Rarely  (0-1 times),More than half the days,Several days,Rarely,Sometimes,3,Several days,60,Nearly every day
+611,23,2,Sometimes (2-3 times),Not at all,Several days,Rarely,Rarely,3,Not at all,120,More than half the days
+612,45,3,Always (6+ times),Not at all,Several days,Rarely,Sometimes,3,Several days,8,Several days
+613,39,3,Sometimes (2-3 times),Not at all,Not at all,Rarely,Rarely,3,Several days,180,More than half the days
+614,24,2,Sometimes (2-3 times),Not at all,Not at all,Never,Never,3,Not at all,10,More than half the days
+615,25,3,Sometimes (2-3 times),Several days,Several days,Rarely,Often,4,More than half the days,180,Nearly every day
+616,23,4,Always (6+ times),Not at all,Several days,Sometimes,Rarely,4,Several days,25,More than half the days
+617,23,3,Sometimes (2-3 times),More than half the days,Several days,Often,Rarely,3,Several days,60,Several days
+618,24,3,Often  (4-5 times),Not at all,Several days,Rarely,Sometimes,4,More than half the days,120,Several days
+619,24,4,Sometimes (2-3 times),Nearly every day,Several days,Rarely,Always,5,Not at all,100,More than half the days
+620,26,2,Sometimes (2-3 times),Not at all,Not at all,Never,Often,1,Not at all,2,Nearly every day
+621,24,4,Always (6+ times),Several days,Several days,Often,Often,4,Several days,120,Not at all
+622,25,3,Often  (4-5 times),Several days,Not at all,Never,Rarely,4,Several days,60,Not at all
+623,25,3,Sometimes (2-3 times),Several days,Several days,Sometimes,Rarely,1,Several days,20,Several days
+624,22,5,Sometimes (2-3 times),Not at all,More than half the days,Rarely,Rarely,3,Several days,90,Several days
+625,21,3,Sometimes (2-3 times),Several days,Several days,Sometimes,Rarely,3,Several days,10,More than half the days
+626,21,4,Sometimes (2-3 times),Several days,Several days,Sometimes,Sometimes,3,Several days,1,More than half the days
+627,26,3,Sometimes (2-3 times),Several days,More than half the days,Always,Sometimes,4,Several days,60,Several days
+628,26,3,Sometimes (2-3 times),Several days,More than half the days,Sometimes,Sometimes,3,Several days,120,Several days
+629,21,2,Sometimes (2-3 times),Several days,Several days,Sometimes,Sometimes,2,Several days,120,Several days
+630,26,3,Often  (4-5 times),Not at all,Not at all,Rarely,Rarely,2,Several days,120,Not at all
+631,25,3,Rarely  (0-1 times),Not at all,Not at all,Rarely,Rarely,1,Not at all,120,Not at all
+632,27,3,Sometimes (2-3 times),Not at all,Several days,Rarely,Rarely,3,Not at all,120,Several days
+633,44,3,Sometimes (2-3 times),Not at all,Several days,Rarely,Sometimes,3,Several days,8,Not at all
+634,40,3,Sometimes (2-3 times),Not at all,Not at all,Rarely,Rarely,3,Several days,180,Not at all
+635,41,3,Sometimes (2-3 times),Not at all,Not at all,Never,Never,3,Not at all,10,Several days
+636,44,3,Always (6+ times),Several days,Several days,Rarely,Often,4,More than half the days,180,Not at all
+637,27,4,Sometimes (2-3 times),Not at all,Several days,Sometimes,Rarely,4,Several days,25,Several days
+638,27,1,Rarely  (0-1 times),More than half the days,Several days,Often,Rarely,3,Several days,60,Several days
+639,24,2,Often  (4-5 times),Not at all,Several days,Rarely,Sometimes,4,More than half the days,120,More than half the days
+640,43,4,Rarely  (0-1 times),Nearly every day,Several days,Rarely,Always,5,Not at all,100,Not at all
+641,43,4,Rarely  (0-1 times),Not at all,More than half the days,Always,Sometimes,,Not at all,50,More than half the days
+642,32,3,Sometimes (2-3 times),Several days,Several days,Often,Often,2,More than half the days,20,More than half the days
+643,50,1,Rarely  (0-1 times),More than half the days,Several days,Rarely,Sometimes,3,Several days,40,Not at all
+644,37,2,Sometimes (2-3 times),Several days,Not at all,Rarely,Sometimes,3,Several days,50,Not at all
+645,32,3,Rarely  (0-1 times),More than half the days,Several days,Rarely,Sometimes,3,Several days,60,
+646,30,4,Often  (4-5 times),Not at all,Several days,Rarely,Rarely,3,Not at all,120,Not at all
+647,47,2,Often  (4-5 times),Not at all,Several days,Rarely,Sometimes,3,Several days,8,Several days
+648,41,5,Always (6+ times),Not at all,Not at all,Rarely,Rarely,3,Several days,180,Not at all
+649,44,5,Often  (4-5 times),Not at all,Not at all,Never,Never,3,Not at all,10,Several days
+650,37,1,Always (6+ times),Several days,Several days,Rarely,Often,4,More than half the days,180,Several days
+651,34,4,Sometimes (2-3 times),Not at all,Several days,Sometimes,Rarely,4,Several days,25,Several days
+652,42,3,Often  (4-5 times),More than half the days,Several days,Often,Rarely,3,Several days,60,Several days
+653,43,3,Often  (4-5 times),Not at all,Several days,Rarely,Sometimes,4,More than half the days,120,Several days
+654,30,2,Sometimes (2-3 times),Nearly every day,Several days,Rarely,Always,5,Not at all,100,More than half the days
+655,50,3,Rarely  (0-1 times),Not at all,Not at all,Never,Often,1,Not at all,2,Not at all
+656,24,3,Rarely  (0-1 times),Several days,Several days,Often,Often,4,Several days,120,Not at all
+657,32,3,Always (6+ times),Several days,Not at all,Never,Rarely,4,Several days,60,Not at all
+658,42,2,Sometimes (2-3 times),Several days,Several days,Sometimes,Rarely,1,Several days,20,Not at all
+659,37,2,Rarely  (0-1 times),Not at all,More than half the days,Rarely,Rarely,3,Several days,90,Several days
+660,31,1,Often  (4-5 times),Several days,Several days,Sometimes,Rarely,3,Several days,10,Several days
+661,46,3,Often  (4-5 times),Several days,Several days,Sometimes,Sometimes,3,Several days,1,Several days
+662,33,3,Often  (4-5 times),Several days,More than half the days,Always,Sometimes,4,Several days,60,Not at all
+663,48,3,Always (6+ times),Several days,More than half the days,Sometimes,Sometimes,3,Several days,120,Not at all
+664,36,5,Always (6+ times),Several days,Several days,Sometimes,Sometimes,2,Several days,120,Several days
+665,40,3,Sometimes (2-3 times),Not at all,Not at all,Rarely,Rarely,2,Several days,120,Not at all
+666,41,4,Always (6+ times),Not at all,Not at all,Rarely,Rarely,1,Not at all,120,Not at all
+667,30,3,Often  (4-5 times),Not at all,Several days,Rarely,Rarely,3,Not at all,120,Not at all
+668,27,4,Sometimes (2-3 times),Not at all,Several days,Rarely,Sometimes,3,Several days,8,Not at all
+669,24,3,Sometimes (2-3 times),Not at all,Not at all,Rarely,Rarely,3,Several days,180,Not at all
+670,24,2,Sometimes (2-3 times),Not at all,Not at all,Never,Never,3,Not at all,10,Not at all
+671,27,3,Sometimes (2-3 times),Several days,Several days,Rarely,Often,4,More than half the days,180,Not at all
+672,36,5,Rarely  (0-1 times),Not at all,Several days,Sometimes,Rarely,4,Several days,25,More than half the days
+673,45,4,Sometimes (2-3 times),More than half the days,Several days,Often,Rarely,3,Several days,60,Several days
+674,48,2,Sometimes (2-3 times),Not at all,Several days,Rarely,Sometimes,4,More than half the days,120,More than half the days
+675,48,2,Sometimes (2-3 times),Nearly every day,Several days,Rarely,Always,5,Not at all,100,More than half the days
+676,36,3,Rarely  (0-1 times),Not at all,More than half the days,Always,Sometimes,,Not at all,50,Nearly every day
+677,30,1,Sometimes (2-3 times),Several days,Several days,Often,Often,2,More than half the days,20,Not at all
+678,41,2,Always (6+ times),More than half the days,Several days,Rarely,Sometimes,3,Several days,40,Not at all
+679,23,2,Sometimes (2-3 times),Several days,Not at all,Rarely,Sometimes,3,Several days,50,Not at all
+680,25,3,Sometimes (2-3 times),More than half the days,Several days,Rarely,Sometimes,3,Several days,60,Several days
+681,35,1,Sometimes (2-3 times),Not at all,Several days,Rarely,Rarely,3,Not at all,120,Several days
+682,24,3,Often  (4-5 times),Not at all,Several days,Rarely,Sometimes,3,Several days,8,Several days
+683,25,3,Sometimes (2-3 times),Not at all,Not at all,Rarely,Rarely,3,Several days,180,Not at all
+684,23,2,Rarely  (0-1 times),Not at all,Not at all,Never,Never,3,Not at all,10,Not at all
+685,26,3,Often  (4-5 times),Several days,Several days,Rarely,Often,4,More than half the days,180,Several days
+686,28,2,Often  (4-5 times),Not at all,Several days,Sometimes,Rarely,4,Several days,25,Not at all
+687,26,3,Sometimes (2-3 times),More than half the days,Several days,Often,Rarely,3,Several days,60,Not at all
+688,44,3,Sometimes (2-3 times),Not at all,Several days,Rarely,Sometimes,4,More than half the days,120,Not at all
+689,22,3,Sometimes (2-3 times),Nearly every day,Several days,Rarely,Always,5,Not at all,100,Not at all
+690,26,3,Sometimes (2-3 times),Not at all,Not at all,Never,Often,1,Not at all,2,Not at all
+691,27,3,Sometimes (2-3 times),Several days,Several days,Often,Often,4,Several days,120,Not at all
+692,25,5,Sometimes (2-3 times),Several days,Not at all,Never,Rarely,4,Several days,60,Not at all
+693,42,4,Sometimes (2-3 times),Several days,Several days,Sometimes,Rarely,1,Several days,20,More than half the days
+694,27,4,Sometimes (2-3 times),Not at all,More than half the days,Rarely,Rarely,3,Several days,90,Several days
+695,45,4,Rarely  (0-1 times),Several days,Several days,Sometimes,Rarely,3,Several days,10,More than half the days
+696,26,2,Rarely  (0-1 times),Several days,Several days,Sometimes,Sometimes,3,Several days,1,More than half the days
+697,38,3,Sometimes (2-3 times),Several days,More than half the days,Always,Sometimes,4,Several days,60,Nearly every day

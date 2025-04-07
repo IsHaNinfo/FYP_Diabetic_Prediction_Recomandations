@@ -1,0 +1,698 @@
+id,Age,Gender,Height,Weight,Waist Circumference,Diet / Food Habits,Type of Diabetes (if known),HowLongDiabetiesHave,Family History,Blood Pressure,Cholesterol / Lipid Levels,Thirst / Hunger,Fatigue,Urination,Vision Changes,Occupation,Living Area
+1,24,Male,167,50,30,2,,,No,No,No,No,No,No,No,Intern,Western
+2,30,Male,164,60,32,1,,,Yes,No,No,No,No,No,No,Undergraduate ,Southern
+3,24,Male,165,55,30,1,,,Yes,No,No,No,No,No,Yes,Student ,Western
+4,28,Female,153,48,28,5,,,No,No,No,No,No,No,No,Undergraduate ,North-Western
+5,24,Female,163,56,31,4,,,No,Yes,No,No,No,No,Yes,None,Central
+6,22,Female,154,46,28,5,,,Yes,No,No,No,No,No,No,Software Quality Assurance Engineer  ,Sabaragamuva
+7,24,Female,160.5,53,28,6,,,Yes,No,No,No,No,No,Yes,Nothing,Sabaragamuva
+8,25,Female,157.48,70,34,2,,,Yes,No,No,No,No,No,Yes,Student,Sabaragamuva
+9,26,Male,160,75,34,5,,,No,No,No,No,Yes,No,No,Student,Southern
+10,23,Female,164,64,28,5,,,No,No,No,Yes,No,No,No,Engineer,Southern
+11,25,Male,175,64,32,1,,,Yes,No,No,No,No,No,No,Software Engineer,Southern
+12,26,Female,159,72,32,4,,,Yes,No,No,No,No,No,No,Software quality assurance engineer,North-Central
+13,24,Female,145.2,47,28,5,,,Yes,No,No,No,No,No,No,Software Engineer,Western
+14,24,Female,173,59,,7,,,Yes,No,No,No,Yes,No,No,SE,Sabaragamuva
+15,24,Female,155,40,,2,,,Yes,No,No,No,No,No,No,Student,Southern
+16,31,Male,161,65,,2,,,No,No,No,No,No,No,No,Student ,Western
+17,26,Female,165,48,,5,,,No,No,No,No,No,No,No,Student,Sabaragamuva
+18,25,Female,163,52,,1,,,No,No,No,No,No,No,No,Student,Western
+19,23,Male,163,64,33,3,,,Yes,No,No,No,No,Yes,No,Student ,Western
+20,28,Male,170,65,32,1,,,No,No,Yes,No,Yes,Yes,Yes,After A/L,Western
+21,25,Female,163,45,27,6,,,Yes,No,No,Yes,Yes,No,No,No,Western
+22,25,Female,150,63,,1,,,No,No,No,No,No,No,No,Programmer ,Southern
+23,25,Male,165,54,30,2,,,No,No,No,No,No,No,No,trainee engineer ,Western
+24,20,Male,165,54,,3,,,No,No,No,No,Yes,No,No,Software Engineer ,Western
+25,24,Female,160,66,32,4,,,Yes,No,No,Yes,No,No,Yes,Software Engineer,Western
+26,20,Female,165,48,29,3,,,Yes,No,No,No,No,No,No,Student,Western
+27,25,Male,165,69,32,2,,,No,No,No,No,No,Yes,Yes,Student ,Sabaragamuva
+28,25,Male,176,59,31,1,,,Yes,No,No,No,No,No,Yes,Undergraduate ,Western
+29,23,Female,154,54,26,8,,,No,No,No,No,No,No,No,Intern,Western
+30,25,Male,180,95,,7,,,Yes,No,No,No,No,No,Yes,Undergraduate ,Central
+31,39,Male,165,67,32,1,,,No,No,Yes,No,No,No,Yes,Software engineer,Western
+32,24,Male,167,57,32,1,,,No,No,No,No,No,No,No,no,North-Western
+33,25,Female,170,60,34,5,,,No,No,No,No,No,No,No,Student,Sabaragamuva
+34,23,Female,150,36,22,8,,,Yes,No,No,Yes,Yes,No,No,Undergraduate,Sabaragamuva
+35,23,Female,150,45,25,7,,,No,No,No,No,Yes,No,No,Business Analyst ,Sabaragamuva
+36,24,Male,175,74,,3,,,No,No,No,No,No,No,No,Student,North-Western
+37,24,Male,175,85,38,7,Type 1,,Yes,Yes,Yes,Yes,Yes,Yes,No,Student ,Western
+38,26,Male,170,55,29,5,,,No,No,No,Yes,Yes,No,Yes,Undergraduate,Southern
+39,24,Male,160,70,34,6,,,Yes,No,No,No,Yes,No,No,Software Engineer ,Western
+40,25,Female,144,42,27,2,,,Yes,No,No,No,Yes,No,Yes,Software Engineer ,Western
+41,25,Female,154,60,,5,,,Yes,No,No,No,No,No,No,Student,Southern
+42,22,Male,167,70,34,3,,,No,No,No,No,No,No,No,No,Southern
+43,21,Male,173,58,67,1,,,Yes,No,No,No,Yes,No,No,Software Engineer,Western
+44,21,Male,165,54,,2,,,Yes,No,No,No,No,No,No,Software Engineer,Western
+45,26,Female,164,55,,2,,,No,No,No,No,No,No,No,Manager ,North-Western
+46,26,Female,157,45,,7,,,Yes,No,No,No,No,No,No,Software Engineer,Western
+47,21,Female,176.7,60,33,1,,,Yes,No,No,No,No,No,Yes,Teacher,North-Central
+48,26,Female,161,58,28,3,,,No,No,No,No,No,No,No,Manager,Southern
+49,25,Male,162,52,29,6,,,No,No,No,No,Yes,No,Yes,Medical student ,Western
+50,27,Male,172,76,34,4,Type 1,,No,No,Yes,Yes,Yes,Yes,No,Mining engineer ,Southern
+51,44,Female,173,88,36,6,Type 2,3 months,Yes,No,Yes,Yes,No,No,No,Associate Software Engineer,Southern
+52,40,Male,176,76,36,5,,,Yes,No,No,No,No,No,No,Software Engineer,Western
+53,41,Male,167,73,34,3,,,No,Yes,No,Yes,No,No,Yes,Driver,North-Western
+54,44,Male,171,119,32,3,Type 2,3 months,Yes,Yes,No,No,No,Yes,Yes,Driver,Western
+55,27,Male,165,53,29,3,,,Yes,No,No,No,No,No,No,Nurse,Sabaragamuva
+56,27,Male,171,64,33,3,,,Yes,No,No,No,No,No,No,Nursing officer ,Sabaragamuva
+57,24,Female,175,56,32,4,Type 2,3 months,No,No,No,No,No,Yes,Yes,Teacher,Sabaragamuva
+58,43,Female,155,97,103,3,,,No,Yes,No,Yes,Yes,Yes,Yes,Nurse,North-Western
+59,43,Male,190,105,83,10,Type 2,1 month,Yes,No,No,Yes,Yes,No,Yes,Driver,Uva
+60,32,Female,158,90,90,1,Type 2,1 year,Yes,Yes,Yes,Yes,Yes,Yes,No,Manager,North-Central
+61,50,Male,170,65,80,2,,,Yes,No,Yes,No,No,No,Yes,Nurse,Northern
+62,37,Male,175,72,34,1,,,No,No,No,No,No,No,No,Accountant,Sabaragamuva
+63,32,Male,187,65,34,8,Type 2,6 months,Yes,No,No,Yes,Yes,Yes,Yes,Farmer,Sabaragamuva
+64,48,Female,168,115,40,4,,,Yes,Yes,No,No,Yes,Yes,No,Driver,Uva
+65,47,Male,155,56,38,5,Type 2,1 year,Yes,Yes,Yes,No,No,No,No,Manager,Eastern
+66,41,Male,167,100,36,5,Type 2,3 months,Yes,Yes,Yes,No,No,No,Yes,Manager,Central
+67,44,Female,181,101,34,3,,,No,No,No,No,No,No,No,SaSamurdhi dewolopment officer ,North-Western
+68,46,Female,172,81,36,6,Type 2,6 months,Yes,Yes,No,Yes,No,Yes,Yes,No,Western
+69,34,Male,188,91,34,6,Type 2,3 months,Yes,No,Yes,Yes,Yes,Yes,Yes,Nursing ,North-Western
+70,42,Female,151,68,34,9,,,No,Yes,Yes,No,Yes,No,No,NURSING OFFICER ,Southern
+71,43,Male,187,102,36,3,Type 2,More than 1 year,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Software Enginner,Eastern
+72,30,Female,184,98,36,4,,,No,Yes,Yes,No,Yes,No,No,Manager,Northern
+73,50,Male,155,65,34,3,,,Yes,No,No,No,No,No,Yes,Teacher,Sabaragamuva
+74,24,Female,165,60,30,2,,,No,No,No,No,No,No,No,Accountant,Sabaragamuva
+75,32,Female,150,46,32,4,,,No,No,No,No,No,No,No,Nurse,Sabaragamuva
+76,42,Female,154,63,,2,,,Yes,No,No,No,Yes,No,No,Nurse,Sabaragamuva
+77,37,Female,173,90,34,9,,,No,No,No,No,No,No,No,Nursing  officer ,Western
+78,31,Female,160,50,36,9,Type 2,3 months,Yes,Yes,No,Yes,Yes,Yes,Yes,Engineer ,Sabaragamuva
+79,46,Male,175,96,36,8,Type 2,6 months,Yes,No,Yes,No,No,Yes,Yes,Nurse,Southern
+80,33,Male,168,90,36,5,Type 2,1 year,Yes,Yes,No,Yes,No,Yes,Yes,Software Engineer,Central
+81,48,Female,180,99,36,8,,,No,No,No,Yes,No,No,No,Student,Sabaragamuva
+82,36,Male,166,58,30,10,Type 2,1 year,No,Yes,No,No,Yes,Yes,No,Student,Western
+83,40,Female,153,65,33,3,,,Yes,No,No,No,No,No,Yes,Software Engineer ,Sabaragamuva
+84,41,Female,172,80,39,5,Type 2,6 months,No,Yes,Yes,No,No,Yes,No,Teacher,Northern
+85,30,Female,159,80,34,6,Type 2,3 months,No,No,No,Yes,No,No,No,Nurse,Western
+86,27,Male,161,48,30,5,,,Yes,Yes,Yes,No,Yes,No,No,Manager,Southern
+87,24,Male,166,63,32,2,,,No,No,No,No,No,No,No,Nurse,Central
+88,24,Male,180,82,34,8,,,Yes,No,No,No,No,No,No,Accountant,North-Western
+89,27,Male,165,65,31,1,,,No,No,No,No,No,No,Yes,Accountant,Sabaragamuva
+90,36,Female,150,53,34,5,,,Yes,No,Yes,Yes,No,Yes,Yes,Enginner,Southern
+91,45,Male,151,90,36,2,Type 2,6 months,Yes,No,Yes,Yes,No,Yes,Yes,Intern,Central
+92,48,Male,157,106,34,6,Type 2,More than 1 year,Yes,No,Yes,Yes,No,Yes,No,HR Executive ,Western
+93,48,Female,160,114,32,9,Type 1,,Yes,Yes,Yes,Yes,No,No,Yes,No ,Central
+94,36,Male,173,70,34,9,,,No,Yes,No,No,Yes,No,No,Student,Sabaragamuva
+95,30,Female,175,90,36,9,Type 2,3 months,No,No,No,Yes,Yes,No,No,Software Engineer,Western
+96,41,Female,185,110,38,6,Type 2,,Yes,No,Yes,No,Yes,Yes,No,Student ,Southern
+97,23,Female,150,45,25,5,,,No,No,No,Yes,Yes,No,No,Software Engineer,Sabaragamuva
+98,25,Female,155,40,,5,,,No,No,No,No,Yes,No,No,Software Engineer,Western
+99,35,Female,163,60,30,2,,,No,No,No,No,No,No,No,Software Engineer,Sabaragamuva
+100,24,Female,150,50,,2,,,Yes,No,No,No,Yes,No,Yes,Student ,Western
+101,25,Male,155,50,29,1,,,No,No,No,No,No,No,No,Student ,Western
+102,23,Male,170,54,,2,,,No,No,No,Yes,Yes,Yes,No,Software Engineer ,Southern
+103,26,Male,170.6,64,32,5,,,Yes,No,No,No,No,No,No,Software Engineer,North-Western
+104,28,Male,157,69,34,6,,,No,Yes,No,No,No,No,Yes,Software Engineer Intern / Undergraduate,Western
+105,26,Male,170,65,32,7,,,Yes,No,No,Yes,Yes,No,Yes,Head of Procurement,Western
+106,24,Male,176,82,,10,,,Yes,No,No,Yes,Yes,No,Yes,Software Engineer ,Western
+107,22,Male,173,50,20,7,,,Yes,No,No,Yes,No,Yes,Yes,Software Engineer,Southern
+108,26,Female,165,45,28,3,,,No,No,No,No,No,No,No,student,North-Western
+109,27,Male,172,83,36,4,,,No,No,No,No,No,No,No,Accountant,Sabaragamuva
+110,25,Male,174,74,34,6,,,Yes,No,No,No,No,No,No,Software Engineer,Central
+111,34,Male,178,58,32,3,,,Yes,No,No,No,No,No,No,QA engineer,Western
+112,27,Male,174,70,,7,,,No,No,Yes,No,No,No,Yes,Teacher,Sabaragamuva
+113,25,Male,180,75,35,6,,,Yes,No,No,No,No,No,No,Teacher,Western
+114,26,Male,167,64,,1,,,Yes,No,No,No,No,No,No,IT specialist,Central
+115,38,Male,179,83,35,6,Type 1,,No,Yes,Yes,Yes,No,No,No,Accountant,Eastern
+116,40,Female,178,79,33,2,,,Yes,No,Yes,Yes,Yes,No,No,SE,Western
+117,36,Female,177,55,32,9,,,Yes,Yes,Yes,No,No,No,Yes,Manager,Central
+118,46,Male,185,91,36,7,Type 1,6 months,No,Yes,Yes,Yes,No,Yes,Yes,SE,Southern
+119,48,Female,176,63,32,4,Type 1,3 months,No,Yes,No,Yes,No,No,No,Software Engineer,Uva
+120,49,Female,186,58,30,8,,1 month,Yes,Yes,Yes,Yes,No,Yes,Yes,Tech Lead,North-Western
+121,38,Female,175,56,35,5,Type 2,6 months,Yes,Yes,Yes,No,Yes,No,Yes,Farmer,Eastern
+122,42,Female,168,69,35,3,,,Yes,Yes,No,No,No,Yes,Yes,Accountant,Southern
+123,36,Female,186,54,56,7,Type 1,1 month,No,Yes,Yes,No,Yes,No,Yes,Driver,Central
+124,36,Male,157,75,38,5,,,Yes,Yes,No,No,Yes,No,Yes,Teacher,Western
+125,27,Male,183,75,34,6,,,Yes,No,No,No,No,No,No,Manager,Western
+126,30,Male,158,60,,2,,,No,No,Yes,No,No,No,No,Engineer,Western
+127,37,Male,153,74,34,5,Type 2,6 months,Yes,No,No,No,Yes,Yes,No,Teacher,Sabaragamuva
+128,49,Female,172,114,36,1,Type 2,3 months,Yes,Yes,Yes,Yes,No,No,No,Nurse,Southern
+129,41,Male,177,103,36,5,Type 2,6 months,Yes,No,No,No,No,Yes,Yes,Software Engineer,Central
+130,37,Male,161,86,36,8,Type 2,3 months,Yes,No,No,No,No,No,No,Senior Software Engineer ,North-Central
+131,45,Female,188,55,32,8,,,No,No,Yes,Yes,No,No,Yes,Farmer,Central
+132,47,Female,188,55,32,6,Type 2,1 month,No,No,No,No,Yes,No,No,Farmer,Uva
+133,37,Male,151,85,34,9,Type 2,3 months,Yes,No,Yes,Yes,No,No,Yes,Software Engineer,Southern
+134,48,Male,154,60,34,4,,,No,No,No,No,No,Yes,No,House wife,Southern
+135,27,Male,180,76,34,5,,,No,No,No,No,No,No,No,Teacher,Western
+136,27,Male,175,65,,2,,,No,No,No,No,No,No,No,Farmer,Eastern
+137,48,Male,182.5,101,38,2,Type 2,More than 1 year,Yes,No,No,Yes,Yes,No,No,Enginner,Western
+138,33,Female,154,76,34,7,,,No,Yes,Yes,Yes,No,No,No,Farmer,Southern
+139,30,Male,171,82,36,2,,,Yes,No,Yes,No,No,No,No,Software Engineer Intern,Western
+140,35,Female,155,85,36,7,Type 2,6 months,No,Yes,Yes,Yes,No,No,Yes,Manager,Western
+141,34,Female,181,76,37,5,Type 2,1 month,No,Yes,Yes,No,Yes,Yes,Yes,Accountant,Southern
+142,30,Male,177,90,34,7,,,Yes,No,Yes,No,No,Yes,No,Teacher,Eastern
+143,41,Male,175,110,38,7,Type 2,6 months,Yes,No,No,Yes,No,No,No,96,Western
+144,33,Male,188,105,35,2,Type 2,3 months,Yes,No,Yes,No,Yes,Yes,No,Farmer,Uva
+145,25,Male,160,79,34,8,,,No,No,No,No,No,Yes,Yes,Undergraduate ,Western
+146,42,Male,175,87,35,5,Type 2,6 months,No,No,Yes,No,No,No,No,Student ,Eastern
+147,40,Male,166,103,38,6,Type 2,6 months,Yes,No,No,Yes,Yes,No,Yes,Accountant,Western
+148,43,Female,175,97,38,4,Type 2,1 year,No,Yes,Yes,Yes,Yes,Yes,No,Engineer,North-Western
+149,45,Male,189,88,36,5,Type 2,1 month,No,Yes,Yes,No,No,Yes,Yes,Civil Enginner,Central
+150,39,Female,169,88,35,4,,,No,No,Yes,Yes,Yes,Yes,No,Undergraduate ,Southern
+151,22,Male,160,54,24,3,,,No,No,No,No,Yes,Yes,No,Intern Telecommunication Enginner,North-Western
+152,22,Male,175,85,38,6,,,No,No,No,No,No,No,No,Software Enginner,Western
+153,40,Male,153,113,34,4,Type 2,3 months,No,No,Yes,Yes,No,Yes,No,Nurse,Sabaragamuva
+154,32,Male,176,110,35,4,Type 1,3 months,No,No,Yes,No,Yes,No,Yes,Teacher,North-Central
+155,31,Female,164,80,34,2,,,No,No,No,No,Yes,Yes,No,Nurse,Western
+156,25,Female,175,45,30,6,,,Yes,No,No,No,No,No,Yes,Software engineer ,Sabaragamuva
+157,24,Female,159,42,27,3,,,No,No,No,No,No,No,No,Student ,Sabaragamuva
+158,32,Male,165,107,34,3,,,No,Yes,Yes,No,Yes,No,No,IT Support executive ,Western
+159,36,Male,180,62,35,3,Type 2,6 months,No,Yes,Yes,No,Yes,Yes,No,Accountant,Sabaragamuva
+160,34,Female,170,58,36,10,Type 2,3 months,No,Yes,No,Yes,No,Yes,Yes,Nurse,Western
+161,25,Female,152,46,28,2,,,No,No,No,No,No,No,No,Manager,Sabaragamuva
+162,27,Male,177,70,35,7,,,No,No,No,Yes,Yes,No,No,Farmer,Western
+163,25,Female,153,65,31,3,,,Yes,No,No,Yes,Yes,No,Yes,House wife,Sabaragamuva
+164,24,Female,172,75,32,7,,,Yes,No,No,No,Yes,No,No,Teacher,Western
+165,33,Female,181,80,33,3,,,Yes,No,No,No,No,No,No,Accountant,Western
+166,48,Female,173,114,36,3,Type 2,More than 1 year,Yes,Yes,Yes,No,Yes,Yes,Yes,Tech Lead,Western
+167,41,Male,161,73,36,5,Type 2,3 months,No,Yes,Yes,Yes,No,Yes,Yes,Farmer,Southern
+168,46,Male,167,78,34,5,Type 2,6 months,Yes,No,No,Yes,Yes,No,Yes,Sales man,Southern
+169,46,Female,155,87,37,3,Type 2,3 months,No,Yes,No,No,No,Yes,No,Software Enginner,Southern
+170,28,Female,155,77,32,6,,,No,No,No,Yes,No,Yes,No,Software Engineer,North-Western
+171,44,Male,190,75,34,7,Type 2,3 months,No,Yes,No,Yes,No,No,No,Mechanical engineer,Sabaragamuva
+172,33,Male,173,109,35,7,Type 2,3 months,Yes,Yes,No,No,No,Yes,Yes,Teacher,North-Western
+173,49,Male,173,112,36,5,Type 2,6 months,No,Yes,No,Yes,Yes,Yes,No,Principle,Southern
+174,38,Male,160,83,,4,Type 2,6 months,Yes,No,No,No,Yes,No,Yes,Accountant,Central
+175,47,Male,161,90,,5,Type 1,,No,Yes,Yes,Yes,No,Yes,No,clerk,Western
+176,29,Female,151,60,33,4,,,Yes,No,Yes,No,Yes,No,No,software enginner,Sabaragamuva
+177,41,Male,170,80,35,8,Type 2,1 month,No,Yes,No,Yes,No,No,Yes,Enginner,Southern
+178,44,Male,154,117,33,2,Type 2,1 month,No,No,Yes,No,Yes,No,No,Civil engineer,Northern
+179,40,Male,189,101,35,2,Type 2,3 months,No,Yes,Yes,No,No,No,Yes,Software enginner,Central
+180,39,Female,190,88,33,5,,,No,Yes,Yes,Yes,Yes,No,Yes,Student,Western
+181,41,Male,187,70,32,5,Type 2,1 month,Yes,Yes,No,Yes,Yes,Yes,No,Mechanic,Southern
+182,28,Male,160,94,34,8,Type 2,3 months,No,Yes,No,Yes,Yes,Yes,Yes,Studying ,Sabaragamuva
+183,50,Male,163,97,35,10,Type 2,6 months,Yes,No,Yes,No,Yes,Yes,Yes,student,North-Western
+184,47,Female,171,75,35,9,Type 2,1 month,Yes,Yes,No,No,No,Yes,Yes,Student ,Southern
+185,25,Male,161.544,62,20,7,,,No,No,No,No,No,No,No,Farmer,Western
+186,25,Male,165,59,,1,,,Yes,No,No,No,No,No,Yes,Nurse,Western
+187,40,Male,160,71,32,3,,,Yes,Yes,Yes,No,Yes,No,No,Nurse,Uva
+188,25,Male,168,53,30,2,,,No,No,No,No,No,No,Yes,Bank Accountant,Southern
+189,23,Male,160,45,32,8,,,No,No,No,Yes,Yes,Yes,No,House wife,Central
+190,24,Male,170,57,30,1,,,Yes,No,No,No,No,No,Yes,Sales man,Southern
+191,40,Male,166.5,71,33,3,Type 2,1 month,Yes,Yes,Yes,Yes,Yes,No,No,QA Enginner,Central
+192,39,Female,174,82,34,9,,,No,Yes,Yes,Yes,Yes,No,Yes,Tech lead,Southern
+193,49,Male,165,118,34,5,Type 2,1 year,Yes,Yes,No,Yes,Yes,Yes,No,House wife,Eastern
+194,26,Male,167,63,30,5,,,Yes,Yes,No,Yes,Yes,No,No,University student,Southern
+195,34,Female,170,82,34,9,,,No,Yes,No,No,No,No,Yes,Student ,Uva
+196,30,Female,188,77,31,9,,,No,No,Yes,No,No,No,Yes,Bank accountant,Western
+197,34,Female,169,61,33,9,Type 2,1 month,No,No,No,Yes,Yes,Yes,No,Driver,Western
+198,46,Male,160,82,34,4,Type 2,3 months,Yes,Yes,No,Yes,Yes,No,Yes,undergraduate,Southern
+199,32,Female,175,78,34,4,,,Yes,Yes,No,Yes,Yes,No,No,Cleaner,Sabaragamuva
+200,24,Male,174,68,35,4,,,Yes,No,No,No,No,No,No,Buisnes man,Western
+201,26,Male,165,70,34,5,,,No,No,No,Yes,Yes,No,No,Police officer,Southern
+202,32,Female,175,70,35,7,,,Yes,No,Yes,Yes,No,No,No,Software Engineer,Central
+203,35,Male,170,88,34,4,,,Yes,Yes,Yes,Yes,Yes,No,Yes,House wife,Southern
+204,25,Male,168,56,30,2,,,No,No,No,No,No,No,No,IT special ,Southern
+205,30,Female,165,70,32,7,,,No,Yes,No,Yes,Yes,No,No,Farmer,Western
+206,45,Male,165,105,,8,,,No,Yes,Yes,Yes,No,Yes,Yes,teacher,North-Western
+207,46,Female,172,95,34,2,Type 2,3 months,Yes,Yes,No,Yes,No,No,No,Farmer,Central
+208,40,Male,179,84,33,8,,,No,Yes,No,Yes,No,No,No,House wife,Western
+209,41,Female,164,73,34,9,,,No,Yes,Yes,No,Yes,Yes,Yes,Manager ,Southern
+210,38,Female,168,73,108,4,,,Yes,No,Yes,Yes,Yes,Yes,Yes,Driver,Sabaragamuva
+211,49,Male,185,107,73,8,Type 2,1 month,No,Yes,No,No,No,No,No,Sales Officer,North-Western
+212,44,Male,153,65,100,5,,,No,Yes,Yes,No,Yes,No,Yes,Teacher,Sabaragamuva
+213,30,Male,166,83,,2,,,Yes,No,No,No,No,No,No,Accountant,Sabaragamuva
+214,38,Female,167,67,34,3,,,No,Yes,No,No,No,No,No,software engineer ,Central
+215,37,Female,187,90,36,5,Type 1,6 months,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Student,Sabaragamuva
+216,42,Male,173,86,33,4,,,No,Yes,No,No,Yes,No,No,Student ,Southern
+217,34,Male,175,85,32,6,,,No,No,No,No,No,Yes,No,House wife,Southern
+218,47,Female,169,81,33,6,Type 2,3 months,Yes,No,No,No,No,Yes,Yes,House wife,Northern
+219,47,Male,172,83,35,7,Type 2,3 months,Yes,Yes,No,No,Yes,No,Yes,Employee,Western
+220,24,Female,174,65,,4,,,No,No,No,No,No,No,No,Garment Employee,Sabaragamuva
+221,25,Male,185,66,32,5,,,No,No,No,No,No,No,No,Teacher,Southern
+222,24,Female,172,50,27,4,,,No,No,No,No,No,No,No,Teacher,North-Central
+223,44,Female,172,119,35,6,Type 2,6 months,No,Yes,Yes,Yes,Yes,Yes,Yes,Manager,Western
+224,49,Female,177,109,33,8,Type 2,3 months,No,No,No,Yes,Yes,No,No,Employee,Eastern
+225,34,Male,171,77,32,6,,,No,Yes,Yes,No,Yes,Yes,No,Garment employee,Western
+226,38,Male,189,108,34,4,,,No,Yes,Yes,Yes,No,Yes,No,Teacher,Southern
+227,42,Female,167,89,35,7,,,No,Yes,Yes,No,Yes,No,No,Software Engineer,Sabaragamuva
+228,36,Female,175,65,32,10,,,Yes,No,No,Yes,No,Yes,Yes,Farmer,Northern
+229,37,Female,179,90,33,4,,,No,No,Yes,Yes,Yes,No,No,Employee,Western
+230,30,Male,166,95,34,7,,,Yes,Yes,No,No,Yes,Yes,Yes,Garment Employee,Northern
+231,30,Male,173,96,34,7,,,Yes,Yes,No,No,Yes,Yes,Yes,Teacher,Western
+232,44,Male,174,80,35,5,Type 2,3 months,No,Yes,Yes,No,Yes,No,Yes,Driver,Northern
+233,35,Female,165,63,34,4,,,Yes,Yes,No,No,No,Yes,No,Senior Software Engineer,Western
+234,48,Female,179,81,36,1,Type 2,6 months,Yes,Yes,Yes,Yes,No,No,No,house wife,North-Western
+235,48,Male,165,78,37,5,Type 1,,No,Yes,Yes,Yes,No,No,Yes,Nurse,Western
+236,27,Female,168,89,32,2,,,No,No,Yes,Yes,No,No,Yes,Teacher,Western
+237,49,Male,175,103,36,4,Type 2,More than 1 year,No,No,Yes,No,No,No,Yes,Bank Manager,Eastern
+238,48,Female,170,85,36,8,Type 2,3 months,Yes,Yes,Yes,Yes,No,Yes,Yes,Student,Sabaragamuva
+239,38,Male,186,82,35,6,,,No,Yes,No,Yes,No,No,No,Clerk,Southern
+240,31,Female,163,65,34,9,Type 2,More than 1 year,No,Yes,Yes,Yes,No,Yes,Yes,Student,Western
+241,32,Female,168,86,33,2,,,Yes,No,Yes,Yes,Yes,No,No,Driver,Southern
+242,47,Female,183,87,36,6,Type 1,,No,No,No,Yes,Yes,No,Yes,Teacher,Northern
+243,33,Male,175,105,35,6,,,No,Yes,Yes,Yes,No,Yes,No,Software Engineer,Southern
+244,25,Male,165,55,30,1,,,Yes,No,No,No,No,No,Yes,engineer,Western
+245,28,Female,170,72,33,2,,,No,Yes,Yes,No,No,No,No,Employee,Western
+246,22,Male,181,72,32,3,,,No,Yes,Yes,No,No,No,No,House wife,Sabaragamuva
+247,26,Male,181,64,33,3,,,No,Yes,Yes,Yes,Yes,Yes,Yes,Software Engineer,Uva
+248,40,Male,178,76,34,1,,,Yes,No,No,No,No,No,No,Driver,Southern
+249,35,Male,173,73,34,4,,,No,No,No,Yes,No,Yes,Yes,Student,Western
+250,29,Female,167,58,30,5,Type 2,,No,Yes,Yes,Yes,Yes,No,No,Teacher,Southern
+251,43,Male,172,97,36,4,Type 2,3 months,No,No,No,No,Yes,No,No,Farmer,Sabaragamuva
+252,34,Female,168,69,33,4,,,Yes,No,No,Yes,Yes,No,Yes,Nurse,North-Central
+253,45,Female,166,87,34,6,Type 2,1 month,Yes,No,Yes,Yes,No,No,No,Housewife,Sabaragamuva
+254,49,Male,173,92,35,5,Type 2,3 months,No,No,No,No,Yes,Yes,No,House wife,Central
+255,21,Female,163,76,33,6,,,No,Yes,Yes,No,Yes,Yes,Yes,Garment Employee,Western
+256,29,Female,163,71,34,1,,,Yes,Yes,No,No,No,No,No,House wife,Northern
+257,45,Male,183,95,33,5,,,No,Yes,No,Yes,Yes,Yes,Yes,Nurse,Northern
+258,32,Male,173,79,34,3,,,No,No,No,Yes,No,No,No,Farmer,Eastern
+259,39,Female,164,88,34,4,,,Yes,No,No,No,No,No,Yes,Barber,Southern
+260,36,Female,163,77,35,3,,,Yes,No,Yes,No,Yes,No,No,Employee,Eastern
+261,33,Male,172,89,35,2,,,No,No,No,No,No,Yes,Yes,Nurse,Western
+262,40,Female,166,89,35,3,Type 2,1 month,Yes,Yes,No,Yes,Yes,Yes,Yes,House wife,Southern
+263,49,Male,185,75,37,5,Type 2,1 year,Yes,No,Yes,Yes,No,No,Yes,Nurse,Uva
+264,34,Male,175,105,30,3,,,No,Yes,No,No,No,Yes,Yes,Tech lead,Southern
+265,37,Male,176,73,33,3,,,No,No,No,Yes,No,No,Yes,Software engineer,Western
+266,40,Male,172,94,33,5,,,No,Yes,No,No,Yes,Yes,No,Tech lead,Western
+267,31,Female,162,65,34,5,,,Yes,Yes,No,No,Yes,Yes,No,Teacher,Western
+268,27,Female,169,68,33,2,,,Yes,Yes,No,No,No,No,Yes,Garment Employee,Uva
+269,37,Female,169,71,33,3,,,Yes,No,Yes,Yes,No,Yes,No,Nurse,Central
+270,32,Male,172,79,34,2,,,No,Yes,No,No,No,Yes,Yes,Student,Southern
+271,34,Male,168,62,34,3,,,Yes,No,No,No,Yes,No,Yes,Student,Western
+272,30,Female,160,63,33,2,,,No,Yes,Yes,No,No,Yes,No,House wife,Eastern
+273,26,Male,175,102,35,4,,,No,No,No,Yes,No,Yes,Yes,Farmer,Western
+274,37,Male,178,69,33,4,,,No,Yes,No,Yes,Yes,No,No,Driver,Western
+275,36,Female,165,71,34,4,,,No,No,Yes,Yes,Yes,No,Yes,House wife,Uva
+276,24,Male,181,70,35,3,,,No,Yes,Yes,Yes,No,No,Yes,Nurse,Eastern
+277,20,Female,164,59,32,4,,,No,No,No,Yes,No,Yes,No,Software Engineer,Western
+278,35,Female,165,74,35,5,,,No,No,Yes,No,Yes,Yes,Yes,Student,Western
+279,49,Male,167,91,36,5,Type 2,6 months,Yes,No,Yes,Yes,No,Yes,No,Tech lead,Sabaragamuva
+280,45,Male,180,72,33,6,,,Yes,Yes,Yes,No,Yes,No,Yes,House Wife,Western
+281,41,Female,161,76,35,5,,,Yes,Yes,No,Yes,No,Yes,Yes,Student,Central
+282,36,Female,171,76,34,4,,,Yes,Yes,No,Yes,No,Yes,Yes,Goverment Employee,Central
+283,48,Female,167,79,34,3,Type 2,3 months,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Accountant,Western
+284,25,Female,165,89,,4,Type 2,,Yes,No,No,No,Yes,Yes,Yes,Teacher,Western
+285,31,Male,182,95,32,5,,,Yes,No,No,No,No,No,Yes,Nurse,Western
+286,44,Female,169,88,35,5,Type 2,3 months,No,Yes,No,No,No,Yes,No,Nurse,Central
+287,23,Male,160,73,30,5,,,No,Yes,No,Yes,No,No,Yes,Teacher,Southern
+288,30,Female,168,66,33,2,,,No,Yes,No,Yes,No,Yes,Yes,Bank Manager,Northern
+289,36,Female,168,66,34,6,,,Yes,No,No,No,Yes,Yes,Yes,Student,Uva
+290,43,Female,166,80,34,5,Type 2,3 months,Yes,No,Yes,No,Yes,No,Yes,Clerk,Sabaragamuva
+291,28,Female,167,73,33,5,,,Yes,Yes,Yes,Yes,Yes,No,No,Student,Northern
+292,32,Female,168,76,34,4,,,No,Yes,No,No,Yes,No,No,Driver,Central
+293,47,Female,183,88,36,6,Type 1,,No,No,No,Yes,Yes,No,Yes,Teacher,Northern
+294,33,Male,175,107,37,6,,,No,Yes,Yes,Yes,No,Yes,No,Software Engineer,Southern
+295,25,Male,169.5,55,30,1,,,Yes,No,No,No,No,No,Yes,engineer,Western
+296,28,Female,170,72,33,2,,,No,Yes,Yes,No,No,No,No,Employee,Western
+297,22,Male,171,82,32,3,,,No,Yes,Yes,No,No,No,No,House wife,Sabaragamuva
+298,26,Male,181,74,33,3,,,No,Yes,Yes,Yes,Yes,Yes,Yes,Software Engineer,Uva
+299,40,Male,178,76,34,1,,,Yes,No,No,No,No,No,No,Driver,Southern
+300,35,Male,173,79,34,4,,,No,No,No,Yes,No,Yes,Yes,Student,Western
+301,29,Female,167,78,30,5,Type 2,,No,Yes,Yes,Yes,Yes,No,No,Teacher,Southern
+302,43,Male,172,87,36,4,Type 2,3 months,No,No,No,No,Yes,No,No,Farmer,Sabaragamuva
+303,34,Female,168,65,33,4,,,Yes,No,No,Yes,Yes,No,Yes,Nurse,North-Central
+304,45,Female,166,77,34,6,Type 2,1 month,Yes,No,Yes,Yes,No,No,No,Housewife,Sabaragamuva
+305,49,Male,173,92,35,5,Type 2,3 months,No,No,No,No,Yes,Yes,No,House wife,Central
+306,21,Female,163,66,33,6,,,No,Yes,Yes,No,Yes,Yes,Yes,Garment Employee,Western
+307,29,Female,163,71,34,1,,,Yes,Yes,No,No,No,No,No,House wife,Northern
+308,45,Male,183,98,33,5,,,No,Yes,No,Yes,Yes,Yes,Yes,Nurse,Northern
+309,32,Male,173,89,34,3,,,No,No,No,Yes,No,No,No,Farmer,Eastern
+310,39,Female,164,78,34,4,,,Yes,No,No,No,No,No,Yes,Barber,Southern
+311,36,Female,163,87,35,3,,,Yes,No,Yes,No,Yes,No,No,Employee,Eastern
+312,33,Male,172,89,35,2,,,No,No,No,No,No,Yes,Yes,Nurse,Western
+313,40,Female,166,79,35,3,Type 2,1 month,Yes,Yes,No,Yes,Yes,Yes,Yes,House wife,Southern
+314,49,Male,185,95,37,5,Type 2,1 year,Yes,No,Yes,Yes,No,No,Yes,Nurse,Uva
+315,34,Male,175,98,35,3,,,No,Yes,No,No,No,Yes,Yes,Tech lead,Southern
+316,37,Male,176,83,34,3,,,No,No,No,Yes,No,No,Yes,Software engineer,Western
+317,40,Male,172,96,33,5,,,No,Yes,No,No,Yes,Yes,No,Tech lead,Western
+318,31,Female,162,67,34,5,,,Yes,Yes,No,No,Yes,Yes,No,Teacher,Western
+319,27,Female,169,68,33,2,,,Yes,Yes,No,No,No,No,Yes,Garment Employee,Uva
+320,37,Female,169,71,33,3,,,Yes,No,Yes,Yes,No,Yes,No,Nurse,Central
+321,32,Male,172,79,34,2,,,No,Yes,No,No,No,Yes,Yes,House wife,Southern
+322,34,Male,168,62,34,3,,,Yes,No,No,No,Yes,No,Yes,Student,Western
+323,30,Female,160,93,33,2,,,No,Yes,Yes,No,No,Yes,No,Student,Eastern
+324,26,Male,175,62,35,4,,,No,No,No,Yes,No,Yes,Yes,Farmer,Western
+325,37,Male,178,69,33,4,,,No,Yes,No,Yes,Yes,No,No,Driver,Western
+326,36,Female,165,71,34,4,,,No,No,Yes,Yes,Yes,No,Yes,House wife,Uva
+327,35,Female,165,74,35,5,,,No,No,Yes,No,Yes,Yes,Yes,Nurse,Western
+328,24,Male,181,70,35,3,,,No,Yes,Yes,Yes,No,No,Yes,Software Engineer,Eastern
+329,20,Female,164,59,32,4,,,No,No,No,Yes,No,Yes,No,Student,Western
+330,49,Male,167,91,36,5,Type 2,6 months,Yes,No,Yes,Yes,No,Yes,No,Tech lead,Sabaragamuva
+331,45,Male,180,72,33,6,,,Yes,Yes,Yes,No,Yes,No,Yes,House Wife,Western
+332,41,Female,161,73,35,5,,,Yes,Yes,No,Yes,No,Yes,Yes,Student,Central
+333,36,Female,171,79,34,4,,,Yes,Yes,No,Yes,No,Yes,Yes,Goverment Employee,Central
+334,48,Female,167,79,34,3,Type 2,3 months,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Accountant,Western
+335,25,Female,165,89,36,4,Type 2,,Yes,No,No,No,Yes,Yes,Yes,Teacher,Western
+336,31,Male,182,95,32,5,,,Yes,No,No,No,No,No,Yes,Nurse,Western
+337,44,Female,169,88,35,5,Type 2,3 months,No,Yes,No,No,No,Yes,No,Nurse,Central
+338,23,Male,160,73,30,5,,,No,Yes,No,Yes,No,No,Yes,Enginner,Southern
+339,30,Female,168,76,33,2,,,No,Yes,No,Yes,No,Yes,Yes,Farmer,Northern
+340,36,Female,168,68,34,6,,,Yes,No,No,No,Yes,Yes,Yes,Software Engineer Intern,Uva
+341,43,Female,166,82,34,5,Type 2,6 months,Yes,No,Yes,No,Yes,No,Yes,Manager,Sabaragamuva
+342,28,Female,167,74,33,5,,,Yes,Yes,Yes,Yes,Yes,No,No,Accountant,Northern
+343,32,Female,168,76,34,4,,,No,Yes,No,No,Yes,No,No,Teacher,Central
+344,41,Male,174,107,38,7,Type 2,3 months,Yes,No,No,Yes,No,No,No,96,Western
+345,33,Male,188,97,35,2,Type 2,3 months,Yes,No,Yes,No,Yes,Yes,No,Farmer,Uva
+346,25,Male,160,89,34,8,,,No,No,No,No,No,Yes,Yes,Undergraduate ,Western
+347,42,Male,185,97,35,5,Type 2,6 months,No,No,Yes,No,No,No,No,Student ,Eastern
+348,40,Male,176,104,38,6,Type 2,3 months,Yes,No,No,Yes,Yes,No,Yes,Accountant,Western
+349,43,Female,175,98,38,4,Type 2,1 year,No,Yes,Yes,Yes,Yes,Yes,No,Student ,North-Western
+350,45,Male,180,88,36,5,Type 2,1 month,No,Yes,Yes,No,No,Yes,Yes,Student,Central
+351,39,Female,169,78,35,4,,,No,No,Yes,Yes,Yes,Yes,No,Student,Southern
+352,22,Male,170,98,24,3,,,No,No,No,No,Yes,Yes,No,Student ,North-Western
+353,22,Male,165,58,38,6,,,No,No,No,No,No,No,No,After A/L,Western
+354,40,Male,153,98,34,4,Type 2,6 months,No,No,Yes,Yes,No,Yes,No,No,Sabaragamuva
+355,25,Female,150,63,32,1,,,No,No,No,No,No,No,No,Programmer ,Southern
+356,25,Male,165,54,30,2,,,No,No,No,No,No,No,No,trainee engineer ,Western
+357,20,Male,165,56,31,3,,,No,No,No,No,Yes,No,No,Software Engineer ,Western
+358,24,Female,160,66,32,4,,,Yes,No,No,Yes,No,No,Yes,Software Engineer,Western
+359,20,Female,165,48,29,3,,,Yes,No,No,No,No,No,No,Student,Western
+360,25,Male,165,69,32,2,,,No,No,No,No,No,Yes,Yes,Tech Lead,Sabaragamuva
+361,25,Male,176,59,31,1,,,Yes,No,No,No,No,No,Yes,Farmer,Western
+362,23,Female,154,34,26,8,,,No,No,No,No,No,No,No,Sales man,Western
+363,25,Male,180,95,35,7,,,Yes,No,No,No,No,No,Yes,Software Enginner,Central
+364,39,Male,165,87,34,1,,,No,No,Yes,No,No,No,Yes,Software Engineer,Western
+365,24,Male,167,57,32,1,,,No,No,No,No,No,No,No,Mechanical engineer,North-Western
+366,33,Male,173,89,35,7,Type 2,3 months,Yes,Yes,No,No,No,Yes,Yes,Teacher,North-Western
+367,49,Male,173,82,36,5,Type 2,6 months,No,Yes,No,Yes,Yes,Yes,No,Principle,Southern
+368,41,Male,160,93,35,4,Type 2,6 months,Yes,No,No,No,Yes,No,Yes,Accountant,Central
+369,47,Male,161,92,34,5,Type 1,,No,Yes,Yes,Yes,No,Yes,No,clerk,Western
+370,29,Female,151,61,33,4,,,Yes,No,Yes,No,Yes,No,No,software enginner,Sabaragamuva
+371,41,Male,170,90,35,8,Type 2,1 month,No,Yes,No,Yes,No,No,Yes,Enginner,Southern
+372,44,Male,154,98,33,2,Type 2,1 month,No,No,Yes,No,Yes,No,No,Civil engineer,Northern
+373,40,Male,189,91,35,2,Type 2,3 months,No,Yes,Yes,No,No,No,Yes,Student,Central
+374,39,Female,190,88,33,5,,,No,Yes,Yes,Yes,Yes,No,Yes,Student ,Western
+375,41,Male,187,73,32,5,Type 2,1 month,Yes,Yes,No,Yes,Yes,Yes,No,After A/L,Southern
+376,28,Male,160,94,34,8,Type 2,3 months,No,Yes,No,Yes,Yes,Yes,Yes,No,Sabaragamuva
+377,50,Male,163,97,35,10,Type 2,6 months,Yes,No,Yes,No,Yes,Yes,Yes,Programmer ,North-Western
+378,47,Female,171,85,35,9,Type 2,1 month,Yes,Yes,No,No,No,Yes,Yes,trainee engineer ,Southern
+379,20,Male,165,66,33,3,,,No,No,No,No,Yes,No,No,Software Engineer ,Western
+380,24,Female,160,67,32,4,,,Yes,No,No,Yes,No,No,Yes,Software Engineer,Western
+381,20,Female,165,49,29,3,,,Yes,No,No,No,No,No,No,Student,Western
+382,25,Male,165,71,32,2,,,No,No,No,No,No,Yes,Yes,Tech Lead,Sabaragamuva
+383,25,Male,176,69,32,1,,,Yes,No,No,No,No,No,Yes,Farmer,Western
+384,23,Female,154,54,26,8,,,No,No,No,No,No,No,No,House wife,Western
+385,45,Male,180,95,35,7,,,Yes,No,No,No,No,No,Yes,Nurse,Central
+386,39,Male,165,87,34,1,,,No,No,Yes,No,No,No,Yes,Farmer,Western
+387,24,Male,167,58,32,1,,,No,No,No,No,No,No,No,Barber,North-Western
+388,33,Male,173,77,35,7,Type 2,3 months,Yes,Yes,No,No,No,Yes,Yes,Employee,North-Western
+389,49,Male,173,88,36,5,Type 2,6 months,No,Yes,No,Yes,Yes,Yes,No,Nurse,Southern
+390,40,Female,166,89,35,3,Type 2,1 month,Yes,Yes,No,Yes,Yes,Yes,Yes,House wife,Southern
+391,49,Male,185,75,37,5,Type 2,1 year,Yes,No,Yes,Yes,No,No,Yes,Nurse,Uva
+392,34,Male,175,105,30,3,,,No,Yes,No,No,No,Yes,Yes,Tech lead,Southern
+393,37,Male,176,73,33,3,,,No,No,No,Yes,No,No,Yes,Software engineer,Western
+394,40,Male,172,94,33,5,,,No,Yes,No,No,Yes,Yes,No,Tech lead,Western
+395,31,Female,162,65,34,5,,,Yes,Yes,No,No,Yes,Yes,No,Teacher,Western
+396,27,Female,169,68,33,2,,,Yes,Yes,No,No,No,No,Yes,Garment Employee,Uva
+397,39,Female,169,71,33,3,,,Yes,No,Yes,Yes,No,Yes,No,Nurse,Central
+398,42,Male,172,79,34,2,,,No,Yes,No,No,No,Yes,Yes,Student,Southern
+399,44,Male,168,82,34,3,,,Yes,No,No,No,Yes,No,Yes,Student,Western
+400,40,Female,160,83,33,2,,,No,Yes,Yes,No,No,Yes,No,House wife,Eastern
+401,27,Male,175,82,35,4,,,No,No,No,Yes,No,Yes,Yes,Farmer,Western
+402,35,Male,178,69,33,4,,,No,Yes,No,Yes,Yes,No,No,Driver,Western
+403,36,Female,165,71,34,4,,,No,No,Yes,Yes,Yes,No,Yes,House wife,Uva
+404,34,Male,181,70,35,3,Type 2,1 year,No,Yes,Yes,Yes,No,No,Yes,Nurse,Eastern
+405,20,Female,164,59,32,4,,,No,No,No,Yes,No,Yes,No,Tech Lead,Western
+406,39,Female,165,74,35,5,Type 2,1 year,No,No,Yes,No,Yes,Yes,Yes,Farmer,Western
+407,49,Male,167,91,36,5,Type 2,6 months,Yes,No,Yes,Yes,No,Yes,No,Sales man,Sabaragamuva
+408,45,Male,180,72,33,6,Type 2,1 year,Yes,Yes,Yes,No,Yes,No,Yes,Software Enginner,Western
+409,41,Female,161,96,35,5,,,Yes,Yes,No,Yes,No,Yes,Yes,Software Engineer,Central
+410,45,Female,171,98,34,4,,,Yes,Yes,No,Yes,No,Yes,Yes,Mechanical engineer,Central
+411,33,Male,173,89,35,7,Type 2,3 months,Yes,Yes,No,No,No,Yes,Yes,Teacher,North-Western
+412,49,Male,173,82,36,5,Type 2,6 months,No,Yes,No,Yes,Yes,Yes,No,Principle,Southern
+413,38,Male,160,93,35,4,Type 2,6 months,Yes,No,No,No,Yes,No,Yes,Accountant,Central
+414,47,Male,161,92,34,5,Type 1,,No,Yes,Yes,Yes,No,Yes,No,clerk,Western
+415,29,Female,151,61,33,4,,,Yes,No,Yes,No,Yes,No,No,software enginner,Sabaragamuva
+416,41,Male,170,90,35,8,Type 2,1 month,No,Yes,No,Yes,No,No,Yes,Enginner,Southern
+417,44,Male,154,98,33,2,Type 2,1 month,No,No,Yes,No,Yes,No,No,Civil engineer,Northern
+418,40,Male,189,91,35,2,Type 2,3 months,No,Yes,Yes,No,No,No,Yes,Farmer,Central
+419,39,Female,190,88,33,5,,,No,Yes,Yes,Yes,Yes,No,Yes,Software Engineer Intern,Western
+420,41,Male,187,73,32,5,Type 2,1 month,Yes,Yes,No,Yes,Yes,Yes,No,Manager,Southern
+421,28,Male,160,94,34,8,Type 2,3 months,No,Yes,No,Yes,Yes,Yes,Yes,Accountant,Sabaragamuva
+422,50,Male,163,97,35,10,Type 2,6 months,Yes,No,Yes,No,Yes,Yes,Yes,Teacher,North-Western
+423,47,Female,171,85,35,9,Type 2,1 month,Yes,Yes,No,No,No,Yes,Yes,96,Southern
+424,33,Male,188,105,35,2,Type 2,3 months,Yes,No,Yes,No,Yes,Yes,No,Farmer,Uva
+425,25,Male,160,79,34,8,,,No,No,No,No,No,Yes,Yes,Undergraduate ,Western
+426,42,Male,175,87,35,5,Type 2,6 months,No,No,Yes,No,No,No,No,Student ,Eastern
+427,40,Male,166,103,38,6,Type 2,6 months,Yes,No,No,Yes,Yes,No,Yes,Accountant,Western
+428,44,Female,175,97,38,4,Type 2,1 year,No,Yes,Yes,Yes,Yes,Yes,No,Engineer,North-Western
+429,43,Male,189,88,36,5,Type 2,1 month,No,Yes,Yes,No,No,Yes,Yes,Civil Enginner,Central
+430,34,Female,169,88,35,4,,,No,No,Yes,Yes,Yes,Yes,No,Undergraduate ,Southern
+431,22,Male,160,54,24,3,,,No,No,No,No,Yes,Yes,No,Intern Telecommunication Enginner,North-Western
+432,22,Male,175,85,32,6,,,No,No,No,No,No,No,No,Engineer,Western
+433,40,Male,153,76,34,4,Type 2,3 months,No,No,Yes,Yes,No,Yes,No,Teacher,Sabaragamuva
+434,32,Male,176,90,35,4,Type 1,3 months,No,No,Yes,No,Yes,No,Yes,Nurse,North-Central
+435,31,Female,164,80,34,2,,,No,No,No,No,Yes,Yes,No,Software Engineer,Western
+436,25,Female,175,65,30,6,,,Yes,No,No,No,No,No,Yes,Senior Software Engineer ,Sabaragamuva
+437,24,Female,159,52,27,3,,,No,No,No,No,No,No,No,Farmer,Sabaragamuva
+438,47,Female,188,95,32,6,Type 2,1 month,No,No,No,No,Yes,No,No,Accountant,Uva
+439,37,Male,151,85,34,9,Type 2,3 months,Yes,No,Yes,Yes,No,No,Yes,clerk,Southern
+440,48,Male,154,60,32,4,,,No,No,No,No,No,Yes,No,software enginner,Southern
+441,27,Male,180,76,33,5,,,No,No,No,No,No,No,No,Enginner,Western
+442,27,Male,175,65,33,2,,,No,No,No,No,No,No,No,Civil engineer,Eastern
+443,48,Male,182,101,38,2,Type 2,More than 1 year,Yes,No,No,Yes,Yes,No,No,Farmer,Western
+444,39,Female,190,88,33,5,,,No,Yes,Yes,Yes,Yes,No,Yes,Software Engineer Intern,Western
+445,41,Male,187,73,32,5,Type 2,1 month,Yes,Yes,No,Yes,Yes,Yes,No,Manager,Southern
+446,38,Male,160,94,34,8,Type 2,3 months,No,Yes,No,Yes,Yes,Yes,Yes,Accountant,Sabaragamuva
+447,40,Male,163,97,35,10,Type 2,6 months,Yes,No,Yes,No,Yes,Yes,Yes,Teacher,North-Western
+448,47,Female,171,85,35,9,Type 2,1 month,Yes,Yes,No,No,No,Yes,Yes,96,Southern
+449,43,Male,188,105,35,2,Type 2,3 months,Yes,No,Yes,No,Yes,Yes,No,Farmer,Uva
+450,39,Male,160,79,34,8,,,No,No,No,No,No,Yes,Yes,Enginner,Western
+451,46,Male,175,87,35,5,Type 2,6 months,No,No,Yes,No,No,No,No,Farmer,Eastern
+452,42,Male,166,103,38,6,Type 2,6 months,Yes,No,No,Yes,Yes,No,Yes,Software Engineer Intern,Western
+453,46,Female,175,97,38,4,Type 2,1 year,No,Yes,Yes,Yes,Yes,Yes,No,Manager,North-Western
+454,41,Male,189,88,36,5,Type 2,1 month,No,Yes,Yes,No,No,Yes,Yes,Accountant,Central
+455,30,Male,177,90,34,7,,,Yes,No,Yes,No,No,Yes,No,Teacher,Eastern
+456,41,Male,175,110,38,7,Type 2,6 months,Yes,No,No,Yes,No,No,No,96,Western
+457,33,Male,188,105,35,2,Type 2,3 months,Yes,No,Yes,No,Yes,Yes,No,Farmer,Uva
+458,27,Male,160,79,34,8,,,No,No,No,No,No,Yes,Yes,Undergraduate ,Western
+459,42,Male,175,87,35,5,Type 2,6 months,No,No,Yes,No,No,No,No,Student,Eastern
+460,41,Male,166,103,38,6,Type 2,6 months,Yes,No,No,Yes,Yes,No,Yes,Student,Western
+461,33,Female,175,97,38,4,Type 2,1 year,No,Yes,Yes,Yes,Yes,Yes,No,Engineer,North-Western
+462,46,Male,189,88,36,5,Type 2,1 month,No,Yes,Yes,No,No,Yes,Yes,Software Engineer,Central
+463,49,Female,169,78,35,4,,,No,No,Yes,Yes,Yes,Yes,No,Software quality assurance engineer,Southern
+464,26,Male,160,54,24,3,,,No,No,No,No,Yes,Yes,No,Software Engineer,North-Western
+465,28,Female,173,59,30,7,,,Yes,No,No,No,Yes,No,No,SE,Sabaragamuva
+466,23,Female,155,40,32,2,,,Yes,No,No,No,No,No,No,Student,Southern
+467,31,Male,161,65,33,2,,,No,No,No,No,No,No,No,Student ,Western
+468,27,Female,165,48,28,5,,,No,No,No,No,No,No,No,Student,Sabaragamuva
+469,24,Female,163,52,30,1,,,No,No,No,No,No,No,No,Student,Western
+470,23,Male,163,64,33,3,,,Yes,No,No,No,No,Yes,No,Software Engineer,Western
+471,29,Male,170,65,32,1,,,No,No,Yes,No,Yes,Yes,Yes,Software Engineer,Western
+472,27,Female,163,45,27,6,,,Yes,No,No,Yes,Yes,No,No,Student ,Western
+473,24,Female,150,63,31,1,,,No,No,No,No,No,No,No,Student ,Southern
+474,25,Male,165,54,30,2,,,No,No,No,No,No,No,No,Software Engineer ,Western
+475,21,Male,165,54,30,3,,,No,No,No,No,Yes,No,No,Software Engineer,Western
+476,28,Male,157,69,34,6,,,No,Yes,No,No,No,No,Yes,Software Engineer Intern / Undergraduate,Western
+477,26,Male,170,65,32,7,,,Yes,No,No,Yes,Yes,No,Yes,Head of Procurement,Western
+478,24,Male,176,82,32,10,,,Yes,No,No,Yes,Yes,No,Yes,Software Engineer ,Western
+479,22,Male,173,50,29,7,,,Yes,No,No,Yes,No,Yes,Yes,Software Engineer,Southern
+480,26,Female,165,45,28,3,,,No,No,No,No,No,No,No,student,North-Western
+481,29,Male,172,83,36,4,,,No,No,No,No,No,No,No,Accountant,Sabaragamuva
+482,27,Male,174,74,34,6,,,Yes,No,No,No,No,No,No,Software Engineer,Central
+483,35,Male,178,58,32,3,,,Yes,No,No,No,No,No,No,QA engineer,Western
+484,25,Male,174,70,31,7,,,No,No,Yes,No,No,No,Yes,Teacher,Sabaragamuva
+485,26,Male,180,75,35,6,,,Yes,No,No,No,No,No,No,Farmer,Western
+486,27,Male,167,64,30,1,,,Yes,No,No,No,No,No,No,Driver,Central
+487,37,Male,179,83,35,6,Type 1,,No,Yes,Yes,Yes,No,No,No,House wife,Eastern
+488,41,Female,178,79,33,2,,,Yes,No,Yes,Yes,Yes,No,No,Nurse,Western
+489,35,Female,177,55,32,9,,,Yes,Yes,Yes,No,No,No,Yes,Tech Lead,Central
+490,47,Male,185,91,36,7,Type 1,6 months,No,Yes,Yes,Yes,No,Yes,Yes,Farmer,Southern
+491,49,Male,167,91,36,5,Type 2,6 months,Yes,No,Yes,Yes,No,Yes,No,Sales man,Sabaragamuva
+492,45,Male,180,72,33,6,Type 2,1 year,Yes,Yes,Yes,No,Yes,No,Yes,Software Enginner,Western
+493,41,Female,161,96,35,5,,,Yes,Yes,No,Yes,No,Yes,Yes,Software Engineer,Central
+494,45,Female,170,98,34,4,,,Yes,Yes,No,Yes,No,Yes,Yes,Mechanical engineer,Central
+495,33,Male,173,89,35,7,Type 2,3 months,Yes,Yes,No,No,No,Yes,Yes,Teacher,North-Western
+496,49,Male,173,82,36,5,Type 2,6 months,No,Yes,No,Yes,Yes,Yes,No,Principle,Southern
+497,38,Male,160,93,35,4,Type 2,6 months,Yes,No,No,No,Yes,No,Yes,No ,Central
+498,47,Male,161,92,34,5,Type 1,,No,Yes,Yes,Yes,No,Yes,No,Student,Western
+499,29,Female,151,61,33,4,,,Yes,No,Yes,No,Yes,No,No,Software Engineer,Sabaragamuva
+500,41,Male,170,90,35,8,Type 2,1 month,No,Yes,No,Yes,No,No,Yes,Student ,Southern
+501,44,Male,154,98,33,2,Type 2,1 month,No,No,Yes,No,Yes,No,No,Software Engineer,Northern
+502,40,Male,189,91,35,2,Type 2,3 months,No,Yes,Yes,No,No,No,Yes,Software Engineer,Central
+503,35,Female,163,60,30,2,,,No,No,No,No,No,No,No,Software Engineer,Sabaragamuva
+504,24,Female,150,50,30,2,,,Yes,No,No,No,Yes,No,Yes,Student ,Western
+505,25,Male,155,50,29,1,,,No,No,No,No,No,No,No,Student ,Western
+506,23,Male,170,54,30,2,,,No,No,No,Yes,Yes,Yes,No,Software Engineer ,Southern
+507,26,Male,170.6,64,32,5,,,Yes,No,No,No,No,No,No,Software Engineer,North-Western
+508,28,Male,157,69,34,6,,,No,Yes,No,No,No,No,Yes,Software Engineer Intern / Undergraduate,Western
+509,26,Male,170,65,32,7,,,Yes,No,No,Yes,Yes,No,Yes,Head of Procurement,Western
+510,44,Male,176,82,31,10,,,Yes,No,No,Yes,Yes,No,Yes,Software Engineer ,Western
+511,22,Male,173,50,30,7,,,Yes,No,No,Yes,No,Yes,Yes,Software Engineer,Southern
+512,26,Female,165,45,28,3,,,No,No,No,No,No,No,No,student,North-Western
+513,27,Male,172,83,36,4,,,No,No,No,No,No,No,No,Accountant,Sabaragamuva
+514,25,Male,164,74,34,6,,,Yes,No,No,No,No,No,No,Software Engineer,Central
+515,34,Male,178,58,32,3,,,Yes,No,No,No,No,No,No,QA engineer,Western
+516,27,Male,174,70,31,7,,,No,No,Yes,No,No,No,Yes,Teacher,Sabaragamuva
+517,25,Male,170,75,35,6,,,Yes,No,No,No,No,No,No,Teacher,Western
+518,26,Male,179,64,32,1,,,Yes,No,No,No,No,No,No,IT specialist,Central
+519,38,Male,169,83,35,6,Type 1,,No,Yes,Yes,Yes,No,No,No,Accountant,Eastern
+520,40,Female,168,79,33,2,,,Yes,No,Yes,Yes,Yes,No,No,SE,Western
+521,36,Female,178,55,32,9,,,Yes,Yes,Yes,No,No,No,Yes,Manager,Central
+522,46,Male,185,91,36,7,Type 1,6 months,No,Yes,Yes,Yes,No,Yes,Yes,SE,Southern
+523,48,Female,176,63,32,4,Type 1,3 months,No,Yes,No,Yes,No,No,No,Software Engineer,Uva
+524,49,Female,182,58,30,8,,1 month,Yes,Yes,Yes,Yes,No,Yes,Yes,Tech Lead,North-Western
+525,38,Female,175,56,35,5,Type 2,6 months,Yes,Yes,Yes,No,Yes,No,Yes,Farmer,Eastern
+526,42,Female,169,92,35,3,,,Yes,Yes,No,No,No,Yes,Yes,Nurse,Southern
+527,36,Female,186,54,56,7,Type 1,1 month,No,Yes,Yes,No,Yes,No,Yes,Accountant,Central
+528,36,Male,167,75,38,5,,,Yes,Yes,No,No,Yes,No,Yes,Farmer,Western
+529,27,Male,173,75,34,6,,,Yes,No,No,No,No,No,No,Driver,Western
+530,30,Male,168,60,30,2,,,No,No,Yes,No,No,No,No,Manager,Western
+531,37,Male,162,74,34,5,Type 2,6 months,Yes,No,No,No,Yes,Yes,No,Manager,Sabaragamuva
+532,44,Female,151,91,34,3,,,No,No,No,No,No,No,No,SaSamurdhi dewolopment officer ,North-Western
+533,37,Female,152,101,36,6,Type 2,6 months,Yes,Yes,No,Yes,No,Yes,Yes,No,Western
+534,34,Male,188,91,34,6,Type 2,3 months,Yes,No,Yes,Yes,Yes,Yes,Yes,Nursing ,North-Western
+535,42,Female,151,68,34,9,,,No,Yes,Yes,No,Yes,No,No,NURSING OFFICER ,Southern
+536,43,Male,187,102,36,3,Type 2,More than 1 year,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Software Enginner,Eastern
+537,30,Female,184,98,36,4,,,No,Yes,Yes,No,Yes,No,No,Manager,Northern
+538,50,Male,155,65,34,3,,,Yes,No,No,No,No,No,Yes,Teacher,Sabaragamuva
+539,24,Female,165,60,30,2,,,No,No,No,No,No,No,No,Accountant,Sabaragamuva
+540,32,Female,150,46,32,4,,,No,No,No,No,No,No,No,Nurse,Sabaragamuva
+541,42,Female,154,63,,2,,,Yes,No,No,No,Yes,No,No,Nurse,Sabaragamuva
+542,37,Female,173,90,34,9,,,No,No,No,No,No,No,No,Nursing  officer ,Western
+543,31,Female,159,50,36,9,Type 2,3 months,Yes,Yes,No,Yes,Yes,Yes,Yes,Engineer ,Sabaragamuva
+544,46,Male,175,106,36,8,Type 2,6 months,Yes,No,Yes,No,No,Yes,Yes,Nurse,Southern
+545,33,Male,168,90,36,5,Type 2,1 year,Yes,Yes,No,Yes,No,Yes,Yes,Software Engineer,Central
+546,48,Female,180,107,36,8,,,No,No,No,Yes,No,No,No,Student,Sabaragamuva
+547,36,Male,166,58,30,10,Type 2,1 year,No,Yes,No,No,Yes,Yes,No,Student,Western
+548,40,Female,153,65,33,3,,,Yes,No,No,No,No,No,Yes,Software Engineer ,Sabaragamuva
+549,41,Female,172,80,39,5,Type 2,6 months,No,Yes,Yes,No,No,Yes,No,Teacher,Northern
+550,30,Female,159,80,34,6,Type 2,3 months,No,No,No,Yes,No,No,No,Nurse,Western
+551,27,Male,161.7,48,30,5,,,Yes,Yes,Yes,No,Yes,No,No,Manager,Southern
+552,24,Male,166,63,32,2,,,No,No,No,No,No,No,No,Nurse,Central
+553,24,Male,180.5,82,34,8,,,Yes,No,No,No,No,No,No,Accountant,North-Western
+554,27,Male,165,65,31,1,,,No,No,No,No,No,No,Yes,Accountant,Sabaragamuva
+555,36,Female,158.5,53,34,5,,,Yes,No,Yes,Yes,No,Yes,Yes,Enginner,Southern
+556,45,Male,159,90,36,2,Type 2,6 months,Yes,No,Yes,Yes,No,Yes,Yes,Intern,Central
+557,48,Male,157,106,34,6,Type 2,More than 1 year,Yes,No,Yes,Yes,No,Yes,No,HR Executive ,Western
+558,48,Female,160,104,32,9,Type 1,,Yes,Yes,Yes,Yes,No,No,Yes,No ,Central
+559,36,Male,173,70,34,9,,,No,Yes,No,No,Yes,No,No,Student,Sabaragamuva
+560,30,Female,185,90,36,9,Type 2,3 months,No,No,No,Yes,Yes,No,No,Software Engineer,Western
+561,31,Female,185,110,38,6,Type 2,1 month,Yes,No,Yes,No,Yes,Yes,No,Student ,Southern
+562,23,Female,150,55,29,5,,,No,No,No,Yes,Yes,No,No,Software Engineer,Sabaragamuva
+563,25,Female,155,40,,5,,,No,No,No,No,Yes,No,No,Software Engineer,Western
+564,35,Female,163,60,30,2,,,No,No,No,No,No,No,No,Software Engineer,Sabaragamuva
+565,24,Female,150,50,,2,,,Yes,No,No,No,Yes,No,Yes,Student ,Western
+566,25,Male,155,50,29,1,,,No,No,No,No,No,No,No,Student ,Western
+567,23,Male,170,54,,2,,,No,No,No,Yes,Yes,Yes,No,Software Engineer ,Southern
+568,26,Male,170.6,64,32,5,,,Yes,No,No,No,No,No,No,Software Engineer,North-Western
+569,28,Male,157,59,34,6,,,No,Yes,No,No,No,No,Yes,Software Engineer Intern / Undergraduate,Western
+570,26,Male,170.3,65,32,7,,,Yes,No,No,Yes,Yes,No,Yes,Head of Procurement,Western
+571,24,Male,171,82,,10,,,Yes,No,No,Yes,Yes,No,Yes,Software Engineer ,Western
+572,22,Male,173,50,20,7,,,Yes,No,No,Yes,No,Yes,Yes,Software Engineer,Southern
+573,26,Female,165,45,28,3,,,No,No,No,No,No,No,No,student,North-Western
+574,27,Male,172,83,36,4,,,No,No,No,No,No,No,No,Accountant,Sabaragamuva
+575,25,Male,174,74,34,6,,,Yes,No,No,No,No,No,No,Software Engineer,Central
+576,34,Male,178,68,32,3,,,Yes,No,No,No,No,No,No,QA engineer,Western
+577,27,Male,174,70,,7,,,No,No,Yes,No,No,No,Yes,Teacher,Sabaragamuva
+578,25,Male,180,76,35,6,,,Yes,No,No,No,No,No,No,Teacher,Western
+579,26,Male,167,74,,1,,,Yes,No,No,No,No,No,No,No ,Central
+580,38,Male,179,83,35,6,Type 1,,No,Yes,Yes,Yes,No,No,No,Student,Eastern
+581,40,Female,178,79,33,2,,,Yes,No,Yes,Yes,Yes,No,No,Software Engineer,Western
+582,36,Female,177.5,55,32,9,,,Yes,Yes,Yes,No,No,No,Yes,Student ,Central
+583,46,Male,186,90,36,7,Type 1,6 months,No,Yes,Yes,Yes,No,Yes,Yes,Software Engineer,Southern
+584,49,Female,176.2,93,32,4,Type 1,3 months,No,Yes,No,Yes,No,No,No,Software Engineer,Uva
+585,35,Female,163,60,30,2,,,No,No,No,No,No,No,No,Software Engineer,Sabaragamuva
+586,24,Female,150,52,,2,,,Yes,No,No,No,Yes,No,Yes,Student ,Western
+587,25,Male,155,50,29,1,,,No,No,No,No,No,No,No,Student ,Western
+588,23,Male,170,54,,2,,,No,No,No,Yes,Yes,Yes,No,Software Engineer ,Southern
+589,26,Male,170.6,64,32,5,,,Yes,No,No,No,No,No,No,Software Engineer,North-Western
+590,28,Male,157,69,34,6,,,No,Yes,No,No,No,No,Yes,Software Engineer Intern / Undergraduate,Western
+591,26,Male,170,65,32,7,,,Yes,No,No,Yes,Yes,No,Yes,Head of Procurement,Western
+592,24,Male,176,82,,10,,,Yes,No,No,Yes,Yes,No,Yes,Software Engineer ,Western
+593,22,Male,173,50,20,7,,,Yes,No,No,Yes,No,Yes,Yes,Software Engineer,Southern
+594,26,Female,165,45,28,3,,,No,No,No,No,No,No,No,student,North-Western
+595,27,Male,172,83,36,4,,,No,No,No,No,No,No,No,Accountant,Sabaragamuva
+596,25,Male,174,74,34,6,,,Yes,No,No,No,No,No,No,Software Engineer,Central
+597,34,Male,178,68,32,3,,,Yes,No,No,No,No,No,No,QA engineer,Western
+598,27,Male,174,70.5,,7,,,No,No,Yes,No,No,No,Yes,Teacher,Sabaragamuva
+599,25,Male,180,75,35,6,,,Yes,No,No,No,No,No,No,Teacher,Western
+600,26,Male,169,62.5,,1,,,Yes,No,No,No,No,No,No,IT specialist,Central
+601,38,Male,179,83,35,6,Type 1,,No,Yes,Yes,Yes,No,No,No,Accountant,Eastern
+602,40,Female,168,79,33,2,,,Yes,No,Yes,Yes,Yes,No,No,SE,Western
+603,36,Female,173,55,32,9,,,Yes,Yes,Yes,No,No,No,Yes,Manager,Central
+604,46,Male,185,91.2,36,7,Type 1,6 months,No,Yes,Yes,Yes,No,Yes,Yes,SE,Southern
+605,48,Female,176,63,32,4,Type 1,3 months,No,Yes,No,Yes,No,No,No,Accountant,Uva
+606,49,Female,176,85.5,30,8,,1 month,Yes,Yes,Yes,Yes,No,Yes,Yes,Software Engineer,North-Western
+607,38,Female,175,56,35,5,Type 2,6 months,Yes,Yes,Yes,No,Yes,No,Yes,QA engineer,Eastern
+608,42,Female,180,95.5,35,3,,,Yes,Yes,No,No,No,Yes,Yes,Teacher,Southern
+609,36,Female,176,54,56,7,Type 1,1 month,No,Yes,Yes,No,Yes,No,Yes,Teacher,Central
+610,36,Male,167,75,38,5,,,Yes,Yes,No,No,Yes,No,Yes,IT specialist,Western+AZAZ567:BC611
+611,23,Female,154,54,30,8,,,No,No,No,No,No,No,No,Accountant,Eastern
+612,45,Male,180,85,35,7,,,Yes,No,No,No,No,No,Yes,SE,Western
+613,39,Male,165,67,32,1,,,No,No,Yes,No,No,No,Yes,Manager,Central
+614,24,Male,167,57,32,1,,,No,No,No,No,No,No,No,SE,Southern
+615,25,Female,170,62,32,5,,,No,No,No,No,No,No,No,Software Engineer,Uva
+616,23,Female,150,36,23,8,,,Yes,No,No,Yes,Yes,No,No,Tech Lead,North-Western
+617,23,Female,150,45,25,7,,,No,No,No,No,Yes,No,No,Farmer,Eastern
+618,24,Male,175,74,,3,,,No,No,No,No,No,No,No,Nurse,Southern
+619,24,Male,175,85,38,7,,,Yes,Yes,Yes,Yes,Yes,Yes,No,Accountant,Central
+620,26,Male,170,55,29,5,,,No,No,No,Yes,Yes,No,Yes,Farmer,Western
+621,24,Male,160,70,34,6,,,Yes,No,No,No,Yes,No,No,Driver,Western
+622,25,Female,144,42,27,2,,,Yes,No,No,No,Yes,No,Yes,Manager,Western
+623,25,Female,154,60,,5,,,Yes,No,No,No,No,No,No,Manager,Sabaragamuva
+624,22,Male,167,70,34,3,,,No,No,No,No,No,No,No,SaSamurdhi dewolopment officer ,North-Western
+625,21,Male,173,58,67,1,,,Yes,No,No,No,Yes,No,No,No,Western
+626,21,Male,165,54,,2,,,Yes,No,No,No,No,No,No,Nursing ,North-Western
+627,26,Female,164,45,,2,,,No,No,No,No,No,No,No,NURSING OFFICER ,Southern
+628,26,Female,157,45,,7,,,Yes,No,No,No,No,No,No,Software Enginner,Eastern
+629,21,Female,176.7,60,33,1,,,Yes,No,No,No,No,No,Yes,Manager,Northern
+630,26,Female,161,59,28,3,,,No,No,No,No,No,No,No,Teacher,Sabaragamuva
+631,25,Male,162,52,29,6,,,No,No,No,No,Yes,No,Yes,Accountant,Sabaragamuva
+632,27,Male,172,76,34,4,,,No,No,Yes,Yes,Yes,Yes,No,Nurse,Sabaragamuva
+633,44,Female,173,88,36,6,,,Yes,No,Yes,Yes,No,No,No,Nurse,Sabaragamuva
+634,40,Male,176,76,36,5,,,Yes,No,No,No,No,No,No,Nursing  officer ,Western
+635,41,Male,167,73,34,3,,,No,Yes,No,Yes,No,No,Yes,Engineer ,Sabaragamuva
+636,44,Male,161,109,32,3,,,Yes,Yes,No,No,No,Yes,Yes,Nurse,Southern
+637,27,Male,165,53,29,3,,,Yes,No,No,No,No,No,No,Software Engineer,Central
+638,27,Male,171,64,33,3,,,Yes,No,No,No,No,No,No,Student,Sabaragamuva
+639,24,Female,175,56,32,4,,,No,No,No,No,No,Yes,Yes,Student,Western
+640,43,Female,155,97,103,3,,,No,Yes,No,Yes,Yes,Yes,Yes,Software Engineer ,Sabaragamuva
+641,43,Male,190,105,83,10,,,Yes,No,No,Yes,Yes,No,Yes,Teacher,Northern
+642,32,Female,158,87,90,1,,,Yes,Yes,Yes,Yes,Yes,Yes,No,Nurse,Western
+643,50,Male,170,65,80,2,,,Yes,No,Yes,No,No,No,Yes,Manager,Southern
+644,37,Male,175,76.5,34,1,,,No,No,No,No,No,No,No,Nurse,Central
+645,32,Male,187,65,34,8,,,Yes,No,No,Yes,Yes,Yes,Yes,Accountant,North-Western
+646,30,Female,168,115,40,4,,,Yes,Yes,No,No,Yes,Yes,No,Accountant,Sabaragamuva
+647,47,Male,155,59.5,38,5,,,Yes,Yes,Yes,No,No,No,No,Enginner,Southern
+648,41,Male,167,100,36,5,,,Yes,Yes,Yes,No,No,No,Yes,Intern,Central
+649,44,Female,151,151,34,3,,,No,No,No,No,No,No,No,HR Executive ,Western
+650,37,Female,152,101,36,6,,,Yes,Yes,No,Yes,No,Yes,Yes,No ,Central
+651,34,Male,188,91,34,6,,,Yes,No,Yes,Yes,Yes,Yes,Yes,Student,Sabaragamuva
+652,42,Female,151,68,34,9,,,No,Yes,Yes,No,Yes,No,No,Software Engineer,Western
+653,43,Male,187,102,36,3,,,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Student ,Southern
+654,30,Female,184,98,36,4,,,No,Yes,Yes,No,Yes,No,No,Software Engineer,Sabaragamuva
+655,50,Male,155,65,34,3,,,Yes,No,No,No,No,No,Yes,Software Engineer,Western
+656,24,Female,165,61,30,2,,,No,No,No,No,No,No,No,Software Engineer,Sabaragamuva
+657,32,Female,150,46,32,4,,,No,No,No,No,No,No,No,Student ,Western
+658,42,Female,154,64,,2,,,Yes,No,No,No,Yes,No,No,Student ,Western
+659,37,Female,173,96,34,9,,,No,No,No,No,No,No,No,Software Engineer ,Southern
+660,31,Female,160,50,36,9,,,Yes,Yes,No,Yes,Yes,Yes,Yes,Software Engineer,North-Western
+661,46,Male,175,107,36,8,,,Yes,No,Yes,No,No,Yes,Yes,Software Engineer Intern / Undergraduate,Western
+662,33,Male,168,96,36,5,,,Yes,Yes,No,Yes,No,Yes,Yes,Head of Procurement,Western
+663,48,Female,180,107,36,8,,,No,No,No,Yes,No,No,No,Software Engineer ,Western
+664,36,Male,166,58,30,10,,,No,Yes,No,No,Yes,Yes,No,Software Engineer,Southern
+665,40,Female,153,94,33,3,,,Yes,No,No,No,No,No,Yes,student,North-Western
+666,41,Female,172,85,39,5,,,No,Yes,Yes,No,No,Yes,No,Accountant,Sabaragamuva
+667,30,Female,159,90,34,6,,,No,No,No,Yes,No,No,No,Software Engineer,Central
+668,27,Male,161,48,30,5,,,Yes,Yes,Yes,No,Yes,No,No,QA engineer,Western
+669,24,Male,166,63.5,32,2,,,No,No,No,No,No,No,No,Teacher,Sabaragamuva
+670,24,Male,180,81,34,8,,,Yes,No,No,No,No,No,No,Teacher,Western
+671,27,Male,165,64,31,1,,,No,No,No,No,No,No,Yes,No ,Central
+672,36,Female,150,63,34,5,,,Yes,No,Yes,Yes,No,Yes,Yes,Student,Eastern
+673,45,Male,151,92,36,2,,,Yes,No,Yes,Yes,No,Yes,Yes,Software Engineer,Western
+674,48,Male,157,106,34,6,,,Yes,No,Yes,Yes,No,Yes,No,Student ,Central
+675,48,Female,160,104,32,9,,,Yes,Yes,Yes,Yes,No,No,Yes,Software Engineer,Southern
+676,36,Male,173,70,34,9,,,No,Yes,No,No,Yes,No,No,Software Engineer,Uva
+677,30,Female,185,90,36,9,,,No,No,No,Yes,Yes,No,No,Software Engineer,Sabaragamuva
+678,41,Female,185,110,38,6,,,Yes,No,Yes,No,Yes,Yes,No,Student ,Western
+679,23,Female,150,55,28,5,,,No,No,No,Yes,Yes,No,No,Student ,Western
+680,25,Female,155,49,,5,,,No,No,No,No,Yes,No,No,Software Engineer ,Southern
+681,35,Female,163,62,30,2,,,No,No,No,No,No,No,No,Software Engineer,North-Western
+682,24,Female,150,53,29,2,,,Yes,No,No,No,Yes,No,Yes,Software Engineer Intern / Undergraduate,Western
+683,25,Male,155,50,30,1,,,No,No,No,No,No,No,No,Head of Procurement,Western
+684,23,Male,170,54,29,2,,,No,No,No,Yes,Yes,Yes,No,Software Engineer ,Western
+685,26,Male,170.6,64,32,5,,,Yes,No,No,No,No,No,No,Software Engineer,Southern
+686,28,Male,157,72,34,6,,,No,Yes,No,No,No,No,Yes,student,North-Western
+687,26,Male,170,65.5,32,7,,,Yes,No,No,Yes,Yes,No,Yes,Accountant,Sabaragamuva
+688,44,Male,176,91,33,10,,,Yes,No,No,Yes,Yes,No,Yes,Software Engineer,Central
+689,22,Male,173,51,30,7,,,Yes,No,No,Yes,No,Yes,Yes,QA engineer,Western
+690,26,Female,165.5,59,28,3,,,No,No,No,No,No,No,No,Teacher,Sabaragamuva
+691,27,Male,172,84,36,4,,,No,No,No,No,No,No,No,Teacher,Western
+692,25,Male,174,74,34,6,,,Yes,No,No,No,No,No,No,,Central
+693,42,Male,178,85.3,32,3,,,Yes,No,No,No,No,No,No,,Eastern
+694,27,Male,174,70,32,7,,,No,No,Yes,No,No,No,Yes,,Western
+695,45,Male,177,84.2,35,6,,,Yes,No,No,No,No,No,No,,Central
+696,26,Male,166.3,64,,1,,,Yes,No,No,No,No,No,No,,Southern
+697,38,Male,178,83,35,6,,,No,Yes,Yes,Yes,No,No,No,,Uva
