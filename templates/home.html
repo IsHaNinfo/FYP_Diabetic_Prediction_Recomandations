@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diabetic Risk Prediction</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+        }
+
+        .login {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 30px;
+            background: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #007bff;
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            font-weight: bold;
+            color: #495057;
+        }
+
+        .btn-primary {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        .alert {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="login">
+        <h1>Diabetic Risk Prediction</h1>
+        <form action="{{ url_for('predict_datapoint')}}" method="post">
+            <legend class="text-center mb-4">Enter Your Details</legend>
+
+            <div class="mb-3">
+                <label class="form-label">Age</label>
+                <input class="form-control" type="number" name="age" placeholder="Enter your age" min="20" max="50"
+                    required />
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Gender</label>
+                <select class="form-control" name="gender" required>
+                    <option class="placeholder" selected disabled value="">Select your Gender</option>
+                    <option value="1.0">Male</option>
+                    <option value="0.0">Female</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Height (in cm)</label>
+                <input class="form-control" type="number" name="height" placeholder="Enter your Height" required />
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Weight (in kg)</label>
+                <input class="form-control" type="number" name="weight" placeholder="Enter your Weight" required />
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Waist Circumference (in cm)</label>
+                <input class="form-control" type="number" name="Waist_Circumference"
+                    placeholder="Enter your Waist Circumference" required />
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Diet Food Habits (Meals per Day)</label>
+                <select class="form-control" name="Diet_Food_Habits" required>
+                    <option class="placeholder" selected disabled value="">Select Meals per Day</option>
+                    <option value="1">1 Meal</option>
+                    <option value="2">2 Meals</option>
+                    <option value="3">3 Meals</option>
+                    <option value="4">4 Meals</option>
+                    <option value="5">5 Meals</option>
+                    <option value="6">6 Meals</option>
+                    <option value="7">7 Meals</option>
+                    <option value="8">8 Meals</option>
+                    <option value="9">9 Meals</option>
+                    <option value="10">10 Meals</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Family History (Do any family members have diabetes?)</label>
+                <select class="form-control" name="Family_History" required>
+                    <option class="placeholder" selected disabled value="">Select an Option</option>
+                    <option value="1.0">Yes</option>
+                    <option value="0.0">No</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">High Blood Pressure (Do you have high blood pressure continuously?)</label>
+                <select class="form-control" name="Blood_Pressure" required>
+                    <option class="placeholder" selected disabled value="">Select an Option</option>
+                    <option value="1.0">Yes</option>
+                    <option value="0.0">No</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Cholesterol/Lipid Levels (Do you have abnormal cholesterol or lipid
+                    levels?)</label>
+                <select class="form-control" name="Cholesterol_Lipid_Levels" required>
+                    <option class="placeholder" selected disabled value="">Select an Option</option>
+                    <option value="1.0">Yes</option>
+                    <option value="0.0">No</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Thirst (Do you experience excessive thirst?)</label>
+                <select class="form-control" name="Thirst" required>
+                    <option class="placeholder" selected disabled value="">Select an Option</option>
+                    <option value="1.0">Yes</option>
+                    <option value="0.0">No</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Fatigue (Do you feel fatigued frequently?)</label>
+                <select class="form-control" name="Fatigue" required>
+                    <option class="placeholder" selected disabled value="">Select an Option</option>
+                    <option value="1.0">Yes</option>
+                    <option value="0.0">No</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Urination (Do you experience frequent urination?)</label>
+                <select class="form-control" name="Urination" required>
+                    <option class="placeholder" selected disabled value="">Select an Option</option>
+                    <option value="1.0">Yes</option>
+                    <option value="0.0">No</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Vision Changes (Do you experience changes in vision?)</label>
+                <select class="form-control" name="Vision_Changes" required>
+                    <option class="placeholder" selected disabled value="">Select an Option</option>
+                    <option value="1.0">Yes</option>
+                    <option value="0.0">No</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Expected Diabetic Risk (Risk Level)</label>
+                <select class="form-control" name="RiskLevel" required>
+                    <option class="placeholder" selected disabled value="">Select Risk Level</option>
+                    <option value="0.0">Low</option>
+                    <option value="1.0">Moderate</option>
+                    <option value="2.0">High</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <input class="btn btn-primary" type="submit" value="Predict your Diabetic Risk" />
+            </div>
+        </form>
+
+        {% if results %}
+        <div class="alert alert-success" role="alert">
+            Predicted Diabetic Risk: {{ results }}
+        </div>
+        {% endif %}
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
