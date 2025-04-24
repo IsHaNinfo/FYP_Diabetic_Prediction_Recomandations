@@ -19,7 +19,7 @@ from src.utils import save_obj
 @dataclass
 class DataTransformationConfig:
     preprocessor_obj_file_path = os.path.join(
-        "artifact/common", "nutrition_preprocessor.pkl"
+        "artifact/nutrition", "diabetic_preprocessor.pkl"
     )
 
 
@@ -37,16 +37,14 @@ class DataTransformation:
                 "Gender",
                 "Height",
                 "Weight",
-                "Waist_Circumference",
-                "Family_History",
-                "Blood_Pressure",
-                "Cholesterol_Lipid_Levels",
-                "Thirst",
-                "Fatigue",
-                "Urination",
-                "Vision Changes",
+                "Carbohydrate_Consumption",
+                "Protein_Intake",
+                "Fat_Intake",
+                "Regularity_of_Meals",
+                "Portion_Control",
+                "Caloric_Balance",
+                "Sugar_Consumption",
                 "BMI",
-                "RiskLevel",
             ]
 
             num_pipeline = Pipeline(
