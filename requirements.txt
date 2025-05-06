@@ -7,4 +7,5 @@ dill
 catboost
 Flask
 sdv
+torch
 #-e .
