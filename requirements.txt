@@ -8,4 +8,5 @@ catboost
 Flask
 sdv
 torch
+CORS
 #-e .

@@ -1,4 +1,5 @@
-from flask import Flask, request, render_template
+from flask import Flask, request, jsonify
+from flask_cors import CORS
 import numpy as np
 import pandas as pd
 import sys
@@ -6,69 +7,60 @@ import os
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), ".")))
 from sklearn.preprocessing import StandardScaler
+from src.pipeline.Diabetic_Risk_Predict_Pipeline.predict_pipeline_diabetic import (
+    CustomData,
+    PredictPipeline,
+)
 
-from src.pipeline.Diabetic_Risk_Predict_Pipeline.predict_pipeline_diabetic import CustomData, PredictPipeline
+app = Flask(__name__)
+# Initialize CORS with default options
+CORS(app)
 
-application = Flask(__name__)
+# Remove the duplicate Flask app initialization
+# app = Flask(__name__)  # Remove this line
 
-app = application
 
-
-## Route for the home page
 @app.route("/")
 def index():
-    return render_template("index.html")
+    return "API is working"
 
 
-@app.route("/predictdata", methods=["GET", "POST"])
+@app.route("/predictdata", methods=["POST"])
 def predict_datapoint():
-    if request.method == "GET":
-        return render_template("home.html")
-    else:
-        try:
-            # Collect form data
-            height = float(request.form.get("height"))  # Height in cm
-            weight = float(request.form.get("weight"))  # Weight in kg
+    try:
+        data_json = request.get_json()
+        print("Received data from frontend:", data_json)
 
-            # Calculate BMI (BMI = weight (kg) / (height (m)^2))
-            bmi = weight / ((height / 100) ** 2)  # Convert height to meters
+        height = float(data_json["height"])
+        weight = float(data_json["weight"])
+        bmi = weight / ((height / 100) ** 2)
 
-            data = CustomData(
-                age=int(request.form.get("age")),
-                gender=request.form.get("gender"),
-                height=height,
-                weight=weight,
-                waist_circumference=float(request.form.get("Waist_Circumference")),
-                diet_food_habits=int(request.form.get("Diet_Food_Habits")),
-                family_history=float(request.form.get("Family_History")),
-                high_blood_pressure=float(request.form.get("Blood_Pressure")),
-                cholesterol_lipid_levels=float(
-                    request.form.get("Cholesterol_Lipid_Levels")
-                ),
-                thirst=float(request.form.get("Thirst")),
-                fatigue=float(request.form.get("Fatigue")),
-                urination=float(request.form.get("Urination")),
-                vision_changes=float(request.form.get("Vision_Changes")),
-                bmi=bmi,  # Pass the calculated BMI
-                risk_level=float(request.form.get("RiskLevel")),  # Collect RiskLevel
-            )
+        data = CustomData(
+            age=int(data_json["age"]),
+            gender=data_json["gender"],
+            height=height,
+            weight=weight,
+            waist_circumference=float(data_json["Waist_Circumference"]),
+            diet_food_habits=int(data_json["Diet_Food_Habits"]),
+            family_history=float(data_json["Family_History"]),
+            high_blood_pressure=float(data_json["Blood_Pressure"]),
+            cholesterol_lipid_levels=float(data_json["Cholesterol_Lipid_Levels"]),
+            thirst=float(data_json["Thirst"]),
+            fatigue=float(data_json["Fatigue"]),
+            urination=float(data_json["Urination"]),
+            vision_changes=float(data_json["Vision_Changes"]),
+            bmi=bmi,
+            risk_level=float(data_json["RiskLevel"]),
+        )
 
-            # Convert to DataFrame
-            pred_df = data.get_data_as_data_frame()
-            print(pred_df)
-            print("Before Prediction")
+        pred_df = data.get_data_as_data_frame()
+        predict_pipeline = PredictPipeline()
+        results = predict_pipeline.predict(pred_df)
 
-            # Predict using the pipeline
-            predict_pipeline = PredictPipeline()
-            print("Mid Prediction")
-            results = predict_pipeline.predict(pred_df)
-            print("After Prediction")
+        return jsonify({"prediction": results[0]})
 
-            # Render the results on the home page
-            return render_template("home.html", results=results[0])
-
-        except Exception as e:
-            return str(e)
+    except Exception as e:
+        return jsonify({"error": str(e)}), 400
 
 
 if __name__ == "__main__":
