@@ -11,6 +11,10 @@ from src.pipeline.Diabetic_Risk_Predict_Pipeline.predict_pipeline_diabetic impor
     CustomData,
     PredictPipeline,
 )
+from src.pipeline.Nutration_Risk_Predict_Pipeline.predict_pipeline_nutration import (
+    NutritionRiskCustomData,
+    NutritionRiskPredictPipeline,
+)
 
 app = Flask(__name__)
 # Initialize CORS with default options
@@ -58,6 +62,50 @@ def predict_datapoint():
         results = predict_pipeline.predict(pred_df)
 
         return jsonify({"prediction": results[0]})
+
+    except Exception as e:
+        return jsonify({"error": str(e)}), 400
+
+
+@app.route("/nutritionriskprediction", methods=["POST"])
+def nutrition_risk_prediction():
+    try:
+        # Get JSON data from the frontend
+        data_json = request.get_json()
+        print("Received data for nutrition risk prediction:", data_json)
+        height = float(data_json["height"])
+        weight = float(data_json["weight"])
+        bmi = weight / ((height / 100) ** 2)
+        # Create an instance of NutritionRiskCustomData
+        nutrition_data = NutritionRiskCustomData(
+            age=int(data_json["age"]),
+            gender=data_json["gender"],
+            height=height,
+            weight=weight,
+            carbohydrate_consumption=float(data_json["Carbohydrate_Consumption"]),
+            protein_intake=float(data_json["Protein_Intake"]),
+            fat_intake=float(data_json["Fat_Intake"]),
+            regularity_of_meals=float(
+                data_json["Regularity_of_Meals"]
+            ),  # Assuming this is categorical
+            portion_control=float(
+                data_json["Portion_Control"]
+            ),  # Assuming this is categorical
+            caloric_balance=float(
+                data_json["Caloric_Balance"]
+            ),  # Assuming this is categorical
+            sugar_consumption=float(data_json["Sugar_Consumption"]),
+            bmi=bmi,
+        )
+
+        # Convert input data to DataFrame
+        input_df = nutrition_data.get_data_as_data_frame()
+
+        # Predict using NutritionRiskPredictPipeline
+        predict_pipeline = NutritionRiskPredictPipeline()
+        results = predict_pipeline.predict(input_df)
+
+        return jsonify({"prediction": results.tolist()})
 
     except Exception as e:
         return jsonify({"error": str(e)}), 400

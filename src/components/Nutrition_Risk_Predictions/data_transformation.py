@@ -19,7 +19,7 @@ from src.utils import save_obj
 @dataclass
 class DataTransformationConfig:
     preprocessor_obj_file_path = os.path.join(
-        "artifact/nutrition", "diabetic_preprocessor.pkl"
+        "artifact/nutrition", "nutrition_preprocessor.pkl"
     )
 
 
