@@ -16,6 +16,11 @@ from src.pipeline.Nutration_Risk_Predict_Pipeline.predict_pipeline_nutration imp
     NutritionRiskPredictPipeline,
 )
 
+from src.pipeline.PhysicalActivity_Risk_Prediction_Pipeline.predict_pipeline_physicalactivity import (
+    PhysicalRiskCustomData,
+    PhysicalRiskPredictPipeline,
+)
+
 app = Flask(__name__)
 # Initialize CORS with default options
 CORS(app)
@@ -95,6 +100,52 @@ def nutrition_risk_prediction():
                 data_json["Caloric_Balance"]
             ),  # Assuming this is categorical
             sugar_consumption=float(data_json["Sugar_Consumption"]),
+            bmi=bmi,
+        )
+
+        # Convert input data to DataFrame
+        input_df = nutrition_data.get_data_as_data_frame()
+
+        # Predict using NutritionRiskPredictPipeline
+        predict_pipeline = NutritionRiskPredictPipeline()
+        results = predict_pipeline.predict(input_df)
+
+        return jsonify({"prediction": results.tolist()})
+
+    except Exception as e:
+        return jsonify({"error": str(e)}), 400
+
+
+@app.route("/physicalriskprediction", methods=["POST"])
+def physical_risk_prediction():
+    try:
+        # Get JSON data from the frontend
+        data_json = request.get_json()
+        print("Received data for physical risk prediction:", data_json)
+        height = float(data_json["height"])
+        weight = float(data_json["weight"])
+        bmi = weight / ((height / 100) ** 2)
+        # Create an instance of NutritionRiskCustomData
+        nutrition_data = NutritionRiskCustomData(
+            age=int(data_json["age"]),
+            gender=data_json["gender"],
+            height=height,
+            weight=weight,
+            energy_levels=float(data_json["Energy Levels"]),
+            physical_activity=float(data_json["Physical_Activity"]),
+            sitting_time=float(data_json["Sitting_Time"]),
+            cardiovascular_health=float(
+                data_json["Cardiovascular_Health"]
+            ),  # Assuming this is categorical
+            muscle_strength=float(
+                data_json["Muscle_Strength"]
+            ),  # Assuming this is categorical
+            flexibility=float(data_json["Flexibility"]),  # Assuming this is categorical
+            balance=float(data_json["Balance"]),
+            thirsty=float(data_json["Thirsty"]),
+            pain_or_discomfort=float(data_json["Pain_or_Discomfort"]),
+            available_time=float(data_json["Available_Time"]),
+            DiabetesRisk=float(data_json["DiabetesRisk"]),
             bmi=bmi,
         )
 

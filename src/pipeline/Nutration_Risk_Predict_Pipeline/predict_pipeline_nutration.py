@@ -10,6 +10,7 @@ class NutritionRiskPredictPipeline:
         pass
 
     def predict(self, features):
+        
         try:
             model_path = os.path.join("artifact/nutrition", "model.pkl")
             preprocessor_path = os.path.join(
@@ -41,6 +42,7 @@ class NutritionRiskCustomData:
         portion_control: int,
         caloric_balance: int,
         sugar_consumption: float,
+        DiabetesRisk:float,
         bmi: float,
     ):
         self.age = age
@@ -54,6 +56,7 @@ class NutritionRiskCustomData:
         self.portion_control = portion_control
         self.caloric_balance = caloric_balance
         self.sugar_consumption = sugar_consumption
+        self.DiabetesRisk = DiabetesRisk
         self.bmi = bmi
 
     def get_data_as_data_frame(self):
@@ -70,6 +73,7 @@ class NutritionRiskCustomData:
                 "Portion_Control": [self.portion_control],
                 "Caloric_Balance": [self.caloric_balance],
                 "Sugar_Consumption": [self.sugar_consumption],
+                "DiabetesRisk": [self.DiabetesRisk],
                 "BMI": [self.bmi],
             }
 
