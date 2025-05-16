@@ -133,7 +133,7 @@ def physical_risk_prediction():
             gender=data_json["gender"],
             height=height,
             weight=weight,
-            energy_levels=float(data_json["Energy Levels"]),
+            energy_levels=float(data_json["EnergyLevels"]),
             physical_activity=float(data_json["Physical_Activity"]),
             sitting_time=float(data_json["Sitting_Time"]),
             cardiovascular_health=float(

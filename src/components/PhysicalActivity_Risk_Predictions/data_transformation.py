@@ -37,7 +37,7 @@ class DataTransformation:
                 "Gender",
                 "Height",
                 "Weight",
-                "Energy Levels",
+                "EnergyLevels",
                 "Physical_Activity",
                 "Sitting_Time",
                 "Cardiovascular_Health",

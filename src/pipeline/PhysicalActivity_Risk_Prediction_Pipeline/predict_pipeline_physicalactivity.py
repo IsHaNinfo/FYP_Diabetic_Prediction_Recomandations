@@ -12,7 +12,7 @@ class PhysicalRiskPredictPipeline:
     def predict(self, features):
         try:
             # Corrected model and preprocessor paths
-            model_path = os.path.join("artifact/physical", "physical_model.pkl")
+            model_path = os.path.join("artifact/physical", "model.pkl")
             preprocessor_path = os.path.join(
                 "artifact/physical", "physical_preprocessor.pkl"
             )
@@ -72,7 +72,7 @@ class PhysicalRiskCustomData:
                 "Gender": [self.gender],
                 "Height": [self.height],
                 "Weight": [self.weight],
-                "Energy Levels": [self.energy_levels],
+                "EnergyLevels": [self.energy_levels],
                 "Physical_Activity": [self.physical_activity],
                 "Sitting_Time": [self.sitting_time],
                 "Cardiovascular_Health": [self.cardiovascular_health],
