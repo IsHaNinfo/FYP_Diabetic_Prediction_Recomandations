@@ -100,6 +100,8 @@ def nutrition_risk_prediction():
                 data_json["Caloric_Balance"]
             ),  # Assuming this is categorical
             sugar_consumption=float(data_json["Sugar_Consumption"]),
+            DiabetesRisk=float(data_json["DiabetesRisk"]),
+            # Assuming this is a float value
             bmi=bmi,
         )
 
@@ -126,7 +128,7 @@ def physical_risk_prediction():
         weight = float(data_json["weight"])
         bmi = weight / ((height / 100) ** 2)
         # Create an instance of NutritionRiskCustomData
-        nutrition_data = NutritionRiskCustomData(
+        nutrition_data = PhysicalRiskCustomData(
             age=int(data_json["age"]),
             gender=data_json["gender"],
             height=height,
@@ -153,7 +155,7 @@ def physical_risk_prediction():
         input_df = nutrition_data.get_data_as_data_frame()
 
         # Predict using NutritionRiskPredictPipeline
-        predict_pipeline = NutritionRiskPredictPipeline()
+        predict_pipeline = PhysicalRiskPredictPipeline()
         results = predict_pipeline.predict(input_df)
 
         return jsonify({"prediction": results.tolist()})
