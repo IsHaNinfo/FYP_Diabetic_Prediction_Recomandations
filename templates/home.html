@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diabetic Risk Prediction</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #e8f5e9;
+            /* Light green for health-related theme */
+            font-family: Arial, sans-serif;
+        }
+
+        .navbar {
+            background-color: #00796b;
+            /* Teal color */
+            color: white;
+        }
+
+        .navbar-brand {
+            color: white;
+            font-weight: bold;
+        }
+
+        .navbar a {
+            color: white;
+        }
+
+        .container {
+            margin-top: 20px;
+        }
+
+        .left-section {
+            background-color: #c8e6c9;
+            /* Light green */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .right-section {
+            text-align: center;
+        }
+
+        .right-section .btn-check-risk {
+            background-color: #00796b;
+            color: white;
+            font-size: 18px;
+            padding: 15px 30px;
+            border-radius: 5px;
+            border: none;
+        }
+
+        .right-section .btn-check-risk:hover {
+            background-color: #004d40;
+        }
+
+        .progress-circle {
+            position: relative;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: conic-gradient(#00796b 0%, #c8e6c9 0%);
+            margin: 20px auto;
+        }
+
+        .progress-circle::before {
+            content: "";
+            position: absolute;
+            top: 10%;
+            left: 10%;
+            width: 80%;
+            height: 80%;
+            background-color: #ffffff;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .progress-circle span {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 24px;
+            font-weight: bold;
+            color: #00796b;
+            z-index: 2;
+        }
+
+        .recommendation-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .recommendation-buttons .btn {
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+
+        .modal-body {
+            text-align: center;
+        }
+
+        .spinner {
+            margin: 20px auto;
+            width: 100px;
+            height: 100px;
+            border: 10px solid #c8e6c9;
+            border-top: 10px solid #00796b;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Diabetic Risk Dashboard</a>
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#importance">Importance</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#check-risk">Check Risk</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="row">
+            <!-- Left Section -->
+            <div class="col-md-6 left-section" id="importance">
+                <h3>Why Control Diabetic Risk?</h3>
+                <p>
+                    Diabetes is a chronic condition that can lead to severe complications if not managed properly.
+                    Controlling your diabetic risk can help prevent heart disease, kidney failure, vision loss, and
+                    other health issues.
+                </p>
+                <ul>
+                    <li>Maintain a healthy diet.</li>
+                    <li>Engage in regular physical activity.</li>
+                    <li>Monitor your blood sugar levels.</li>
+                    <li>Consult with healthcare professionals regularly.</li>
+                </ul>
+            </div>
+
+            <!-- Right Section -->
+            <div class="col-md-6 right-section" id="check-risk">
+                <h3>Ready to Check Your Risk?</h3>
+                <div class="progress-circle" id="progressCircle">
+                    <span id="progressValue">0%</span>
+                </div>
+
+                <button class="btn-check-risk" data-bs-toggle="modal" data-bs-target="#riskModal">
+                    Check Diabetic Risk
+                </button>
+                <div class="recommendation-buttons" id="recommendationButtons" style="display: none;">
+                    <a href="/nutrition" class="btn btn-success">Nutrition</a>
+                    <a href="/physical" class="btn btn-info">Physical Activity</a>
+                    <a href="/mental" class="btn btn-warning">Mental Well-being</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="riskModal" tabindex="-1" aria-labelledby="riskModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="riskModalLabel">Diabetic Risk Assessment</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="{{ url_for('predict_datapoint') }}" method="post" id="riskForm">
+                        <legend class="text-center mb-4">Enter Your Details</legend>
+                        <div class="mb-3">
+                            <label class="form-label">Age</label>
+                            <input class="form-control" type="number" name="age" placeholder="Enter your age" min="20"
+                                max="50" required />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Gender</label>
+                            <select class="form-control" name="gender" required>
+                                <option class="placeholder" selected disabled value="">Select your Gender</option>
+                                <option value="1.0">Male</option>
+                                <option value="0.0">Female</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Height (in cm)</label>
+                            <input class="form-control" type="number" name="height" placeholder="Enter your Height"
+                                required />
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Weight (in kg)</label>
+                            <input class="form-control" type="number" name="weight" placeholder="Enter your Weight"
+                                required />
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Waist Circumference (in cm)</label>
+                            <input class="form-control" type="number" name="Waist_Circumference"
+                                placeholder="Enter your Waist Circumference" required />
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Diet Food Habits (Meals per Day)</label>
+                            <select class="form-control" name="Diet_Food_Habits" required>
+                                <option class="placeholder" selected disabled value="">Select Meals per Day</option>
+                                <option value="1">1 Meal</option>
+                                <option value="2">2 Meals</option>
+                                <option value="3">3 Meals</option>
+                                <option value="4">4 Meals</option>
+                                <option value="5">5 Meals</option>
+                                <option value="6">6 Meals</option>
+                                <option value="7">7 Meals</option>
+                                <option value="8">8 Meals</option>
+                                <option value="9">9 Meals</option>
+                                <option value="10">10 Meals</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Family History (Do any family members have diabetes?)</label>
+                            <select class="form-control" name="Family_History" required>
+                                <option class="placeholder" selected disabled value="">Select an Option</option>
+                                <option value="1.0">Yes</option>
+                                <option value="0.0">No</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">High Blood Pressure (Do you have high blood pressure
+                                continuously?)</label>
+                            <select class="form-control" name="Blood_Pressure" required>
+                                <option class="placeholder" selected disabled value="">Select an Option</option>
+                                <option value="1.0">Yes</option>
+                                <option value="0.0">No</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Cholesterol/Lipid Levels (Do you have abnormal cholesterol or
+                                lipid
+                                levels?)</label>
+                            <select class="form-control" name="Cholesterol_Lipid_Levels" required>
+                                <option class="placeholder" selected disabled value="">Select an Option</option>
+                                <option value="1.0">Yes</option>
+                                <option value="0.0">No</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Thirst (Do you experience excessive thirst?)</label>
+                            <select class="form-control" name="Thirst" required>
+                                <option class="placeholder" selected disabled value="">Select an Option</option>
+                                <option value="1.0">Yes</option>
+                                <option value="0.0">No</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Fatigue (Do you feel fatigued frequently?)</label>
+                            <select class="form-control" name="Fatigue" required>
+                                <option class="placeholder" selected disabled value="">Select an Option</option>
+                                <option value="1.0">Yes</option>
+                                <option value="0.0">No</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Urination (Do you experience frequent urination?)</label>
+                            <select class="form-control" name="Urination" required>
+                                <option class="placeholder" selected disabled value="">Select an Option</option>
+                                <option value="1.0">Yes</option>
+                                <option value="0.0">No</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Vision Changes (Do you experience changes in vision?)</label>
+                            <select class="form-control" name="Vision_Changes" required>
+                                <option class="placeholder" selected disabled value="">Select an Option</option>
+                                <option value="1.0">Yes</option>
+                                <option value="0.0">No</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Expected Diabetic Risk (Risk Level)</label>
+                            <select class="form-control" name="RiskLevel" required>
+                                <option class="placeholder" selected disabled value="">Select Risk Level</option>
+                                <option value="0.0">Low</option>
+                                <option value="1.0">Moderate</option>
+                                <option value="2.0">High</option>
+                            </select>
+                        </div>
+                        <!-- Add other form fields here -->
+                        <div class="mb-3">
+                            <input class="btn btn-primary" type="submit" value="Submit" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const results = "{{ results }}"; // Replace with backend value
+            const progressCircle = document.getElementById("progressCircle");
+            const progressValue = document.getElementById("progressValue");
+
+            if (results) {
+                const percentage = parseFloat(results).toFixed(2);
+                progressCircle.style.background = `conic-gradient(#00796b ${percentage}%, #c8e6c9 ${percentage}%)`;
+                progressValue.textContent = `${percentage}%`;
+            }
+        });
+    </script>
+</body>
+
+</html>

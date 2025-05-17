@@ -19,7 +19,7 @@ from src.utils import save_obj
 @dataclass
 class DataTransformationConfig:
     preprocessor_obj_file_path = os.path.join(
-        "artifact/common", "diabetic_preprocessor.pkl"
+        "artifact/nutrition", "nutrition_preprocessor.pkl"
     )
 
 
@@ -37,16 +37,15 @@ class DataTransformation:
                 "Gender",
                 "Height",
                 "Weight",
-                "Waist_Circumference",
-                "Family_History",
-                "Blood_Pressure",
-                "Cholesterol_Lipid_Levels",
-                "Thirst",
-                "Fatigue",
-                "Urination",
-                "Vision Changes",
+                "Carbohydrate_Consumption",
+                "Protein_Intake",
+                "Fat_Intake",
+                "Regularity_of_Meals",
+                "Portion_Control",
+                "Caloric_Balance",
+                "Sugar_Consumption",
+                "DiabetesRisk",
                 "BMI",
-                "RiskLevel",
             ]
 
             num_pipeline = Pipeline(
@@ -78,7 +77,7 @@ class DataTransformation:
             logging.info("Obtaining preprocessing object")
             preprocessing_obj = self.get_transformer_object()
 
-            target_column_name = "DiabetesRisk"
+            target_column_name = "NutritionRisk"
             input_feature_train_df = train_df.drop(columns=[target_column_name], axis=1)
             target_feature_train_df = train_df[target_column_name]
 
