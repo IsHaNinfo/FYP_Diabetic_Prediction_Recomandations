@@ -21,6 +21,11 @@ from src.pipeline.PhysicalActivity_Risk_Prediction_Pipeline.predict_pipeline_phy
     PhysicalRiskPredictPipeline,
 )
 
+from src.pipeline.Nutrition_Recommandations.nutrition_recommandations import (
+    NutritionRecommendationsCustomData,
+    NutritionRecommendationsPredictPipeline,
+)
+# ...existing code...
 app = Flask(__name__)
 # Initialize CORS with default options
 CORS(app)
@@ -163,6 +168,21 @@ def physical_risk_prediction():
     except Exception as e:
         return jsonify({"error": str(e)}), 400
 
+@app.route("/nutritionrecommendations", methods=["POST"])
+def nutrition_recommendations():
+    try:
+        data_json = request.get_json()
+        print("Received data for nutrition recommendations:", data_json)
+        # Prepare input data
+        custom_data = NutritionRecommendationsCustomData(**data_json)
+        input_df = custom_data.get_data_as_data_frame()
+        # Predict
+        pipeline = NutritionRecommendationsPredictPipeline()
+        preds = pipeline.predict(input_df)
+        # Return the first prediction as an example
+        return jsonify({"recommendations": preds[0].tolist()})
+    except Exception as e:
+        return jsonify({"error": str(e)}), 400
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", debug=True)

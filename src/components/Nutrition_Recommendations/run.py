@@ -11,6 +11,9 @@ from torch_geometric.data import Data
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
+import os
+import sys
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../../../")))
 
 # 1. Load data
 user_df = load_user_data()
@@ -33,7 +36,11 @@ val_mask[val_idx] = True
 # 4. Train model
 model = GCN(input_dim=x.shape[1], hidden_dim=64, output_dim=y.shape[1])
 trained_model = train_model(data, model, train_mask, val_mask)
-
+ARTIFACT_DIR = "artifact/nutrition_recommendations"
+os.makedirs(ARTIFACT_DIR, exist_ok=True)
+MODEL_PATH = os.path.join(ARTIFACT_DIR, "gcn_model.pkl")
+torch.save(trained_model.state_dict(), MODEL_PATH)
+print(f"Trained model saved to {MODEL_PATH}")
 # 5. Inference & evaluation
 model.eval()
 preds = model(data.x, data.edge_index).detach().cpu().numpy()
