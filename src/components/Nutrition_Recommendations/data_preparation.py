@@ -9,5 +9,5 @@ def load_user_data():
 def scale_features(df):
     scaler = StandardScaler()
     X = scaler.fit_transform(df[FEATURE_COLS])
-    y = df[TARGET_COLS].values
+    y = scaler.fit_transform(df[TARGET_COLS])
     return X, y, scaler

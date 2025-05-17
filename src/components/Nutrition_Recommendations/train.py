@@ -1,9 +1,8 @@
 import torch
-from .model import GCN
 
-def train_model(data, input_dim, output_dim, epochs=300, lr=0.001, weight_decay=0.01):
+def train_model(data, model, train_mask, val_mask, epochs=300, lr=0.001, weight_decay=0.01):
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-    model = GCN(input_dim=input_dim, hidden_dim=64, output_dim=output_dim).to(device)
+    model = model.to(device)
     data = data.to(device)
     optimizer = torch.optim.AdamW(model.parameters(), lr=lr, weight_decay=weight_decay)
     criterion = torch.nn.MSELoss()
@@ -12,9 +11,14 @@ def train_model(data, input_dim, output_dim, epochs=300, lr=0.001, weight_decay=
         model.train()
         optimizer.zero_grad()
         out = model(data.x, data.edge_index)
-        loss = criterion(out, data.y)
+        loss = criterion(out[train_mask], data.y[train_mask])
         loss.backward()
         optimizer.step()
-        if epoch % 20 == 0:
-            print(f"Epoch {epoch}, Loss: {loss.item():.4f}")
+
+        if epoch % 10 == 0:
+            model.eval()
+            with torch.no_grad():
+                val_out = model(data.x, data.edge_index)
+                val_loss = criterion(val_out[val_mask], data.y[val_mask])
+            print(f"Epoch {epoch} | Train Loss: {loss.item():.4f} | Val Loss: {val_loss.item():.4f}")
     return model

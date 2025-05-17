@@ -1,12 +1,12 @@
+from sklearn.neighbors import NearestNeighbors
 import torch
-from sklearn.metrics.pairwise import cosine_similarity
 
-def build_edge_index(X, threshold):
-    similarity_matrix = cosine_similarity(X)
+def build_edge_index(X, k=5):
+    nbrs = NearestNeighbors(n_neighbors=k).fit(X)
     edges = []
-    for i in range(len(similarity_matrix)):
-        for j in range(len(similarity_matrix)):
-            if i != j and similarity_matrix[i][j] > threshold:
+    for i, neighbors in enumerate(nbrs.kneighbors(X, return_distance=False)):
+        for j in neighbors:
+            if i != j:
                 edges.append([i, j])
     edge_index = torch.tensor(edges, dtype=torch.long).t().contiguous()
     return edge_index
