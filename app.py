@@ -39,7 +39,7 @@ def index():
     return "API is working"
 
 
-@app.route("/predictdata", methods=["POST"])
+@app.route("/+", methods=["POST"])
 def predict_datapoint():
     try:
         data_json = request.get_json()
