@@ -1,6 +1,6 @@
 import torch
 
-def train_model(data, model, train_mask, val_mask, epochs=300, lr=0.001, weight_decay=0.01):
+def train_model(data, model, train_mask, val_mask, epochs=2500, lr=0.0008, weight_decay=0.01):
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     model = model.to(device)
     data = data.to(device)
