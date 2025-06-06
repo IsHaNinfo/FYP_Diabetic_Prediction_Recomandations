@@ -1,7 +1,5 @@
 import pandas as pd
-from src.components.Exersices_Recommendations.recommender import recommend_exercises
-from src.components.Exersices_Recommendations.data_loader import load_user_data, load_gym_data
-from src.components.Exersices_Recommendations.config import FEATURE_COLS
+import re
 
 class ExercisesRecommendationsCustomData:
     def __init__(self, **kwargs):
@@ -10,12 +8,20 @@ class ExercisesRecommendationsCustomData:
     def get_data_as_data_frame(self):
         return pd.DataFrame([self.data])
 
-class ExercisesRecommendationsPredictPipeline:
-    def __init__(self):
-        self.gym_df = load_gym_data()
 
-    def predict(self, user_df):
-        # Assume user_df is a DataFrame with one row
-        user_row = user_df.iloc[0]
-        recommended = recommend_exercises(user_row, self.gym_df)
-        return recommended.to_dict(orient="records")
+    def build_prompt(data):
+        return (
+        f"Age: {data.get('age')}, Gender: {data.get('gender')}, Height: {data.get('height')} cm, "
+        f"Weight: {data.get('weight')} kg, Energy Levels: {data.get('energy_levels')}, "
+        f"Physical Activity: {data.get('physical_activity')}, Sitting Time: {data.get('sitting_time')}, "
+        f"Cardiovascular Health: {data.get('cardiovascular_health')}, Muscle Strength: {data.get('muscle_strength')}, "
+        f"Flexibility: {data.get('flexibility')}, Balance: {data.get('balance')}, Thirsty: {data.get('thirsty')}, "
+        f"Pain or Discomfort: {data.get('pain_or_discomfort')}, Available Time: {data.get('available_time')} minutes/week, "
+        f"Diabetes Risk: {data.get('diabetes_risk')}, Nutrition Risk: {data.get('nutrition_risk')}. "
+        f"Recommend a personalized workout."
+    )
+
+def format_paragraphs(text):
+    parts = re.split(r'(?:(?<=\n)|(?<=\.))\s*(?=(?:-|\d+\.|\•|[A-Z]))', text.strip())
+    paragraphs = [part.strip() for part in parts if part.strip()]
+    return "\n\n".join(paragraphs) 

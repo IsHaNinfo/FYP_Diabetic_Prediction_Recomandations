@@ -4,6 +4,11 @@ import numpy as np
 import pandas as pd
 import sys
 import os
+from transformers import AutoTokenizer, AutoModelForCausalLM, pipeline
+from peft import PeftModel
+import torch
+import re
+from peft import PeftModel
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), ".")))
 from sklearn.preprocessing import StandardScaler
@@ -33,7 +38,8 @@ from src.components.Nutrition_Recommendations.config import FOOD_DATA_PATH, TARG
 
 from src.pipeline.Exercises_Recommandations.exercises_recommandations import (
     ExercisesRecommendationsCustomData,
-    ExercisesRecommendationsPredictPipeline,
+    build_prompt,
+    format_paragraphs,
 )
 
 # ...existing code...
@@ -222,20 +228,41 @@ def nutrition_recommendations():
         return jsonify({"error": str(e)}), 400
 
 
+base_model_name = "EleutherAI/gpt-neo-1.3B"
+adapter_path = "./adapter"  # adjust if different
+
+tokenizer = AutoTokenizer.from_pretrained(base_model_name)
+tokenizer.pad_token = tokenizer.eos_token
+base_model = AutoModelForCausalLM.from_pretrained(base_model_name)
+model = PeftModel.from_pretrained(base_model, adapter_path)
+model.eval()
+
+generator = pipeline("text-generation", model=model, tokenizer=tokenizer, device=-1)
+
 @app.route("/exercisesrecommendations", methods=["POST"])
-def exercises_recommendations():
+def recommend():
     try:
-        data_json = request.get_json()
-        print("Received data for exercise recommendations:", data_json)
-        # Prepare input data
-        custom_data = ExercisesRecommendationsCustomData(**data_json)
-        input_df = custom_data.get_data_as_data_frame()
-        # Predict
-        pipeline = ExercisesRecommendationsPredictPipeline()
-        preds = pipeline.predict(input_df)
-        return jsonify({"recommendations": preds})
+        data = request.get_json()
+        custom_data = ExercisesRecommendationsCustomData(**data)
+        prompt = build_prompt(custom_data.get_data_as_data_frame().iloc[0].to_dict())
+
+        output = generator(
+            prompt,
+            max_new_tokens=400,
+            do_sample=True,
+            top_p=0.9,
+            temperature=0.7,
+            pad_token_id=tokenizer.eos_token_id
+        )
+
+        result = output[0]["generated_text"][len(prompt):].strip()
+        formatted = format_paragraphs(result)
+
+        return jsonify({"recommendation": formatted})
+
     except Exception as e:
         return jsonify({"error": str(e)}), 400
+
 
 
 if __name__ == "__main__":

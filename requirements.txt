@@ -10,4 +10,6 @@ sdv
 torch
 CORS
 causalml
+transformers
+peft
 #-e .
