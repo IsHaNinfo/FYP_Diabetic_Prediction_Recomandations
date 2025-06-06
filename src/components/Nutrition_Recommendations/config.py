@@ -1,5 +1,5 @@
 DATA_PATH = "G:/FYP_Diabetic_Prediction_Recomandations/notebook/data/preproccedData/Augmented_PreProccedNutrationParameters.csv"
-FOOD_DATA_PATH = "G:/FYP_Diabetic_Prediction_Recomandations/notebook/data/RecommandationDatasets/nutrients_csvfile.csv"
+FOOD_DATA_PATH = "G:/FYP_Diabetic_Prediction_Recomandations/notebook/data/RecommandationDatasets/NutritionsDatasets/SLNutritionsFood.csv"
 FEATURE_COLS = [
     "Age",
     "Gender",
@@ -20,5 +20,7 @@ TARGET_COLS = [
     "Carbohydrate_Consumption",
     "NutritionRisk",
     "DiabetesRisk",
+    'Sugar_Consumption',
+    'Caloric_Balance'
 ]
 SIMILARITY_THRESHOLD = 0.9

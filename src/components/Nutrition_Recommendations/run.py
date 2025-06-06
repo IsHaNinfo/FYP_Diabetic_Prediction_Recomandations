@@ -1,10 +1,21 @@
-from src.components.Nutrition_Recommendations.data_preparation import load_user_data, scale_features
+from src.components.Nutrition_Recommendations.data_preparation import (
+    load_user_data,
+    scale_features,
+)
 from src.components.Nutrition_Recommendations.graph_builder import build_edge_index
-from src.components.Nutrition_Recommendations.model import GCN
+from src.components.Nutrition_Recommendations.model import GraphSAGE
 from src.components.Nutrition_Recommendations.train import train_model
 from src.components.Nutrition_Recommendations.inference import predict_nutrition
-from src.components.Nutrition_Recommendations.utils import recommend_foods, generate_meal_plan
-from src.components.Nutrition_Recommendations.config import FEATURE_COLS, TARGET_COLS, FOOD_DATA_PATH
+from src.components.Nutrition_Recommendations.utils import (
+    recommend_foods,
+    generate_meal_plan,
+    calculate_nutrition_targets
+)
+from src.components.Nutrition_Recommendations.config import (
+    FEATURE_COLS,
+    TARGET_COLS,
+    FOOD_DATA_PATH,
+)
 
 import torch
 from torch_geometric.data import Data
@@ -13,6 +24,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
 import os
 import sys
+
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../../../")))
 
 # 1. Load data
@@ -34,7 +46,7 @@ train_mask[train_idx] = True
 val_mask[val_idx] = True
 
 # 4. Train model
-model = GCN(input_dim=x.shape[1], hidden_dim=64, output_dim=y.shape[1])
+model = GraphSAGE(input_dim=x.shape[1], hidden_dim=128, output_dim=y.shape[1])
 trained_model = train_model(data, model, train_mask, val_mask)
 ARTIFACT_DIR = "artifact/nutrition_recommendations"
 os.makedirs(ARTIFACT_DIR, exist_ok=True)
@@ -53,10 +65,29 @@ print("R² Score:", r2_score(true, preds))
 
 # 6. Food recommendation & meal plan
 food_df = pd.read_csv(FOOD_DATA_PATH)
-predicted_nutrition = predict_nutrition(model, data, TARGET_COLS)
-first_user_pred = predicted_nutrition.iloc[0]
-recommended = recommend_foods(food_df, first_user_pred["Protein_Intake"], first_user_pred["Fat_Intake"], first_user_pred["Carbohydrate_Consumption"])
+user_info = user_df.iloc[0].to_dict()
+# Calculate nutrition targets using the improved function
+nutrition_targets = calculate_nutrition_targets(user_info)
+# Prepare the user_pred dictionary for meal planning
+user_pred = {
+    'DiabetesRisk': user_info.get('DiabetesRisk', 0),
+    'NutritionRisk': user_info.get('NutritionRisk', 0),
+    **nutrition_targets
+}
+
+# Recommend foods for the first user's targets
+recommended = recommend_foods(
+    food_df,
+    user_pred["Protein_Intake"],
+    user_pred["Fat_Intake"],
+    user_pred["Carbohydrate_Consumption"],
+)
 print(recommended.head())
-meal_plan = generate_meal_plan(first_user_pred, food_df)
+
+# Generate meal plan using the improved targets
+meal_plan = generate_meal_plan(user_pred, food_df)
 from pprint import pprint
+
 pprint(meal_plan)
+
+

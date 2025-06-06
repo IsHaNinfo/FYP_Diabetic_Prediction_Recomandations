@@ -4,6 +4,11 @@ import numpy as np
 import pandas as pd
 import sys
 import os
+from transformers import AutoTokenizer, AutoModelForCausalLM, pipeline
+from peft import PeftModel
+import torch
+import re
+from peft import PeftModel
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), ".")))
 from sklearn.preprocessing import StandardScaler
@@ -25,6 +30,18 @@ from src.pipeline.Nutrition_Recommandations.nutrition_recommandations import (
     NutritionRecommendationsCustomData,
     NutritionRecommendationsPredictPipeline,
 )
+from src.components.Nutrition_Recommendations.utils import (
+    recommend_foods,
+    generate_meal_plan,
+)
+from src.components.Nutrition_Recommendations.config import FOOD_DATA_PATH, TARGET_COLS
+
+from src.pipeline.Exercises_Recommandations.exercises_recommandations import (
+    ExercisesRecommendationsCustomData,
+    build_prompt,
+    format_paragraphs,
+)
+
 # ...existing code...
 app = Flask(__name__)
 # Initialize CORS with default options
@@ -168,21 +185,85 @@ def physical_risk_prediction():
     except Exception as e:
         return jsonify({"error": str(e)}), 400
 
+
 @app.route("/nutritionrecommendations", methods=["POST"])
 def nutrition_recommendations():
     try:
         data_json = request.get_json()
         print("Received data for nutrition recommendations:", data_json)
+
         # Prepare input data
         custom_data = NutritionRecommendationsCustomData(**data_json)
         input_df = custom_data.get_data_as_data_frame()
+
         # Predict
         pipeline = NutritionRecommendationsPredictPipeline()
         preds = pipeline.predict(input_df)
-        # Return the first prediction as an example
-        return jsonify({"recommendations": preds[0].tolist()})
+        predicted_nutrition = preds[0]  # Assuming single user
+
+        # Format prediction into dictionary with target column names
+        pred_dict = {k: float(v) for k, v in zip(TARGET_COLS, predicted_nutrition)}
+
+        # Load food database
+        food_df = pd.read_csv(FOOD_DATA_PATH)
+
+        # Recommend foods and generate meal plan
+        recommended = recommend_foods(
+            food_df,
+            pred_dict["Protein_Intake"],
+            pred_dict["Fat_Intake"],
+            pred_dict["Carbohydrate_Consumption"],
+        )
+
+        meal_plan = generate_meal_plan(pred_dict, food_df)
+
+        return jsonify(
+            {
+                "predicted_nutrition": pred_dict,
+                "recommended_foods": recommended.head(5).to_dict(orient="records"),
+                "meal_plan": meal_plan,
+            }
+        )
     except Exception as e:
         return jsonify({"error": str(e)}), 400
+
+
+base_model_name = "EleutherAI/gpt-neo-1.3B"
+adapter_path = "./adapter"  # adjust if different
+
+tokenizer = AutoTokenizer.from_pretrained(base_model_name)
+tokenizer.pad_token = tokenizer.eos_token
+base_model = AutoModelForCausalLM.from_pretrained(base_model_name)
+model = PeftModel.from_pretrained(base_model, adapter_path)
+model.eval()
+
+generator = pipeline("text-generation", model=model, tokenizer=tokenizer, device=-1)
+
+@app.route("/exercisesrecommendations", methods=["POST"])
+def recommend():
+    try:
+        data = request.get_json()
+        custom_data = ExercisesRecommendationsCustomData(**data)
+        prompt = build_prompt(custom_data.get_data_as_data_frame().iloc[0].to_dict())
+
+        output = generator(
+            prompt,
+            max_new_tokens=400,
+            do_sample=True,
+            top_p=0.9,
+            temperature=0.7,
+            pad_token_id=tokenizer.eos_token_id
+        )
+
+        result = output[0]["generated_text"][len(prompt):].strip()
+        formatted = format_paragraphs(result)
+
+        return jsonify({"recommendation": formatted})
+
+    except Exception as e:
+        return jsonify({"error": str(e)}), 400
+
+
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", debug=True)

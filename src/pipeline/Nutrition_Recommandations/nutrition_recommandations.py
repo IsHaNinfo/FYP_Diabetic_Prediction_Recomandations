@@ -26,7 +26,13 @@ class NutritionRecommendationsPredictPipeline:
         # Scale features
         X, _, scaler = scale_features(user_df)
         self.scaler = scaler
-        edge_index = build_edge_index(X, k=5)
+
+        # Handle single-user prediction (no k-NN possible)
+        if len(X) == 1:
+            edge_index = torch.tensor([[0], [0]], dtype=torch.long)  # self-loop
+        else:
+            edge_index = build_edge_index(X, k=min(5, len(X)-1))  # avoid k > n-1
+
         x = torch.tensor(X, dtype=torch.float)
         with torch.no_grad():
             preds = self.model(x, edge_index).cpu().numpy()
