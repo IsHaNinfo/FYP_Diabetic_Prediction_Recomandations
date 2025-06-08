@@ -1,10 +1,11 @@
 import torch
 import pandas as pd
 import os
-from src.components.Nutrition_Recommendations.model import GCN
+from src.components.Nutrition_Recommendations.model import GraphSAGE
 from src.components.Nutrition_Recommendations.data_preparation import scale_features
 from src.components.Nutrition_Recommendations.graph_builder import build_edge_index
 from src.components.Nutrition_Recommendations.config import FEATURE_COLS, TARGET_COLS
+from src.components.Nutrition_Recommendations.utils import calculate_nutrition_targets
 
 class NutritionRecommendationsPredictPipeline:
     def __init__(self):
@@ -18,7 +19,7 @@ class NutritionRecommendationsPredictPipeline:
         self._load_model()
 
     def _load_model(self):
-        self.model = GCN(input_dim=self.input_dim, hidden_dim=64, output_dim=self.output_dim)
+        self.model = GraphSAGE(input_dim=self.input_dim, hidden_dim=128, output_dim=self.output_dim)
         self.model.load_state_dict(torch.load(self.model_path, map_location=torch.device('cpu')))
         self.model.eval()
 

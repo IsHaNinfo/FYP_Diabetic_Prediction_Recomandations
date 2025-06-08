@@ -1,27 +1,32 @@
-import pandas as pd
 import re
+import torch
+from transformers import AutoTokenizer, AutoModelForCausalLM, pipeline
+from peft import PeftModel
 
-class ExercisesRecommendationsCustomData:
-    def __init__(self, **kwargs):
-        self.data = kwargs
+tokenizer = AutoTokenizer.from_pretrained("EleutherAI/gpt-neo-1.3B")
+tokenizer.pad_token = tokenizer.eos_token
 
-    def get_data_as_data_frame(self):
-        return pd.DataFrame([self.data])
+base_model = AutoModelForCausalLM.from_pretrained("EleutherAI/gpt-neo-1.3B", torch_dtype=torch.float32)
 
+lora_path = "artifact/physical_recommandations/checkpoint-2000"
+model = PeftModel.from_pretrained(base_model, lora_path, torch_dtype=torch.float32)
+model.eval()
 
-    def build_prompt(data):
-        return (
-        f"Age: {data.get('age')}, Gender: {data.get('gender')}, Height: {data.get('height')} cm, "
-        f"Weight: {data.get('weight')} kg, Energy Levels: {data.get('energy_levels')}, "
-        f"Physical Activity: {data.get('physical_activity')}, Sitting Time: {data.get('sitting_time')}, "
-        f"Cardiovascular Health: {data.get('cardiovascular_health')}, Muscle Strength: {data.get('muscle_strength')}, "
-        f"Flexibility: {data.get('flexibility')}, Balance: {data.get('balance')}, Thirsty: {data.get('thirsty')}, "
-        f"Pain or Discomfort: {data.get('pain_or_discomfort')}, Available Time: {data.get('available_time')} minutes/week, "
-        f"Diabetes Risk: {data.get('diabetes_risk')}, Nutrition Risk: {data.get('nutrition_risk')}. "
-        f"Recommend a personalized workout."
+device = 0 if torch.cuda.is_available() else -1
+generator = pipeline("text-generation", model=model, tokenizer=tokenizer, device=device)
+
+def build_prompt_from_input(data_dict):
+    return (
+        f"Age: {data_dict['age']}, Gender: {data_dict['gender']}, Height: {data_dict['height']} cm, "
+        f"Weight: {data_dict['weight']} kg, Energy Levels: {data_dict['energy_levels']}, "
+        f"Physical Activity: {data_dict['physical_activity']}, Sitting Time: {data_dict['sitting_time']}, "
+        f"Cardiovascular Health: {data_dict['cardiovascular_health']}, Muscle Strength: {data_dict['muscle_strength']}, "
+        f"Flexibility: {data_dict['flexibility']}, Balance: {data_dict['balance']}, Thirsty: {data_dict['thirsty']}, "
+        f"Pain or Discomfort: {data_dict['pain_or_discomfort']}, Available Time: {data_dict['available_time']} minutes/week, "
+        f"Diabetes Risk: {data_dict['diabetes_risk']}, Nutrition Risk: {data_dict['nutrition_risk']}. "
+        "Recommend a personalized workout"
     )
 
 def format_paragraphs(text):
     parts = re.split(r'(?:(?<=\n)|(?<=\.))\s*(?=(?:-|\d+\.|\•|[A-Z]))', text.strip())
-    paragraphs = [part.strip() for part in parts if part.strip()]
-    return "\n\n".join(paragraphs) 
+    return "\n\n".join([part.strip() for part in parts if part.strip()])

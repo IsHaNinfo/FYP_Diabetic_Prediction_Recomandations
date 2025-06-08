@@ -3,6 +3,7 @@ import pandas as pd
 from src.exception import CustomException
 from src.utils import load_object
 import os
+from src.utils import to_01
 
 
 class PredictPipeline:
@@ -11,18 +12,22 @@ class PredictPipeline:
 
     def predict(self, features):
         try:
-            model_path = os.path.join("artifact", "model.pkl")
+            model_path = os.path.join("artifact/common", "model.pkl")
             preprocessor_path = os.path.join(
                 "artifact/common", "diabetic_preprocessor.pkl"
             )
-            print("Before Loading")
+            
+            if hasattr(features, 'get_data_as_data_frame'):
+                features = features.get_data_as_data_frame()
+                        
             model = load_object(file_path=model_path)
             preprocessor = load_object(file_path=preprocessor_path)
-            print("After Loading")
+            
             data_scaled = preprocessor.transform(features)
+            
             preds = model.predict(data_scaled)
+            
             return preds
-
         except Exception as e:
             raise CustomException(e, sys)
 
@@ -43,24 +48,26 @@ class CustomData:
         fatigue: float,
         urination: float,
         vision_changes: float,
-        bmi: float,  # Added BMI
-        risk_level: float,  # Added RiskLevel
+        bmi: float,
+        risk_level: float,
     ):
+        
+        
         self.age = age
         self.gender = gender
         self.height = height
         self.weight = weight
         self.waist_circumference = waist_circumference
         self.diet_food_habits = diet_food_habits
-        self.family_history = family_history
-        self.high_blood_pressure = high_blood_pressure
-        self.cholesterol_lipid_levels = cholesterol_lipid_levels
-        self.thirst = thirst
-        self.fatigue = fatigue
-        self.urination = urination
-        self.vision_changes = vision_changes
-        self.bmi = bmi  # Store BMI
-        self.risk_level = risk_level  # Store RiskLevel
+        self.family_history = to_01(family_history)
+        self.high_blood_pressure = to_01(high_blood_pressure)
+        self.cholesterol_lipid_levels = to_01(cholesterol_lipid_levels)
+        self.thirst = to_01(thirst)
+        self.fatigue = to_01(fatigue)
+        self.urination = to_01(urination)
+        self.vision_changes = to_01(vision_changes)
+        self.bmi = bmi
+        self.risk_level = to_01(risk_level)
 
     def get_data_as_data_frame(self):
         try:
@@ -78,11 +85,12 @@ class CustomData:
                 "Fatigue": [self.fatigue],
                 "Urination": [self.urination],
                 "Vision Changes": [self.vision_changes],
-                "BMI": [self.bmi],  # Include BMI in the DataFrame
-                "RiskLevel": [self.risk_level],  # Include RiskLevel in the DataFrame
+                "BMI": [self.bmi],
+                "RiskLevel": [self.risk_level],
             }
 
-            return pd.DataFrame(custom_data_input_dict)
+            df = pd.DataFrame(custom_data_input_dict)
+            return df
 
         except Exception as e:
             raise CustomException(e, sys)
