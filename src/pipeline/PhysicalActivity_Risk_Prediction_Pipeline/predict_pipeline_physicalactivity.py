@@ -1,29 +1,68 @@
 import sys
 import pandas as pd
+import numpy as np
+import shap
 from src.exception import CustomException
 from src.utils import load_object
 import os
 
 
 class PhysicalRiskPredictPipeline:
+    _model = None
+    _preprocessor = None
+    
     def __init__(self):
         pass
 
-    def predict(self, features):
-        try:
-            # Corrected model and preprocessor paths
+    def _load_model_and_preprocessor(self):
+        if PhysicalRiskPredictPipeline._model is None or PhysicalRiskPredictPipeline._preprocessor is None:
             model_path = os.path.join("artifact/physical", "model.pkl")
             preprocessor_path = os.path.join(
                 "artifact/physical", "physical_preprocessor.pkl"
             )
-            print("Before Loading")
-            model = load_object(file_path=model_path)
-            preprocessor = load_object(file_path=preprocessor_path)
-            print("After Loading")
-            data_scaled = preprocessor.transform(features)
-            preds = model.predict(data_scaled)
-            return preds
+            PhysicalRiskPredictPipeline._model = load_object(file_path=model_path)
+            PhysicalRiskPredictPipeline._preprocessor = load_object(file_path=preprocessor_path)
 
+    def calculate_feature_contributions(self, features):
+        try:
+            # Transform features using preprocessor
+            data_scaled = PhysicalRiskPredictPipeline._preprocessor.transform(features)
+            
+            # Create SHAP explainer for decision tree
+            explainer = shap.TreeExplainer(PhysicalRiskPredictPipeline._model)
+            
+            # Calculate SHAP values
+            shap_values = explainer.shap_values(data_scaled)
+            
+            # Get feature names
+            feature_names = features.columns
+            
+            # Calculate contribution percentages
+            contributions = {}
+            for i, feature in enumerate(feature_names):
+                # Calculate absolute contribution
+                abs_contribution = np.abs(shap_values[0][i])
+                # Calculate percentage contribution
+                total_contribution = np.sum(np.abs(shap_values[0]))
+                percentage = (abs_contribution / total_contribution) * 100
+                contributions[feature] = round(float(percentage), 2)
+            
+            return contributions
+            
+        except Exception as e:
+            raise CustomException(e, sys)
+
+    def predict(self, features):
+        try:
+            self._load_model_and_preprocessor()
+            data_scaled = PhysicalRiskPredictPipeline._preprocessor.transform(features)
+            preds = PhysicalRiskPredictPipeline._model.predict(data_scaled)
+            
+            # Calculate feature contributions using SHAP
+            feature_contributions = self.calculate_feature_contributions(features)
+            
+            return preds, feature_contributions
+            
         except Exception as e:
             raise CustomException(e, sys)
 

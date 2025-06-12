@@ -5,6 +5,8 @@ import pandas as pd
 import sys
 import os
 import warnings
+from functools import lru_cache
+import concurrent.futures
 warnings.filterwarnings("ignore")
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), ".")))
@@ -32,9 +34,20 @@ from src.components.Nutrition_Recommendations.config import FOOD_DATA_PATH, TARG
 
 from src.components.Diabetic_Risk_Prediction.risk_validation import validate_and_plot
 
-
+# Initialize Flask app
 app = Flask(__name__)
 CORS(app)
+
+# Initialize prediction pipelines as global variables
+diabetic_pipeline = PredictPipeline()
+nutrition_pipeline = NutritionRiskPredictPipeline()
+physical_pipeline = PhysicalRiskPredictPipeline()
+nutrition_recommendations_pipeline = NutritionRecommendationsPredictPipeline()
+
+# Cache food data
+@lru_cache(maxsize=1)
+def get_food_data():
+    return pd.read_csv(FOOD_DATA_PATH)
 
 @app.route("/")
 def index():
@@ -68,45 +81,52 @@ def predict_datapoint():
         )
 
         pred_df = data.get_data_as_data_frame()
-
-        predict_pipeline = PredictPipeline()
         
-        try:
-            results = predict_pipeline.predict(data)
-           
-        except Exception as pred_error:
-            raise pred_error
+        # Run prediction and validation in parallel
+        with concurrent.futures.ThreadPoolExecutor() as executor:
+            prediction_future = executor.submit(diabetic_pipeline.predict, data)
+            validation_future = executor.submit(validate_and_plot, data)
+            
+            results = prediction_future.result()
+            risk_validation_results = validation_future.result()
 
-        risk_validation_results = validate_and_plot(data)
+        # Convert numpy array to list if needed
+        if isinstance(results, np.ndarray):
+            results = results.tolist()
+        if isinstance(risk_validation_results, np.ndarray):
+            risk_validation_results = risk_validation_results.tolist()
 
         response_data = { 
-            "prediction": float(results[0]),
+            "prediction": float(results[0]) if isinstance(results, list) else float(results),
             "risk_validation": risk_validation_results
         }
         
         return jsonify(response_data)
         
     except Exception as e:
-        
         return jsonify({"error": str(e)}), 400
 
 @app.route("/nutritionriskprediction", methods=["POST"])
 def nutrition_risk_prediction():
     try:
         data_json = request.get_json()
-        print("Received data for nutrition risk prediction:", data_json)
         height = float(data_json["height"])
         weight = float(data_json["weight"])
         bmi = weight / ((height / 100) ** 2)
+        
+        # Convert Protein_Intake and Fat_Intake to numerical values
+        protein_intake_map = {"Yes": 1.0, "No": 0.0}
+        fat_intake_map = {"Healthy fats": 1.0, "Unhealthy fats": 0.0}
+        
         nutrition_data = NutritionRiskCustomData(
             age=int(data_json["age"]),
-            gender=data_json["gender"],
+            gender=int(data_json["gender"]),
             height=height,
             weight=weight,
             carbohydrate_consumption=float(data_json["Carbohydrate_Consumption"]),
-            protein_intake=float(data_json["Protein_Intake"]),
-            fat_intake=float(data_json["Fat_Intake"]),
-            regularity_of_meals=float(data_json["Regularity_of_Meals"]),
+            protein_intake=protein_intake_map.get(data_json["Protein_Intake"], 0.0),
+            fat_intake=fat_intake_map.get(data_json["Fat_Intake"], 0.0),
+            regularity_of_meals=1.0 if data_json["Regularity_of_Meals"] == "Yes" else 0.0,
             portion_control=float(data_json["Portion_Control"]),
             caloric_balance=float(data_json["Caloric_Balance"]),
             sugar_consumption=float(data_json["Sugar_Consumption"]),
@@ -115,11 +135,15 @@ def nutrition_risk_prediction():
         )
 
         input_df = nutrition_data.get_data_as_data_frame()
-        predict_pipeline = NutritionRiskPredictPipeline()
-        results = predict_pipeline.predict(input_df)
+        results, feature_contributions = nutrition_pipeline.predict(input_df)
+
+        # Convert numpy array to list if needed
+        if isinstance(results, np.ndarray):
+            results = results.tolist()
 
         return jsonify({
             "prediction": results,
+            "feature_contributions": feature_contributions
         })
         
     except Exception as e:
@@ -129,34 +153,43 @@ def nutrition_risk_prediction():
 def physical_risk_prediction():
     try:
         data_json = request.get_json()
-        print("Received data for physical risk prediction:", data_json)
         height = float(data_json["height"])
         weight = float(data_json["weight"])
         bmi = weight / ((height / 100) ** 2)
-        nutrition_data = PhysicalRiskCustomData(
+        
+        # Create mapping for categorical variables
+        yes_no_map = {"Yes": 1.0, "No": 0.0}
+        
+        physical_data = PhysicalRiskCustomData(
             age=int(data_json["age"]),
-            gender=data_json["gender"],
+            gender=int(data_json["gender"]),
             height=height,
             weight=weight,
             energy_levels=float(data_json["EnergyLevels"]),
             physical_activity=float(data_json["Physical_Activity"]),
-            sitting_time=float(data_json["Sitting_Time"]),
-            cardiovascular_health=float(data_json["Cardiovascular_Health"]),
-            muscle_strength=float(data_json["Muscle_Strength"]),
-            flexibility=float(data_json["Flexibility"]),
-            balance=float(data_json["Balance"]),
+            sitting_time=yes_no_map.get(data_json["Sitting_Time"], 0.0),
+            cardiovascular_health=yes_no_map.get(data_json["Cardiovascular_Health"], 0.0),
+            muscle_strength=yes_no_map.get(data_json["Muscle_Strength"], 0.0),
+            flexibility=yes_no_map.get(data_json["Flexibility"], 0.0),
+            balance=yes_no_map.get(data_json["Balance"], 0.0),
             thirsty=float(data_json["Thirsty"]),
-            pain_or_discomfort=float(data_json["Pain_or_Discomfort"]),
+            pain_or_discomfort=yes_no_map.get(data_json["Pain_or_Discomfort"], 0.0),
             available_time=float(data_json["Available_Time"]),
             DiabetesRisk=float(data_json["DiabetesRisk"]),
             bmi=bmi,
         )
 
-        input_df = nutrition_data.get_data_as_data_frame()
-        predict_pipeline = PhysicalRiskPredictPipeline()
-        results = predict_pipeline.predict(input_df)
+        input_df = physical_data.get_data_as_data_frame()
+        results, feature_contributions = physical_pipeline.predict(input_df)
 
-        return jsonify({"prediction": results.tolist()})
+        # Convert numpy array to list if needed
+        if isinstance(results, np.ndarray):
+            results = results.tolist()
+
+        return jsonify({
+            "prediction": results,
+            "feature_contributions": feature_contributions
+        })
 
     except Exception as e:
         return jsonify({"error": str(e)}), 400
@@ -165,52 +198,59 @@ def physical_risk_prediction():
 def nutrition_recommendations():
     try:
         data_json = request.get_json()
-        print("Received data for nutrition recommendations:", data_json)
-
         custom_data = NutritionRecommendationsCustomData(**data_json)
         input_df = custom_data.get_data_as_data_frame()
 
-        pipeline_ = NutritionRecommendationsPredictPipeline()
-        preds = pipeline_.predict(input_df)
+        # Get predictions
+        preds = nutrition_recommendations_pipeline.predict(input_df)
         predicted_nutrition = preds[0]
 
-        # Convert predictions to dictionary
+        # Convert predictions to dictionary and ensure all values are Python native types
         pred_dict = {k: float(v) for k, v in zip(TARGET_COLS, predicted_nutrition)}
         
         # Combine predictions with user data
         user_pred = {
-            'DiabetesRisk': pred_dict['DiabetesRisk'],
-            'NutritionRisk': pred_dict['NutritionRisk'],
-            'Protein_Intake': pred_dict['Protein_Intake'],
-            'Fat_Intake': pred_dict['Fat_Intake'],
-            'Carbohydrate_Consumption': pred_dict['Carbohydrate_Consumption'],
-            'Sugar_Consumption': pred_dict['Sugar_Consumption'],
-            'Caloric_Balance': pred_dict['Caloric_Balance']
+            'DiabetesRisk': float(pred_dict['DiabetesRisk']),
+            'NutritionRisk': float(pred_dict['NutritionRisk']),
+            'Protein_Intake': float(pred_dict['Protein_Intake']),
+            'Fat_Intake': float(pred_dict['Fat_Intake']),
+            'Carbohydrate_Consumption': float(pred_dict['Carbohydrate_Consumption']),
+            'Sugar_Consumption': float(pred_dict['Sugar_Consumption']),
+            'Caloric_Balance': float(pred_dict['Caloric_Balance'])
         }
 
-        food_df = pd.read_csv(FOOD_DATA_PATH)
-        recommended = recommend_foods(
-            food_df,
-            user_pred["Protein_Intake"],
-            user_pred["Fat_Intake"],
-            user_pred["Carbohydrate_Consumption"],
-        )
+        # Get cached food data
+        food_df = get_food_data()
 
-        meal_plan = generate_meal_plan(user_pred, food_df)
+        # Run recommendations and meal plan generation in parallel
+        with concurrent.futures.ThreadPoolExecutor() as executor:
+            recommended_future = executor.submit(
+                recommend_foods,
+                food_df,
+                user_pred["Protein_Intake"],
+                user_pred["Fat_Intake"],
+                user_pred["Carbohydrate_Consumption"],
+            )
+            meal_plan_future = executor.submit(generate_meal_plan, user_pred, food_df)
+            
+            recommended = recommended_future.result()
+            meal_plan = meal_plan_future.result()
+
+        # Ensure all data is JSON serializable
+        recommended_foods = recommended.head(5).to_dict(orient="records")
+        for food in recommended_foods:
+            for key, value in food.items():
+                if isinstance(value, np.number):
+                    food[key] = float(value)
 
         return jsonify({
             "predicted_nutrition": pred_dict,
-            "recommended_foods": recommended.head(5).to_dict(orient="records"),
+            "recommended_foods": recommended_foods,
             "meal_plan": meal_plan,
         })
     except Exception as e:
         print(f"Error in nutrition recommendations: {str(e)}")
         return jsonify({"error": str(e)}), 400
-
-
-
-
-
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", debug=True)

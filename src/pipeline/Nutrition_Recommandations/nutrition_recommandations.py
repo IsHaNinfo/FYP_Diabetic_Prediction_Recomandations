@@ -8,25 +8,30 @@ from src.components.Nutrition_Recommendations.config import FEATURE_COLS, TARGET
 from src.components.Nutrition_Recommendations.utils import calculate_nutrition_targets
 
 class NutritionRecommendationsPredictPipeline:
+    _model = None
+    _scaler = None
+    
     def __init__(self):
-        artifact_dir = "artifact/nutrition_recommendations"
-        model_path = os.path.join(artifact_dir, "gcn_model.pkl")
-        self.model = None
-        self.scaler = None
-        self.model_path = model_path
+        self.model_path = os.path.join("artifact/nutrition_recommendations", "gcn_model.pkl")
         self.input_dim = len(FEATURE_COLS)
         self.output_dim = len(TARGET_COLS)
-        self._load_model()
 
     def _load_model(self):
-        self.model = GraphSAGE(input_dim=self.input_dim, hidden_dim=128, output_dim=self.output_dim)
-        self.model.load_state_dict(torch.load(self.model_path, map_location=torch.device('cpu')))
-        self.model.eval()
+        if NutritionRecommendationsPredictPipeline._model is None:
+            NutritionRecommendationsPredictPipeline._model = GraphSAGE(
+                input_dim=self.input_dim, 
+                hidden_dim=128, 
+                output_dim=self.output_dim
+            )
+            NutritionRecommendationsPredictPipeline._model.load_state_dict(
+                torch.load(self.model_path, map_location=torch.device('cpu'))
+            )
+            NutritionRecommendationsPredictPipeline._model.eval()
 
     def predict(self, user_df):
         # Scale features
         X, _, scaler = scale_features(user_df)
-        self.scaler = scaler
+        self._scaler = scaler
 
         # Handle single-user prediction (no k-NN possible)
         if len(X) == 1:
@@ -35,9 +40,11 @@ class NutritionRecommendationsPredictPipeline:
             edge_index = build_edge_index(X, k=min(5, len(X)-1))  # avoid k > n-1
 
         x = torch.tensor(X, dtype=torch.float)
+        self._load_model()
+        
         with torch.no_grad():
-            preds = self.model(x, edge_index).cpu().numpy()
-        preds = self.scaler.inverse_transform(preds)
+            preds = NutritionRecommendationsPredictPipeline._model(x, edge_index).cpu().numpy()
+        preds = self._scaler.inverse_transform(preds)
         return preds
 
 class NutritionRecommendationsCustomData:

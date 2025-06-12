@@ -4,18 +4,8 @@ import sys
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../../../")))
 
 from dataclasses import dataclass
-from catboost import CatBoostRegressor
-from sklearn.ensemble import (
-    AdaBoostRegressor,
-    GradientBoostingRegressor,
-    RandomForestRegressor,
-)
-from sklearn.linear_model import LinearRegression
-from sklearn.metrics import r2_score
-from sklearn.neighbors import KNeighborsRegressor
 from sklearn.tree import DecisionTreeRegressor
-from sklearn.neural_network import MLPRegressor
-from xgboost import XGBRegressor
+from sklearn.metrics import r2_score
 
 from src.exception import CustomException
 from src.logger import logging
@@ -39,45 +29,29 @@ class ModelTrainer:
             X_test, y_test = test_array[:, :-1], test_array[:, -1]
 
             models = {
-                "Random Forest": RandomForestRegressor(),
-                "Decision Tree": DecisionTreeRegressor(),
-                "Gradient Boosting": GradientBoostingRegressor(),
-                "Linear Regression": LinearRegression(),
-                "K-Neighbors Regressor": KNeighborsRegressor(),
-                "XGBoost Regressor": XGBRegressor(),
-                "CatBoost Regressor": CatBoostRegressor(verbose=False),
-                "AdaBoost Regressor": AdaBoostRegressor(),
+                # Decision Tree is ideal for physical activity risk prediction because:
+                # 1. Fast training and prediction
+                # 2. Easy to interpret and visualize
+                # 3. Works well with SHAP for feature importance
+                # 4. Handles both numerical and categorical features
+                # 5. Provides clear decision rules
+                "Decision Tree": DecisionTreeRegressor(
+                    random_state=42,  # For reproducibility
+                ),
             }
 
             params = {
                 "Decision Tree": {
-                    "criterion": [
-                        "squared_error",
-                        "friedman_mse",
-                        "absolute_error",
-                        "poisson",
-                    ],
-                },
-                "Random Forest": {"n_estimators": [8, 16, 32, 64, 128, 256]},
-                "Gradient Boosting": {
-                    "learning_rate": [0.1, 0.01, 0.05, 0.001],
-                    "n_estimators": [8, 16, 32, 64, 128, 256],
-                },
-                "Linear Regression": {},
-                "K-Neighbors Regressor": {
-                    "n_neighbors": [5, 7, 9, 11],
-                },
-                "XGBoost Regressor": {
-                    "learning_rate": [0.1, 0.01, 0.05, 0.001],
-                    "n_estimators": [8, 16, 32, 64, 128, 256],
-                },
-                "CatBoost Regressor": {
-                    "depth": [6, 8, 10],
-                    "iterations": [30, 50, 100],
-                },
-                "AdaBoost Regressor": {
-                    "learning_rate": [0.1, 0.01, 0.05, 0.001],
-                    "n_estimators": [8, 16, 32, 64, 128, 256],
+                    # Maximum depth of the tree
+                    "max_depth": [3, 5, 7, 10],
+                    # Minimum samples required to split a node
+                    "min_samples_split": [2, 5, 10],
+                    # Minimum samples required at leaf node
+                    "min_samples_leaf": [1, 2, 4],
+                    # Maximum features to consider for best split
+                    "max_features": ['sqrt', 'log2', None],
+                    # Criterion for measuring quality of split
+                    "criterion": ['squared_error', 'absolute_error']
                 },
             }
 
@@ -127,7 +101,6 @@ class ModelTrainer:
 
             logging.info(f"R² score of the selected model on test data: {r2_square}")
             print(f"Selected Model: {best_model_name}, R² Score: {r2_square}")
-            ##print(f"Predicted Values (0-100%): {predicted_percentage}")
 
             return r2_square
 

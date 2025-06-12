@@ -7,26 +7,29 @@ from src.utils import to_01
 
 
 class PredictPipeline:
+    _model = None
+    _preprocessor = None
+    
     def __init__(self):
         pass
 
-    def predict(self, features):
-        try:
+    def _load_model_and_preprocessor(self):
+        if PredictPipeline._model is None or PredictPipeline._preprocessor is None:
             model_path = os.path.join("artifact/common", "model.pkl")
             preprocessor_path = os.path.join(
                 "artifact/common", "diabetic_preprocessor.pkl"
             )
-            
+            PredictPipeline._model = load_object(file_path=model_path)
+            PredictPipeline._preprocessor = load_object(file_path=preprocessor_path)
+
+    def predict(self, features):
+        try:
             if hasattr(features, 'get_data_as_data_frame'):
                 features = features.get_data_as_data_frame()
-                        
-            model = load_object(file_path=model_path)
-            preprocessor = load_object(file_path=preprocessor_path)
             
-            data_scaled = preprocessor.transform(features)
-            
-            preds = model.predict(data_scaled)
-            
+            self._load_model_and_preprocessor()
+            data_scaled = PredictPipeline._preprocessor.transform(features)
+            preds = PredictPipeline._model.predict(data_scaled)
             return preds
         except Exception as e:
             raise CustomException(e, sys)

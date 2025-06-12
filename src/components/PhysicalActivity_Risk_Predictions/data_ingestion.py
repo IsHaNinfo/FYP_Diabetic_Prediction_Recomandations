@@ -75,3 +75,23 @@ if __name__ == "__main__":
 
     modeltrainer = ModelTrainer()
     print(modeltrainer.initiate_model_trainer(train_arr, test_arr))
+
+
+"""
+Adaptive Learning:
+AdaBoost adaptively focuses on cases that are harder to predict
+Important for physical activity data where some patterns are more complex
+For example, it can better handle unusual combinations of activity levels and health metrics
+Handles Complex Relationships:
+Physical activity risk depends on multiple interacting factors:
+Exercise intensity
+Duration
+Frequency
+Type of activity
+Individual health conditions
+AdaBoost can capture these complex interactions through its ensemble approach
+Robust to Outliers:
+Physical activity data often contains outliers (e.g., unusually high or low activity levels)
+AdaBoost is less sensitive to outliers because it uses multiple weak learners
+Each weak learner can focus on different aspects of the dat
+"""
