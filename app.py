@@ -259,12 +259,24 @@ def exercise_recommendations():
     try:
         data_json = request.get_json()
         
+        # Calculate BMI
+        height = float(data_json["height"])  # in cm
+        weight = float(data_json["weight"])  # in kg
+        bmi = weight / ((height / 100) ** 2)
+        
+        # Get user prompt if provided
+        user_prompt = data_json.get("user_prompt", None)
+        
         # Prepare input for the recommendation model
         user_input = {
             "age": int(data_json["age"]),
-            "bmi": float(data_json["bmi"]),
+            "height": height,
+            "weight": weight,
+            "bmi": bmi,
             "energy_levels": float(data_json["energy_levels"]),
             "physical_activity": float(data_json["physical_activity"]),
+            "sitting_time": float(data_json["sitting_time"]),
+            "physical_activity_risk": float(data_json["physical_activity_risk"]),
             "available_time": float(data_json["available_time"]),
             "diabetesRisk": float(data_json["diabetes_risk"]),
             "gender": int(data_json["gender"]),
@@ -272,17 +284,15 @@ def exercise_recommendations():
             "cardiovascular_health": int(data_json["cardiovascular_health"]),
             "muscle_strength": int(data_json["muscle_strength"]),
             "flexibility": int(data_json["flexibility"]),
-            "balance": int(data_json["balance"])
+            "balance": int(data_json["balance"]),
+            "goal": str(data_json["goal"])
         }
 
-        # Get recommendations from the model
-        recommendations = recommend(user_input)
+        # Get recommendations from the model with user prompt
+        recommendations = recommend(user_input, user_prompt)
         
-        # Format the recommendations into readable text
-        formatted_recommendations = format_paragraphs(recommendations)
-
         return jsonify({
-            "recommendations": recommendations,
+            "recommendations": recommendations
         })
 
     except Exception as e:
@@ -294,3 +304,93 @@ if __name__ == "__main__":
 
 
     
+    """
+    {
+    "recommendations": {
+        "class": "class_1",
+        "is_novel": false,
+        "routine": [
+            {
+                "exercises": [
+                    {
+                        "equipment": "machine",
+                        "force": null,
+                        "instructions": [
+                            "To begin, step onto the treadmill and select the desired option from the menu. Most treadmills have a manual setting, or you can select a program to run. Typically, you can enter your age and weight to estimate the amount of calories burned during exercise. Elevation can be adjusted to change the intensity of the workout.",
+                            "Treadmills offer convenience, cardiovascular benefits, and usually have less impact than running outside. A 150 lb person will burn over 450 calories running 8 miles per hour for 30 minutes. Maintain proper posture as you run, and only hold onto the handles when necessary, such as when dismounting or checking your heart rate."
+                        ],
+                        "level": "beginner",
+                        "name": "Running, Treadmill",
+                        "primaryMuscles": [
+                            "quadriceps"
+                        ],
+                        "reps_sets": "2x10",
+                        "secondaryMuscles": [
+                            "calves",
+                            "glutes",
+                            "hamstrings"
+                        ]
+                    }
+                ],
+                "role": "Warm-Up"
+            },
+            {
+                "exercises": [
+                    {
+                        "equipment": null,
+                        "force": "static",
+                        "instructions": [
+                            "While seated, bend forward to hug your thighs from underneath with both arms.",
+                            "Keep your knees together and your legs extended out as you bring your chest down to your knees. You can also stretch your middle back by pulling your back away from your knees as your hugging them."
+                        ],
+                        "level": "beginner",
+                        "name": "Upper Back-Leg Grab",
+                        "primaryMuscles": [
+                            "hamstrings"
+                        ],
+                        "reps_sets": "2x10",
+                        "secondaryMuscles": [
+                            "lower back",
+                            "middle back"
+                        ]
+                    },
+                    {
+                        "equipment": null,
+                        "force": "static",
+                        "instructions": [
+                            "Stand with your feet hip-distance apart, one foot slightly in front of the other.",
+                            "Bend both knees, keeping your back heel on the floor. Switch sides."
+                        ],
+                        "level": "beginner",
+                        "name": "Standing Soleus And Achilles Stretch",
+                        "primaryMuscles": [
+                            "calves"
+                        ],
+                        "reps_sets": "2x10",
+                        "secondaryMuscles": []
+                    },
+                    {
+                        "equipment": "other",
+                        "force": "static",
+                        "instructions": [
+                            "Clasp your hands behind your back with your palms together, straighten arms and then rotate them so your palms face downward.",
+                            "Raise your arms up and hold until you feel a stretch in your biceps."
+                        ],
+                        "level": "beginner",
+                        "name": "Standing Biceps Stretch",
+                        "primaryMuscles": [
+                            "biceps"
+                        ],
+                        "reps_sets": "2x10",
+                        "secondaryMuscles": [
+                            "chest",
+                            "shoulders"
+                        ]
+                    }
+                ],
+                "role": "Stretching"
+            }
+        ]
+    }
+}
+    """
