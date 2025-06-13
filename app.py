@@ -33,6 +33,8 @@ from src.components.Nutrition_Recommendations.utils import (
 from src.components.Nutrition_Recommendations.config import FOOD_DATA_PATH, TARGET_COLS
 
 from src.components.Diabetic_Risk_Prediction.risk_validation import validate_and_plot
+from src.components.Exersices_Recommendations.exercise_recommander import recommend
+from src.pipeline.Exercises_Recommandations.exercises_recommand_pipeline import  format_paragraphs
 
 # Initialize Flask app
 app = Flask(__name__)
@@ -250,6 +252,41 @@ def nutrition_recommendations():
         })
     except Exception as e:
         print(f"Error in nutrition recommendations: {str(e)}")
+        return jsonify({"error": str(e)}), 400
+
+@app.route("/exerciserecommendations", methods=["POST"])
+def exercise_recommendations():
+    try:
+        data_json = request.get_json()
+        
+        # Prepare input for the recommendation model
+        user_input = {
+            "age": int(data_json["age"]),
+            "bmi": float(data_json["bmi"]),
+            "energy_levels": float(data_json["energy_levels"]),
+            "physical_activity": float(data_json["physical_activity"]),
+            "available_time": float(data_json["available_time"]),
+            "diabetesRisk": float(data_json["diabetes_risk"]),
+            "gender": int(data_json["gender"]),
+            "pain_or_discomfort": int(data_json["pain_or_discomfort"]),
+            "cardiovascular_health": int(data_json["cardiovascular_health"]),
+            "muscle_strength": int(data_json["muscle_strength"]),
+            "flexibility": int(data_json["flexibility"]),
+            "balance": int(data_json["balance"])
+        }
+
+        # Get recommendations from the model
+        recommendations = recommend(user_input)
+        
+        # Format the recommendations into readable text
+        formatted_recommendations = format_paragraphs(recommendations)
+
+        return jsonify({
+            "recommendations": recommendations,
+        })
+
+    except Exception as e:
+        print(f"Error in exercise recommendations: {str(e)}")
         return jsonify({"error": str(e)}), 400
 
 if __name__ == "__main__":
