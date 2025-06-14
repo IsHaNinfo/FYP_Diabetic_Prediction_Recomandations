@@ -79,7 +79,7 @@ def predict_datapoint():
             urination=1.0 if data_json["Urination"] == "Yes" else 0.0,
             vision_changes=1.0 if data_json["Vision_Changes"] == "Yes" else 0.0,
             bmi=bmi,
-            risk_level=1.0 if data_json["RiskLevel"] == "Yes" else 0.0
+            risk_level=2.0 if data_json["RiskLevel"] == "High" else (1.0 if data_json["RiskLevel"] == "Moderate" else 0.0)
         )
 
         pred_df = data.get_data_as_data_frame()
@@ -267,6 +267,16 @@ def exercise_recommendations():
         # Get user prompt if provided
         user_prompt = data_json.get("user_prompt", None)
         
+        # Create mapping for categorical variables
+        yes_no_map = {
+            "Sitting_Time": {"Yes": 1.0, "No": 0.0},
+            "Cardiovascular_Health": {"Yes": 1.0, "No": 0.0},
+            "Muscle_Strength": {"Yes": 1.0, "No": 0.0},
+            "Flexibility": {"Yes": 1.0, "No": 0.0},
+            "Balance": {"Yes": 1.0, "No": 0.0},
+            "Pain_or_Discomfort": {"Yes": 1.0, "No": 0.0}
+        }
+        
         # Prepare input for the recommendation model
         user_input = {
             "age": int(data_json["age"]),
@@ -275,16 +285,16 @@ def exercise_recommendations():
             "bmi": bmi,
             "energy_levels": float(data_json["energy_levels"]),
             "physical_activity": float(data_json["physical_activity"]),
-            "sitting_time": float(data_json["sitting_time"]),
+            "sitting_time": yes_no_map["Sitting_Time"].get(data_json["sitting_time"], 0.0),
             "physical_activity_risk": float(data_json["physical_activity_risk"]),
             "available_time": float(data_json["available_time"]),
             "diabetesRisk": float(data_json["diabetes_risk"]),
             "gender": int(data_json["gender"]),
-            "pain_or_discomfort": int(data_json["pain_or_discomfort"]),
-            "cardiovascular_health": int(data_json["cardiovascular_health"]),
-            "muscle_strength": int(data_json["muscle_strength"]),
-            "flexibility": int(data_json["flexibility"]),
-            "balance": int(data_json["balance"]),
+            "pain_or_discomfort": yes_no_map["Pain_or_Discomfort"].get(data_json["pain_or_discomfort"], 0.0),
+            "cardiovascular_health": yes_no_map["Cardiovascular_Health"].get(data_json["cardiovascular_health"], 0.0),
+            "muscle_strength": yes_no_map["Muscle_Strength"].get(data_json["muscle_strength"], 0.0),
+            "flexibility": yes_no_map["Flexibility"].get(data_json["flexibility"], 0.0),
+            "balance": yes_no_map["Balance"].get(data_json["balance"], 0.0),
             "goal": str(data_json["goal"])
         }
 
