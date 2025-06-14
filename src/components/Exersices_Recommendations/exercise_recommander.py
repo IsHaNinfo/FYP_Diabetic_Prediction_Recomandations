@@ -150,7 +150,7 @@ def generate_training_data():
         "bmi": np.random.uniform(18, 40, 300),
         "energy_levels": np.random.uniform(1, 5, 300),
         "physical_activity": np.random.uniform(0.5, 5.0, 300),
-        "sitting_time": np.random.uniform(2, 12, 300),  # hours per day
+        "sitting_time": np.random.uniform(0, 2, 300),  # hours per day
         "physical_activity_risk": np.random.uniform(0, 1, 300),
         "available_time": np.random.randint(10, 60, 300),
         "diabetesRisk": np.random.uniform(0, 1, 300),
