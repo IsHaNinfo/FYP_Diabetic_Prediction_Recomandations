@@ -22,19 +22,11 @@ from src.pipeline.PhysicalActivity_Risk_Prediction_Pipeline.predict_pipeline_phy
     PhysicalRiskCustomData,
     PhysicalRiskPredictPipeline,
 )
-from src.pipeline.Nutrition_Recommandations.nutrition_recommandations import (
-    NutritionRecommendationsCustomData,
-    NutritionRecommendationsPredictPipeline,
-)
-from src.components.Nutrition_Recommendations.utils import (
-    recommend_foods,
-    generate_meal_plan,
-)
-from src.components.Nutrition_Recommendations.config import FOOD_DATA_PATH, TARGET_COLS
 
 from src.components.Diabetic_Risk_Prediction.risk_validation import validate_and_plot
 from src.components.Exersices_Recommendations.exercise_recommander import recommend
-from src.pipeline.Exercises_Recommandations.exercises_recommand_pipeline import  format_paragraphs
+from src.pipeline.Exercises_Recommandations.exercises_recommand_pipeline import format_paragraphs
+from pathlib import Path
 
 # Initialize Flask app
 app = Flask(__name__)
@@ -44,12 +36,12 @@ CORS(app)
 diabetic_pipeline = PredictPipeline()
 nutrition_pipeline = NutritionRiskPredictPipeline()
 physical_pipeline = PhysicalRiskPredictPipeline()
-nutrition_recommendations_pipeline = NutritionRecommendationsPredictPipeline()
 
 # Cache food data
-@lru_cache(maxsize=1)
-def get_food_data():
-    return pd.read_csv(FOOD_DATA_PATH)
+
+# Define the path to the saved model and data
+BASE_PATH = Path('G:/FYP_Diabetic_Prediction_Recomandations/notebook/data')
+model_data_path = BASE_PATH / 'model_data.pkl'
 
 @app.route("/")
 def index():
@@ -82,25 +74,41 @@ def predict_datapoint():
             risk_level=2.0 if data_json["RiskLevel"] == "High" else (1.0 if data_json["RiskLevel"] == "Moderate" else 0.0)
         )
 
-        pred_df = data.get_data_as_data_frame()
-        
-        # Run prediction and validation in parallel
-        with concurrent.futures.ThreadPoolExecutor() as executor:
-            prediction_future = executor.submit(diabetic_pipeline.predict, data)
-            validation_future = executor.submit(validate_and_plot, data)
-            
-            results = prediction_future.result()
-            risk_validation_results = validation_future.result()
+        # Use the new predict_with_validation method
+        results = diabetic_pipeline.predict_with_validation(data)
 
-        # Convert numpy array to list if needed
-        if isinstance(results, np.ndarray):
-            results = results.tolist()
-        if isinstance(risk_validation_results, np.ndarray):
-            risk_validation_results = risk_validation_results.tolist()
-
-        response_data = { 
-            "prediction": float(results[0]) if isinstance(results, list) else float(results),
-            "risk_validation": risk_validation_results
+        # Format the response with clear labels and percentages
+        response_data = {
+            "predictions": {
+                "your_model": {
+                    "probability": results["your_model_prediction"],
+                    "percentage": results["your_risk_percentage"],
+                    "risk_level": results["risk_level"]
+                },
+                "pima_model": {
+                    "probability": results["pima_prediction"],
+                    "percentage": results["pima_risk_percentage"],
+                    "risk_level": results["pima_risk_level"]
+                }
+            },
+            "comparison": {
+                "prediction_difference": results["prediction_difference"],
+                "models_agree": results["models_agree"],
+                "similar_cases": {
+                    "count": results["similar_cases_count"],
+                    "average_prediction": results["similar_cases_avg_prediction"]
+                }
+            },
+            "validation_metrics": {
+                "brier_score": results["brier_score"],
+                "roc_auc": results["roc_auc"]
+            },
+            "summary": {
+                "primary_risk": f"{results['your_risk_percentage']}% ({results['risk_level']})",
+                "benchmark_risk": f"{results['pima_risk_percentage']}% ({results['pima_risk_level']})",
+                "agreement_status": "Models agree on risk level" if results["models_agree"] else "Models disagree on risk level",
+                "confidence": "High" if results["brier_score"] < 0.1 else "Medium" if results["brier_score"] < 0.2 else "Low"
+            }
         }
         
         return jsonify(response_data)
@@ -196,64 +204,6 @@ def physical_risk_prediction():
     except Exception as e:
         return jsonify({"error": str(e)}), 400
 
-@app.route("/nutritionrecommendations", methods=["POST"])
-def nutrition_recommendations():
-    try:
-        data_json = request.get_json()
-        custom_data = NutritionRecommendationsCustomData(**data_json)
-        input_df = custom_data.get_data_as_data_frame()
-
-        # Get predictions
-        preds = nutrition_recommendations_pipeline.predict(input_df)
-        predicted_nutrition = preds[0]
-
-        # Convert predictions to dictionary and ensure all values are Python native types
-        pred_dict = {k: float(v) for k, v in zip(TARGET_COLS, predicted_nutrition)}
-        
-        # Combine predictions with user data
-        user_pred = {
-            'DiabetesRisk': float(pred_dict['DiabetesRisk']),
-            'NutritionRisk': float(pred_dict['NutritionRisk']),
-            'Protein_Intake': float(pred_dict['Protein_Intake']),
-            'Fat_Intake': float(pred_dict['Fat_Intake']),
-            'Carbohydrate_Consumption': float(pred_dict['Carbohydrate_Consumption']),
-            'Sugar_Consumption': float(pred_dict['Sugar_Consumption']),
-            'Caloric_Balance': float(pred_dict['Caloric_Balance'])
-        }
-
-        # Get cached food data
-        food_df = get_food_data()
-
-        # Run recommendations and meal plan generation in parallel
-        with concurrent.futures.ThreadPoolExecutor() as executor:
-            recommended_future = executor.submit(
-                recommend_foods,
-                food_df,
-                user_pred["Protein_Intake"],
-                user_pred["Fat_Intake"],
-                user_pred["Carbohydrate_Consumption"],
-            )
-            meal_plan_future = executor.submit(generate_meal_plan, user_pred, food_df)
-            
-            recommended = recommended_future.result()
-            meal_plan = meal_plan_future.result()
-
-        # Ensure all data is JSON serializable
-        recommended_foods = recommended.head(5).to_dict(orient="records")
-        for food in recommended_foods:
-            for key, value in food.items():
-                if isinstance(value, np.number):
-                    food[key] = float(value)
-
-        return jsonify({
-            "predicted_nutrition": pred_dict,
-            "recommended_foods": recommended_foods,
-            "meal_plan": meal_plan,
-        })
-    except Exception as e:
-        print(f"Error in nutrition recommendations: {str(e)}")
-        return jsonify({"error": str(e)}), 400
-
 @app.route("/exerciserecommendations", methods=["POST"])
 def exercise_recommendations():
     try:
@@ -311,96 +261,3 @@ def exercise_recommendations():
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", debug=True)
-
-
-    
-    """
-    {
-    "recommendations": {
-        "class": "class_1",
-        "is_novel": false,
-        "routine": [
-            {
-                "exercises": [
-                    {
-                        "equipment": "machine",
-                        "force": null,
-                        "instructions": [
-                            "To begin, step onto the treadmill and select the desired option from the menu. Most treadmills have a manual setting, or you can select a program to run. Typically, you can enter your age and weight to estimate the amount of calories burned during exercise. Elevation can be adjusted to change the intensity of the workout.",
-                            "Treadmills offer convenience, cardiovascular benefits, and usually have less impact than running outside. A 150 lb person will burn over 450 calories running 8 miles per hour for 30 minutes. Maintain proper posture as you run, and only hold onto the handles when necessary, such as when dismounting or checking your heart rate."
-                        ],
-                        "level": "beginner",
-                        "name": "Running, Treadmill",
-                        "primaryMuscles": [
-                            "quadriceps"
-                        ],
-                        "reps_sets": "2x10",
-                        "secondaryMuscles": [
-                            "calves",
-                            "glutes",
-                            "hamstrings"
-                        ]
-                    }
-                ],
-                "role": "Warm-Up"
-            },
-            {
-                "exercises": [
-                    {
-                        "equipment": null,
-                        "force": "static",
-                        "instructions": [
-                            "While seated, bend forward to hug your thighs from underneath with both arms.",
-                            "Keep your knees together and your legs extended out as you bring your chest down to your knees. You can also stretch your middle back by pulling your back away from your knees as your hugging them."
-                        ],
-                        "level": "beginner",
-                        "name": "Upper Back-Leg Grab",
-                        "primaryMuscles": [
-                            "hamstrings"
-                        ],
-                        "reps_sets": "2x10",
-                        "secondaryMuscles": [
-                            "lower back",
-                            "middle back"
-                        ]
-                    },
-                    {
-                        "equipment": null,
-                        "force": "static",
-                        "instructions": [
-                            "Stand with your feet hip-distance apart, one foot slightly in front of the other.",
-                            "Bend both knees, keeping your back heel on the floor. Switch sides."
-                        ],
-                        "level": "beginner",
-                        "name": "Standing Soleus And Achilles Stretch",
-                        "primaryMuscles": [
-                            "calves"
-                        ],
-                        "reps_sets": "2x10",
-                        "secondaryMuscles": []
-                    },
-                    {
-                        "equipment": "other",
-                        "force": "static",
-                        "instructions": [
-                            "Clasp your hands behind your back with your palms together, straighten arms and then rotate them so your palms face downward.",
-                            "Raise your arms up and hold until you feel a stretch in your biceps."
-                        ],
-                        "level": "beginner",
-                        "name": "Standing Biceps Stretch",
-                        "primaryMuscles": [
-                            "biceps"
-                        ],
-                        "reps_sets": "2x10",
-                        "secondaryMuscles": [
-                            "chest",
-                            "shoulders"
-                        ]
-                    }
-                ],
-                "role": "Stretching"
-            }
-        ]
-    }
-}
-    """

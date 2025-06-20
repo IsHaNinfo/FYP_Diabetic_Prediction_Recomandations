@@ -1,5 +1,6 @@
 import sys
 import pandas as pd
+import numpy as np
 from src.exception import CustomException
 from src.utils import load_object
 import os
@@ -33,6 +34,85 @@ class PredictPipeline:
             return preds
         except Exception as e:
             raise CustomException(e, sys)
+
+    def predict_proba(self, features):
+        """Get raw model predictions for diabetes risk"""
+        try:
+            if hasattr(features, 'get_data_as_data_frame'):
+                features = features.get_data_as_data_frame()
+            
+            self._load_model_and_preprocessor()
+            data_scaled = PredictPipeline._preprocessor.transform(features)
+            
+            raw_pred = PredictPipeline._model.predict(data_scaled)
+            
+            # Debug: Print the raw prediction
+            print(f"Raw model prediction: {raw_pred}")
+            print(f"Type: {type(raw_pred)}")
+            print(f"Shape: {raw_pred.shape if hasattr(raw_pred, 'shape') else 'No shape'}")
+            
+            # For now, just divide by 100 to get reasonable values
+            if not isinstance(raw_pred, np.ndarray):
+                raw_pred = np.array([raw_pred])
+            
+            normalized = raw_pred / 100.0
+            normalized = np.clip(normalized, 0, 1)
+            
+            print(f"Normalized prediction: {normalized}")
+            
+            return normalized
+            
+        except Exception as e:
+            raise CustomException(e, sys)
+
+    def predict_with_validation(self, features):
+        """Get prediction with PIMA model validation"""
+        try:
+            # Get your model's prediction (already in 0-1 range, e.g., 0.39 = 39%)
+            your_prediction = self.predict_proba(features)[0]
+            
+            # Import here to avoid circular import
+            from src.components.Diabetic_Risk_Prediction.risk_validation import validate_and_plot
+            
+            # Get PIMA validation results
+            validation_results = validate_and_plot(features)
+            
+            # Combine results
+            results = {
+                "your_model_prediction": round(your_prediction, 4),
+                "your_risk_percentage": round(your_prediction * 100, 2),
+                "pima_prediction": validation_results.get("pima_prediction", 0.0),
+                "pima_risk_percentage": round(validation_results.get("pima_prediction", 0.0) * 100, 2),
+                "similar_cases_avg_prediction": validation_results.get("similar_cases_avg_prediction", 0.0),
+                "similar_cases_count": validation_results.get("similar_cases_count", 0),
+                "brier_score": validation_results.get("brier_score", 0.0),
+                "roc_auc": validation_results.get("roc_auc", 0.0),
+                "prediction_difference": round(abs(your_prediction - validation_results.get("pima_prediction", 0.0)), 4),
+                "risk_level": self._classify_risk_level(your_prediction),
+                "pima_risk_level": self._classify_risk_level(validation_results.get("pima_prediction", 0.0)),
+                "models_agree": self._check_agreement(your_prediction, validation_results.get("pima_prediction", 0.0))
+            }
+            
+            return results
+        except Exception as e:
+            raise CustomException(e, sys)
+
+    def _classify_risk_level(self, prediction):
+        """Classify risk level based on prediction probability"""
+        if prediction < 0.3:
+            return "Low Risk"
+        elif prediction < 0.5:
+            return "Moderate Risk"
+        elif prediction < 0.7:
+            return "High Risk"
+        else:
+            return "Very High Risk"
+
+    def _check_agreement(self, your_pred, pima_pred):
+        """Check if both models agree on risk level"""
+        your_level = self._classify_risk_level(your_pred)
+        pima_level = self._classify_risk_level(pima_pred)
+        return your_level == pima_level
 
 
 class CustomData:

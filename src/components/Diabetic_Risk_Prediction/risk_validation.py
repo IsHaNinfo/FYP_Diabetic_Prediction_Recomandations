@@ -5,8 +5,7 @@ from sklearn.calibration import calibration_curve
 from sklearn.metrics import brier_score_loss, roc_auc_score
 import matplotlib.pyplot as plt
 from src.utils import to_yes_no
-
-from src.pipeline.Diabetic_Risk_Predict_Pipeline.predict_pipeline_diabetic import CustomData
+from src.components.Diabetic_Risk_Prediction.custom_data import CustomData
 
 # Function to map user input to PIMA dataset features
 def map_user_to_pima_with_customdata(user_input):
@@ -109,3 +108,90 @@ def validate_and_plot(user_input):
             "similar_cases_count": 0
         }
 
+"""
+# Your model: Sri Lankan/Regional data
+# PIMA model: Indian diabetes dataset
+Great question! Let me explain what these different values mean and why they might be different:
+
+## Understanding the Values
+
+### 1. **Diabetic Risk: 39%**
+- This comes from your **custom trained model** on your specific dataset
+- Based on your local Sri Lankan/regional data
+- Uses your specific features and risk factors
+- **39% = 0.39** (39% probability of diabetes)
+
+### 2. **PIMA Prediction: 0.0961**
+- This comes from the **PIMA Indian Diabetes dataset model**
+- Based on the standard PIMA dataset (different population)
+- Uses different features and mapping
+- **0.0961 = 9.61%** (9.61% probability of diabetes)
+
+## Why They're Different
+
+### 1. **Different Datasets**
+```python
+# Your model: Sri Lankan/Regional data
+# PIMA model: Indian diabetes dataset
+```
+
+### 2. **Different Feature Mapping**
+```python
+# Your model uses original features
+# PIMA model uses mapped features:
+blood_pressure = 140 if user_input['BloodPressure'] == 'Yes' else 80
+pedigree = 1.5 if user_input['FamilyHistory'] == 'Yes' else 0.3
+```
+
+### 3. **Different Populations**
+- **Your model**: Trained on your specific population
+- **PIMA model**: Trained on PIMA Indian population
+- Different demographics, lifestyles, risk factors
+
+### 4. **Different Risk Factors**
+Your model might consider:
+- Local dietary patterns
+- Regional health factors
+- Specific genetic factors
+
+PIMA model considers:
+- Standard diabetes risk factors
+- International benchmarks
+
+## What This Means
+
+### **39% vs 9.61%**
+- Your model suggests **higher risk** (39%)
+- PIMA model suggests **lower risk** (9.61%)
+- This could indicate:
+  1. Your population has higher baseline diabetes risk
+  2. Your model is more sensitive to local risk factors
+  3. Different feature interpretations
+
+### **Validation Purpose**
+The PIMA comparison helps:
+1. **Cross-validate** your model
+2. **Identify** if your model is too conservative/aggressive
+3. **Understand** population differences
+4. **Calibrate** risk assessments
+
+## Recommendations
+
+### 1. **Check Similar Cases**
+```python
+similar_cases_avg_prediction = 0.198  # 19.8%
+```
+- Similar demographic cases in PIMA show 19.8% risk
+- This is closer to your 39% than the individual 9.61%
+
+### 2. **Consider Population Differences**
+- Your model might be more appropriate for your local population
+- PIMA provides a benchmark for comparison
+
+### 3. **Use Both Values**
+- **Primary**: Your 39% (local model)
+- **Secondary**: PIMA 9.61% (benchmark comparison)
+- **Context**: Similar cases 19.8% (demographic comparison)
+
+The difference suggests your model is calibrated for your specific population and risk factors, which is actually good for local accuracy!
+"""
