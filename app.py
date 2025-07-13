@@ -30,7 +30,6 @@ from src.pipeline.Nutrition_Recommandations.nutrition_recommandations import (
 )
 
 from src.pipeline.Mental_Risk_Predict_pipeline.predict_pipeline_mental import predict_mental_scenario
-# ...existing code...
 app = Flask(__name__)
 # Initialize CORS with default options
 CORS(app)
