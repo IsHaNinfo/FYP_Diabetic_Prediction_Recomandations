@@ -6,7 +6,6 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../../.
 from dataclasses import dataclass
 from catboost import CatBoostRegressor
 from sklearn.ensemble import (
-    AdaBoostRegressor,
     GradientBoostingRegressor,
     RandomForestRegressor,
 )
@@ -14,7 +13,6 @@ from sklearn.linear_model import LinearRegression
 from sklearn.metrics import r2_score
 from sklearn.neighbors import KNeighborsRegressor
 from sklearn.tree import DecisionTreeRegressor
-from sklearn.neural_network import MLPRegressor
 from xgboost import XGBRegressor
 
 from src.exception import CustomException
@@ -39,45 +37,30 @@ class ModelTrainer:
             X_test, y_test = test_array[:, :-1], test_array[:, -1]
 
             models = {
-                "Random Forest": RandomForestRegressor(),
-                "Decision Tree": DecisionTreeRegressor(),
-                "Gradient Boosting": GradientBoostingRegressor(),
-                "Linear Regression": LinearRegression(),
-                "K-Neighbors Regressor": KNeighborsRegressor(),
-                "XGBoost Regressor": XGBRegressor(),
-                "CatBoost Regressor": CatBoostRegressor(verbose=False),
-                "AdaBoost Regressor": AdaBoostRegressor(),
+                # Random Forest is ideal for nutrition risk prediction because:
+                # 1. Handles non-linear relationships between nutrition factors
+                # 2. Manages multiple input features effectively (age, BMI, dietary habits, etc.)
+                # 3. Resistant to overfitting through ensemble learning
+                # 4. Can capture complex interactions between different nutritional factors
+                # 5. Provides feature importance scores to understand key risk factors
+                "Random Forest": RandomForestRegressor(
+                    n_jobs=-1,  # Use all CPU cores for faster training
+                    random_state=42  # For reproducibility
+                ),
             }
 
             params = {
-                "Decision Tree": {
-                    "criterion": [
-                        "squared_error",
-                        "friedman_mse",
-                        "absolute_error",
-                        "poisson",
-                    ],
-                },
-                "Random Forest": {"n_estimators": [8, 16, 32, 64, 128, 256]},
-                "Gradient Boosting": {
-                    "learning_rate": [0.1, 0.01, 0.05, 0.001],
-                    "n_estimators": [8, 16, 32, 64, 128, 256],
-                },
-                "Linear Regression": {},
-                "K-Neighbors Regressor": {
-                    "n_neighbors": [5, 7, 9, 11],
-                },
-                "XGBoost Regressor": {
-                    "learning_rate": [0.1, 0.01, 0.05, 0.001],
-                    "n_estimators": [8, 16, 32, 64, 128, 256],
-                },
-                "CatBoost Regressor": {
-                    "depth": [6, 8, 10],
-                    "iterations": [30, 50, 100],
-                },
-                "AdaBoost Regressor": {
-                    "learning_rate": [0.1, 0.01, 0.05, 0.001],
-                    "n_estimators": [8, 16, 32, 64, 128, 256],
+                "Random Forest": {
+                    # Number of trees in the forest
+                    "n_estimators": [100, 200, 300],
+                    # Maximum depth of trees
+                    "max_depth": [10, 20, None],
+                    # Minimum samples required to split a node
+                    "min_samples_split": [2, 5],
+                    # Minimum samples required at leaf node
+                    "min_samples_leaf": [1, 2],
+                    # Maximum features to consider for best split
+                    "max_features": ['sqrt', 'log2']
                 },
             }
 
