@@ -37,7 +37,6 @@ CORS(app)
 # Remove the duplicate Flask app initialization
 # app = Flask(__name__)  # Remove this line
 
-
 @app.route("/")
 def index():
     return "API is working"
