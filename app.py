@@ -38,7 +38,6 @@ diabetic_pipeline = PredictPipeline()
 nutrition_pipeline = NutritionRiskPredictPipeline()
 physical_pipeline = PhysicalRiskPredictPipeline()
 
-# Cache food data
 
 # Define the path to the saved model and data
 BASE_PATH = Path('G:/FYP_Diabetic_Prediction_Recomandations/notebook/data')
