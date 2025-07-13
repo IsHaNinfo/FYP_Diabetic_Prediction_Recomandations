@@ -4,6 +4,9 @@ import numpy as np
 import pandas as pd
 import sys
 import os
+import io
+from PIL import Image
+
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), ".")))
 from sklearn.preprocessing import StandardScaler
@@ -25,6 +28,8 @@ from src.pipeline.Nutrition_Recommandations.nutrition_recommandations import (
     NutritionRecommendationsCustomData,
     NutritionRecommendationsPredictPipeline,
 )
+
+from src.pipeline.Mental_Risk_Predict_pipeline.predict_pipeline_mental import predict_mental_scenario
 # ...existing code...
 app = Flask(__name__)
 # Initialize CORS with default options
@@ -183,6 +188,34 @@ def nutrition_recommendations():
         return jsonify({"recommendations": preds[0].tolist()})
     except Exception as e:
         return jsonify({"error": str(e)}), 400
+
+@app.route("/menatalrecommendations", methods=["POST"])
+def predict_mental():
+    try:
+        raw_input = {
+            "Perceived_Control": request.form["Perceived_Control"],
+            "Stress_Freq_Intensity": request.form["Stress_Freq_Intensity"],
+            "Emotional_Reg": request.form["Emotional_Reg"],
+            "Physical_Stress": request.form["Physical_Stress"],
+            "Cognitive_Stress": request.form["Cognitive_Stress"],
+            "Behavioral_Response": request.form["Behavioral_Response"],
+            "Work_Stress": request.form["Work_Stress"],
+            "Productivity": request.form["Productivity"],
+            "Suicidal_Thoughts": request.form["Suicidal_Thoughts"],
+            "FreeTime": request.form["FreeTime"],
+        }
+
+        if "image" not in request.files:
+            return jsonify({"error": "Image is required"}), 400
+
+        image = request.files["image"]
+        image_bytes = image.read()
+
+        result = predict_mental_scenario(raw_input, image_bytes)
+        return jsonify(result)
+    except Exception as e:
+        return jsonify({"error": str(e)}), 400
+
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", debug=True)
