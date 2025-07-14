@@ -1,28 +1,65 @@
 import sys
 import pandas as pd
+import numpy as np
 from src.exception import CustomException
 from src.utils import load_object
 import os
+import shap
 
 
 class NutritionRiskPredictPipeline:
     def __init__(self):
-        pass
+        self.model_path = os.path.join("artifact/nutrition", "model.pkl")
+        self.preprocessor_path = os.path.join("artifact/nutrition", "nutrition_preprocessor.pkl")
+        self.model = None
+        self.preprocessor = None
+        self._load_model()
+
+    def _load_model(self):
+        try:
+            self.model = load_object(file_path=self.model_path)
+            self.preprocessor = load_object(file_path=self.preprocessor_path)
+        except Exception as e:
+            raise CustomException(e, sys)
+
+    def calculate_feature_contributions(self, features):
+        try:
+            # Create SHAP explainer
+            explainer = shap.TreeExplainer(self.model)
+            
+            # Transform features using preprocessor
+            data_scaled = self.preprocessor.transform(features)
+            
+            # Calculate SHAP values
+            shap_values = explainer.shap_values(data_scaled)
+            
+            # Get feature names
+            feature_names = features.columns
+            
+            # Calculate contribution percentages
+            contributions = {}
+            for i, feature in enumerate(feature_names):
+                # Calculate absolute contribution
+                abs_contribution = np.abs(shap_values[0][i])
+                # Calculate percentage contribution
+                total_contribution = np.sum(np.abs(shap_values[0]))
+                percentage = (abs_contribution / total_contribution) * 100
+                contributions[feature] = round(float(percentage), 2)
+            
+            return contributions
+            
+        except Exception as e:
+            raise CustomException(e, sys)
 
     def predict(self, features):
-        
         try:
-            model_path = os.path.join("artifact/nutrition", "model.pkl")
-            preprocessor_path = os.path.join(
-                "artifact/nutrition", "nutrition_preprocessor.pkl"
-            )
-            print("Before Loading")
-            model = load_object(file_path=model_path)
-            preprocessor = load_object(file_path=preprocessor_path)
-            print("After Loading")
-            data_scaled = preprocessor.transform(features)
-            preds = model.predict(data_scaled)
-            return preds
+            data_scaled = self.preprocessor.transform(features)
+            preds = self.model.predict(data_scaled)
+            
+            # Calculate feature contributions
+            feature_contributions = self.calculate_feature_contributions(features)
+            
+            return preds, feature_contributions
 
         except Exception as e:
             raise CustomException(e, sys)

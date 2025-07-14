@@ -1,5 +1,7 @@
 import os
 import sys
+import numpy as np
+from sklearn.model_selection import GridSearchCV, cross_val_score
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../../../")))
 
@@ -9,9 +11,10 @@ from sklearn.ensemble import (
     AdaBoostRegressor,
     GradientBoostingRegressor,
     RandomForestRegressor,
+    VotingRegressor
 )
-from sklearn.linear_model import LinearRegression
-from sklearn.metrics import r2_score
+from sklearn.linear_model import LinearRegression, Ridge, Lasso, ElasticNet
+from sklearn.metrics import r2_score, mean_squared_error, mean_absolute_error
 from sklearn.neighbors import KNeighborsRegressor
 from sklearn.tree import DecisionTreeRegressor
 from sklearn.neural_network import MLPRegressor
@@ -24,7 +27,7 @@ from src.utils import save_obj, evaluate_models
 
 @dataclass
 class ModelTrainingConfig:
-    trained_model_file_path: str = os.path.join("artifact", "model.pkl")
+    trained_model_file_path: str = os.path.join("artifact/common", "model.pkl")
 
 
 class ModelTrainer:
@@ -39,97 +42,104 @@ class ModelTrainer:
             X_test, y_test = test_array[:, :-1], test_array[:, -1]
 
             models = {
-                "Random Forest": RandomForestRegressor(),
-                "Decision Tree": DecisionTreeRegressor(),
-                "Gradient Boosting": GradientBoostingRegressor(),
                 "Linear Regression": LinearRegression(),
-                "K-Neighbors Regressor": KNeighborsRegressor(),
-                "XGBoost Regressor": XGBRegressor(),
-                "CatBoost Regressor": CatBoostRegressor(verbose=False),
-                "AdaBoost Regressor": AdaBoostRegressor(),
             }
 
             params = {
-                "Decision Tree": {
-                    "criterion": [
-                        "squared_error",
-                        "friedman_mse",
-                        "absolute_error",
-                        "poisson",
-                    ],
+                "Linear Regression": {
+                     'fit_intercept': [True, False],
+                    'copy_X': [True],
+                    'n_jobs': [-1] 
                 },
-                "Random Forest": {"n_estimators": [8, 16, 32, 64, 128, 256]},
-                "Gradient Boosting": {
-                    "learning_rate": [0.1, 0.01, 0.05, 0.001],
-                    "n_estimators": [8, 16, 32, 64, 128, 256],
-                },
-                "Linear Regression": {},
-                "K-Neighbors Regressor": {
-                    "n_neighbors": [5, 7, 9, 11],
-                },
-                "XGBoost Regressor": {
-                    "learning_rate": [0.1, 0.01, 0.05, 0.001],
-                    "n_estimators": [8, 16, 32, 64, 128, 256],
-                },
-                "CatBoost Regressor": {
-                    "depth": [6, 8, 10],
-                    "iterations": [30, 50, 100],
-                },
-                "AdaBoost Regressor": {
-                    "learning_rate": [0.1, 0.01, 0.05, 0.001],
-                    "n_estimators": [8, 16, 32, 64, 128, 256],
-                },
+                
             }
+            # Evaluate models with cross-validation
+            cv_scores = {}
+            for name, model in models.items():
+                if params[name]:  # If model has hyperparameters
+                    grid_search = GridSearchCV(
+                        model, params[name], cv=5, scoring='r2', n_jobs=-1
+                    )
+                    grid_search.fit(X_train, y_train)
+                    cv_scores[name] = grid_search.best_score_
+                    models[name] = grid_search.best_estimator_
+                else:
+                    scores = cross_val_score(model, X_train, y_train, cv=5, scoring='r2')
+                    cv_scores[name] = scores.mean()
+                    model.fit(X_train, y_train)
 
-            model_report: dict = evaluate_models(
-                X_train, y_train, X_test, y_test, models, params
-            )
-
-            # Filter models within the desired R² score range
-            desired_range = (0.85, 0.95)
-            filtered_models = {
-                name: score
-                for name, score in model_report.items()
-                if desired_range[0] <= score <= desired_range[1]
-            }
-
-            if filtered_models:
-                # Select the first model in the filtered range
-                best_model_name = next(iter(filtered_models))
-                best_model_score = filtered_models[best_model_name]
-            else:
-                # Fallback to the best model if no model is in the desired range
-                best_model_name = max(model_report, key=model_report.get)
-                best_model_score = model_report[best_model_name]
-
+            # Select best model based on cross-validation scores
+            best_model_name = max(cv_scores, key=cv_scores.get)
             best_model = models[best_model_name]
+            best_score = cv_scores[best_model_name]
 
-            if best_model_score < 0.6:
-                raise CustomException(
-                    "No suitable model found with an acceptable score."
-                )
+            if best_score < 0.6:
+                raise CustomException("No suitable model found with an acceptable score.")
 
-            logging.info(
-                f"Selected model: {best_model_name} with R² score: {best_model_score}"
-            )
+            logging.info(f"Selected model: {best_model_name} with CV R² score: {best_score}")
 
+            # Create ensemble of top 3 models
+            top_models = sorted(cv_scores.items(), key=lambda x: x[1], reverse=True)[:3]
+            ensemble_models = [(name, models[name]) for name, _ in top_models]
+            
+            if len(ensemble_models) > 1:
+                ensemble = VotingRegressor(estimators=ensemble_models)
+                ensemble.fit(X_train, y_train)
+                ensemble_score = r2_score(y_test, ensemble.predict(X_test))
+                
+                if ensemble_score > best_score:
+                    best_model = ensemble
+                    best_model_name = "Ensemble"
+                    best_score = ensemble_score
+                    logging.info(f"Using ensemble model with R² score: {ensemble_score}")
+
+            # Save the best model
             save_obj(
                 file_path=self.model_trainer_config.trained_model_file_path,
-                obj=best_model,
+                obj=best_model
             )
 
+            # Evaluate on test set
             predicted = best_model.predict(X_test)
-
-            # Normalize predictions to 0-100%
-            predicted_percentage = (predicted - predicted.min()) / (predicted.max() - predicted.min()) * 100
-
             r2_square = r2_score(y_test, predicted)
+            mse = mean_squared_error(y_test, predicted)
+            mae = mean_absolute_error(y_test, predicted)
 
-            logging.info(f"R² score of the selected model on test data: {r2_square}")
-            print(f"Selected Model: {best_model_name}, R² Score: {r2_square}")
-            ##print(f"Predicted Values (0-100%): {predicted_percentage}")
+            logging.info(f"Test set metrics:")
+            logging.info(f"R² score: {r2_square}")
+            logging.info(f"MSE: {mse}")
+            logging.info(f"MAE: {mae}")
+
+            print(f"Selected Model: {best_model_name}")
+            print(f"R² Score: {r2_square:.4f}")
 
             return r2_square
 
         except Exception as e:
             raise CustomException(e, sys)
+
+"""
+
+Linear Regression is good for several reasons, especially in the context of diabetic risk prediction. Let me explain:
+
+Interpretability:
+Linear Regression provides clear, interpretable coefficients for each feature
+You can easily understand how each factor (like age, BMI, etc.) affects the diabetes risk
+This is crucial for medical applications where understanding the relationship between variables is important
+
+Computational Efficiency:
+It's much faster to train and predict compared to complex models 
+Requires less memory and computational resources
+Perfect for real-time predictions in a production environment
+
+Robustness:
+Less prone to overfitting compared to complex models
+Works well even with smaller datasets
+More stable predictions across different data distributions
+
+Medical Domain Suitability:
+Many medical relationships are linear or can be approximated linearly
+Easier to validate and explain to medical professionals
+Can be easily integrated into medical decision support systems
+
+"""
