@@ -490,3 +490,6 @@ def recommend(user_input, user_prompt=None):
 # Train models if they don't exist
 if not os.path.exists("artifact/physical_recommandations/exercise_recommendation_model.pkl"):
     train_and_save_models()
+#the RandomForestClassifier is used to classify users into different exercise recommendation classes based on their attributes.
+# This classification helps in generating personalized exercise routines that align with the user's health conditions, goals, and preferences.
+
