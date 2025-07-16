@@ -58,3 +58,27 @@ def load_object(file_path):
 
     except Exception as e:
         raise CustomException(e, sys)
+
+def to_yes_no(val):
+    if isinstance(val, str):
+        if val.lower() in ["yes", "y", "true", "1"]:
+            return "Yes"
+        elif val.lower() in ["no", "n", "false", "0"]:
+            return "No"
+    elif isinstance(val, (int, float)):
+        return "Yes" if val else "No"
+    elif isinstance(val, bool):
+        return "Yes" if val else "No"
+    return "No"
+
+def to_01(val):
+    if isinstance(val, str):
+        if val.lower() in ["yes", "y", "true", "1"]:
+            return 1.0
+        elif val.lower() in ["no", "n", "false", "0"]:
+            return 0.0
+    elif isinstance(val, (int, float)):
+        return float(val)
+    elif isinstance(val, bool):
+        return 1.0 if val else 0.0
+    return 0.0

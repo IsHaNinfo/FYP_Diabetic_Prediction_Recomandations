@@ -1,0 +1,1 @@
+from .gnn_meal_plan import generate_meal_plan_for_user_from_data

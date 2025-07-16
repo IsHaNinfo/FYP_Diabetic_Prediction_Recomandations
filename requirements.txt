@@ -7,4 +7,9 @@ dill
 catboost
 Flask
 sdv
+torch
+CORS
+causalml
+transformers
+peft
 #-e .
