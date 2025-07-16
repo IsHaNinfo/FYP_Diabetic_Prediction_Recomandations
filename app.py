@@ -32,7 +32,7 @@ from src.components.Diabetic_Risk_Prediction.risk_validation import validate_and
 from src.components.Exersices_Recommendations.exercise_recommander import recommend
 from src.pipeline.Exercises_Recommandations.exercises_recommand_pipeline import format_paragraphs
 from pathlib import Path
-from src.components.Nutrition_Recommandations import generate_health_aware_meal_plan, load_food_df,analyze_meal_plan_with_contribution
+from src.components.Nutrition_Recommandations import  generate_meal_plan_for_user_from_data
 
 # Initialize Flask app
 app = Flask(__name__)
@@ -43,7 +43,6 @@ diabetic_pipeline = PredictPipeline()
 nutrition_pipeline = NutritionRiskPredictPipeline()
 physical_pipeline = PhysicalRiskPredictPipeline()
 
-# Cache food data
 
 # Define the path to the saved model and data
 BASE_PATH = Path('G:/FYP_Diabetic_Prediction_Recomandations/notebook/data')
@@ -269,23 +268,20 @@ def exercise_recommendations():
 def generate_meal_plan():
     try:
         data_json = request.get_json()
-        # Extract user data from the request
         user_data = {
             "age": int(data_json["age"]),
             "gender": int(data_json["gender"]),
             "bmi": float(data_json["bmi"]),
             "diabetes_risk": float(data_json["diabetes_risk"]),
             "nutrition_risk": float(data_json["nutrition_risk"]),
-            "preferences": data_json["preferences"]
         }
 
-        # Generate meal plan
-        meal_plan = generate_health_aware_meal_plan(user_data, load_food_df())
-        result = analyze_meal_plan_with_contribution(meal_plan, user_data)
+        meal_plan = generate_meal_plan_for_user_from_data(user_data)
+        return jsonify(meal_plan)
 
-        return jsonify(result)
     except Exception as e:
         return jsonify({"error": str(e)}), 400
+
 
 @app.route("/menatalrecommendations", methods=["POST"])
 def predict_mental():
