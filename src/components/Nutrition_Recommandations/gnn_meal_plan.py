@@ -172,7 +172,6 @@ print("Preparing training pairs …")
 pos_pairs = [(uid_map[u], fid_map[f]) for u,f in zip(edge_df[edge_df['relation'] == INTERACT_REL]['source'], edge_df[edge_df['relation'] == INTERACT_REL]['target']) if u in uid_map and f in fid_map]
 
 if len(pos_pairs) == 0:
-    print("⚠️ No positive pairs found — creating dummy ones for testing")
     pos_pairs = [(random.choice(list(uid_map.values())), random.choice(list(fid_map.values()))) for _ in range(20)]
 
 pos_set = set(pos_pairs)
@@ -203,7 +202,6 @@ def train_model():
     ) if u in uid_map and f in fid_map]
 
     if len(pos_pairs) == 0:
-        print("⚠️ No positive pairs found — creating dummy ones for testing")
         pos_pairs = [(random.choice(list(uid_map.values())), random.choice(list(fid_map.values()))) for _ in range(20)]
 
     pos_set = set(pos_pairs)
@@ -250,7 +248,6 @@ model = NRKGSystem().to(DEVICE)
 if os.path.exists(MODEL_PATH):
     model.load_state_dict(torch.load(MODEL_PATH, map_location=DEVICE, weights_only=False))
     model.eval()
-    print("✅ Loaded model from checkpoint.")
 else:
     model = train_model()
 
