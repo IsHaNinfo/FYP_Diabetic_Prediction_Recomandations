@@ -274,6 +274,10 @@ def generate_meal_plan():
             "bmi": float(data_json["bmi"]),
             "diabetes_risk": float(data_json["diabetes_risk"]),
             "nutrition_risk": float(data_json["nutrition_risk"]),
+            "preferences": {
+                "culture": data_json.get("culture", "Sri Lankan")  # Default to 'Sri Lankan' if not provided
+            },
+            "diseases": data_json.get("diseases", [])  # Default to an empty list if not provided
         }
 
         meal_plan = generate_meal_plan_for_user_from_data(user_data)
