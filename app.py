@@ -138,13 +138,13 @@ def nutrition_risk_prediction():
             gender=int(data_json["gender"]),
             height=height,
             weight=weight,
-            carbohydrate_consumption=float(data_json["Carbohydrate_Consumption"]),
-            protein_intake=protein_intake_map.get(data_json["Protein_Intake"], 0.0),
-            fat_intake=fat_intake_map.get(data_json["Fat_Intake"], 0.0),
-            regularity_of_meals=1.0 if data_json["Regularity_of_Meals"] == "Yes" else 0.0,
-            portion_control=float(data_json["Portion_Control"]),
-            caloric_balance=float(data_json["Caloric_Balance"]),
-            sugar_consumption=float(data_json["Sugar_Consumption"]),
+            carbohydrate_consumption=float(data_json["Carbohydrate_Consumption"]), #How many servings of rice, bread, or pasta do you eat daily?
+            protein_intake=protein_intake_map.get(data_json["Protein_Intake"], 0.0), #How often do you include protein sources (e.g., eggs, chicken, lentils) in your meals? (Protein Intake)
+            fat_intake=fat_intake_map.get(data_json["Fat_Intake"], 0.0),#What type of fats do you consume most frequently? (Fat Intake)
+            regularity_of_meals=1.0 if data_json["Regularity_of_Meals"] == "Yes" else 0.0, #Do you skip meals during the day?
+            portion_control=float(data_json["Portion_Control"]),#How large are your portions on average (in cups or plates per meal) (Portion Control)  ?
+            caloric_balance=float(data_json["Caloric_Balance"]),#What is your estimated daily calorie intake (if known)?(e.g., 2000 calories per day)
+            sugar_consumption=float(data_json["Sugar_Consumption"]),#How many sugary snacks or drinks do you consume in a day? (Sugar Consumption) (g/day)
             DiabetesRisk=float(data_json["DiabetesRisk"]),
             bmi=bmi,
         )
@@ -222,34 +222,24 @@ def exercise_recommendations():
         # Get user prompt if provided
         user_prompt = data_json.get("user_prompt", None)
         
-        # Create mapping for categorical variables
-        yes_no_map = {
-            "Sitting_Time": {"Yes": 1.0, "No": 0.0},
-            "Cardiovascular_Health": {"Yes": 1.0, "No": 0.0},
-            "Muscle_Strength": {"Yes": 1.0, "No": 0.0},
-            "Flexibility": {"Yes": 1.0, "No": 0.0},
-            "Balance": {"Yes": 1.0, "No": 0.0},
-            "Pain_or_Discomfort": {"Yes": 1.0, "No": 0.0}
-        }
-        
-        # Prepare input for the recommendation model
+        # Prepare input for the recommendation model with correct column names
         user_input = {
-            "age": int(data_json["age"]),
-            "height": height,
-            "weight": weight,
-            "bmi": bmi,
-            "energy_levels": float(data_json["energy_levels"]),
-            "physical_activity": float(data_json["physical_activity"]),
-            "sitting_time": yes_no_map["Sitting_Time"].get(data_json["sitting_time"], 0.0),
-            "physical_activity_risk": float(data_json["physical_activity_risk"]),
-            "available_time": float(data_json["available_time"]),
-            "diabetesRisk": float(data_json["diabetes_risk"]),
-            "gender": int(data_json["gender"]),
-            "pain_or_discomfort": yes_no_map["Pain_or_Discomfort"].get(data_json["pain_or_discomfort"], 0.0),
-            "cardiovascular_health": yes_no_map["Cardiovascular_Health"].get(data_json["cardiovascular_health"], 0.0),
-            "muscle_strength": yes_no_map["Muscle_Strength"].get(data_json["muscle_strength"], 0.0),
-            "flexibility": yes_no_map["Flexibility"].get(data_json["flexibility"], 0.0),
-            "balance": yes_no_map["Balance"].get(data_json["balance"], 0.0),
+            "Age": int(data_json["age"]),
+            "Gender": int(data_json["gender"]),
+            "Height": height,
+            "Weight": weight,
+            "BMI": bmi,
+            "EnergyLevels": float(data_json["energy_levels"]),
+            "Physical_Activity": float(data_json["physical_activity"]),
+            "Sitting_Time": float(1.0 if data_json["sitting_time"] == "Yes" else 0.0),
+            "PhysicalActivityRisk": float(data_json["physical_activity_risk"]),
+            "Available_Time": float(data_json["available_time"]),
+            "DiabetesRisk": float(data_json["diabetes_risk"]),
+            "Pain_or_Discomfort": float(1.0 if data_json["pain_or_discomfort"] == "Yes" else 0.0),
+            "Cardiovascular_Health": float(1.0 if data_json["cardiovascular_health"] == "Yes" else 0.0),
+            "Muscle_Strength": float(1.0 if data_json["muscle_strength"] == "Yes" else 0.0),
+            "Flexibility": float(1.0 if data_json["flexibility"] == "Yes" else 0.0),
+            "Balance": float(1.0 if data_json["balance"] == "Yes" else 0.0),
             "goal": str(data_json["goal"])
         }
 
