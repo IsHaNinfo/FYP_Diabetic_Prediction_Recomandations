@@ -1,2 +1,77 @@
 disease_id,disease_name
 d1,Diabetes
+d2,Obesity
+d3,Hypertension
+d4,Heart Disease
+d5,Coronary Artery Disease
+d6,Stroke
+d7,Chronic Kidney Disease
+d8,Non-Alcoholic Fatty Liver Disease
+d9,Polycystic Ovary Syndrome (PCOS)
+d10,Hyperlipidemia
+d11,Insulin Resistance
+d12,Metabolic Syndrome
+d13,Sleep Apnea
+d14,Gout
+d15,Thyroid Disorders
+d16,Pancreatitis
+d17,Depression
+d18,Anxiety
+d19,Chronic Inflammation
+d20,Hypoglycemia
+d21,Peripheral Neuropathy
+d22,Retinopathy
+d23,Nephropathy
+d24,Foot Ulcers
+d25,Periodontal Disease
+d26,Cognitive Decline
+d27,Alzheimer’s Disease
+d28,Osteoporosis
+d29,Vitamin D Deficiency
+d30,Insomnia
+d31,Chronic Stress
+d32,Erectile Dysfunction
+d33,PCOS-related Infertility
+d34,Gallbladder Disease
+d35,Hemochromatosis
+d36,Autonomic Neuropathy
+d37,Gastroesophageal Reflux Disease (GERD)
+d38,Fatigue Syndrome
+d39,Glaucoma
+d40,Macular Degeneration
+d41,Chronic Migraines
+d42,Chronic Fatigue Syndrome
+d43,Increased Blood Clotting Risk
+d44,Reactive Hypoglycemia
+d45,Diabetic Dermopathy
+d46,Acanthosis Nigricans
+d47,Chronic Pain
+d48,Skin Infections
+d49,Bacterial Infections
+d50,Urinary Tract Infections
+d51,Yeast Infections
+d52,Fungal Infections
+d53,ADHD
+d54,Liver Cirrhosis
+d55,Insulinoma
+d56,Cushing’s Syndrome
+d57,Addison’s Disease
+d58,Anemia
+d59,Asthma
+d60,COPD
+d61,High Cholesterol
+d62,IBS
+d63,Lactose Intolerance
+d64,Chronic Constipation
+d65,Nut Allergy
+d66,Shellfish Allergy
+d67,Egg Allergy
+d68,Soy Allergy
+d69,Gluten Sensitivity
+d70,Lactose Intolerance
+d71,Celiac Disease
+d72,Peanut Allergy
+d73,Obesity
+d74,Gout
+d75,Hypertension
+d76,Cardiovascular Disease
