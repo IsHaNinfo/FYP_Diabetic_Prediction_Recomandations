@@ -19,7 +19,6 @@ from sklearn.neighbors import KNeighborsRegressor
 from sklearn.tree import DecisionTreeRegressor
 from sklearn.neural_network import MLPRegressor
 from xgboost import XGBRegressor
-
 from src.exception import CustomException
 from src.logger import logging
 from src.utils import save_obj, evaluate_models
