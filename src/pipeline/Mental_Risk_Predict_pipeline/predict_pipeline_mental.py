@@ -9,9 +9,11 @@ from torchvision import models, transforms
 # Paths
 ML_MODEL_PATH = "artifact/mental/MLModel.pkl"
 DL_MODEL_PATH = "artifact/mental/DLModel.pkl"
+ENCODER_PATH = "artifact/mental/LabelEncoder.pkl"
 
-# ML model load
+# ML model and encoder load
 ml_model = joblib.load(ML_MODEL_PATH)
+label_encoder = joblib.load(ENCODER_PATH)
 
 # DL model load
 def load_convnext_model(path: str):
@@ -24,10 +26,10 @@ def load_convnext_model(path: str):
 
 dl_model = load_convnext_model(DL_MODEL_PATH)
 
-# Output class mappings
-ML_CLASSES = ['High', 'Low', 'Moderate', 'Severe']
+# DL output classes
 DL_CLASSES = ["Stable", "Unstable"]
 
+# Scenario mapping
 scenario_map = {
     ("Low", "Stable"): "Scenario 01",
     ("Low", "Unstable"): "Scenario 02",
@@ -39,18 +41,18 @@ scenario_map = {
     ("Severe", "Unstable"): "Scenario 08",
 }
 
-# Input processing
+# Input mapping functions
 def normalize_freetime(value):
     if value >= 300:
-        return 1
+        return 5
     elif value >= 180:
-        return 2
+        return 4
     elif value >= 120:
         return 3
     elif value >= 60:
-        return 4
+        return 2
     else:
-        return 5
+        return 1
 
 def map_input(pre):
     value_map = {
@@ -81,22 +83,13 @@ def map_input(pre):
         normalize_freetime(float(pre['FreeTime']))
     ]
 
-# Prediction function
+# Main prediction function
 def predict_mental_scenario(raw_input: dict, image_bytes: bytes):
     try:
         # 1. ML Model Prediction
         input_list = map_input(raw_input)
-        ml_pred = ml_model.predict([input_list])[0]
-        print(f"[DEBUG] ML raw prediction: {ml_pred}")
-
-        # If it's a string label, use directly
-        if isinstance(ml_pred, str):
-            ml_output = ml_pred
-        elif isinstance(ml_pred, (int, np.integer)):
-            ml_output = ML_CLASSES[ml_pred]
-        else:
-            raise ValueError(f"Unexpected prediction type: {type(ml_pred)}")
-
+        ml_pred_encoded = ml_model.predict([input_list])[0]
+        ml_output = label_encoder.inverse_transform([ml_pred_encoded])[0]
         print(f"[DEBUG] ML Output class: {ml_output}")
 
         # 2. DL Model Prediction
