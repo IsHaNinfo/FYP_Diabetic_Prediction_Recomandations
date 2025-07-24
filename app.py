@@ -240,7 +240,8 @@ def exercise_recommendations():
             "Muscle_Strength": float(1.0 if data_json["muscle_strength"] == "Yes" else 0.0),
             "Flexibility": float(1.0 if data_json["flexibility"] == "Yes" else 0.0),
             "Balance": float(1.0 if data_json["balance"] == "Yes" else 0.0),
-            "goal": str(data_json["goal"])
+            "goal": str(data_json["goal"]),
+            "level": str(data_json["level"])  # Add this line for exercise level
         }
 
         # Get recommendations from the model with user prompt

@@ -547,6 +547,6 @@ def generate_meal_plan_for_user_from_data(user_data, days=7):
             })
 
     # Optional: return excluded_rows for review
-    return plan
+    return plan   
 
 

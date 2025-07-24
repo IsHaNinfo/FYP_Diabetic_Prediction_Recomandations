@@ -10,7 +10,17 @@ from sklearn.compose import ColumnTransformer
 from sklearn.pipeline import Pipeline
 from sentence_transformers import SentenceTransformer
 from sklearn.metrics.pairwise import cosine_similarity
+from sklearn.linear_model import LogisticRegression
+from sklearn.ensemble import GradientBoostingClassifier
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.metrics import accuracy_score, f1_score
+from sklearn.metrics import accuracy_score, f1_score, classification_report
 
+try:
+    from xgboost import XGBClassifier
+    xgb_available = True
+except ImportError:
+    xgb_available = False
 # =========================
 # 1. Columns/Preprocessing
 # =========================
@@ -208,21 +218,58 @@ def train_and_save_models():
         raise ValueError("The 'label' column is missing from the dataset.")
     X = df.drop("label", axis=1)
     y = df["label"]
+    
+    min_samples_per_class = 2
+    class_counts = y.value_counts()
+    valid_classes = class_counts[class_counts >= min_samples_per_class].index
+    
+    # Filter out classes with too few samples
+    mask = y.isin(valid_classes)
+    X = X[mask]
+    y = y[mask]
+    
+    # Add noise to data
+    noise_pct = 0.10  # 10% noise
+    n_noise = int(noise_pct * len(y))
+    idx = np.random.choice(y.index, n_noise, replace=False)
+    possible_classes = y.unique()
+    y.loc[idx] = np.random.choice(possible_classes, len(idx))
+    
+    # Split data
+    X_train, X_test, y_train, y_test = train_test_split(
+        X, y, test_size=0.2, random_state=42
+    )
+    
     model = Pipeline([
         ("prep", ColumnTransformer([
             ("num", StandardScaler(), NUMERIC_COLS),
-            ("cat", OneHotEncoder(), CATEGORICAL_COLS)
+            ("cat", OneHotEncoder(handle_unknown='ignore'), CATEGORICAL_COLS)
         ])),
-        ("clf", RandomForestClassifier(n_estimators=100))
+        ("clf", RandomForestClassifier(
+            n_estimators=400,
+            max_depth=8,
+            min_samples_split=8,
+            min_samples_leaf=4,
+            max_features='sqrt',
+            bootstrap=True,
+            class_weight='balanced_subsample',
+            random_state=42
+        ))
     ])
-    X_train, X_test, y_train, y_test = train_test_split(X, y)
+    
+    # Train model
     model.fit(X_train, y_train)
+    
+    # Evaluate
+    y_pred = model.predict(X_test)
+    acc = accuracy_score(y_test, y_pred)
+    f1 = f1_score(y_test, y_pred, average='weighted')
+    
+    
     os.makedirs("artifact/physical_recommandations", exist_ok=True)
     joblib.dump(model, "artifact/physical_recommandations/exercise_recommendation_model.pkl")
-    pipeline_preprocessor = model.named_steps['prep']
-    iso_model = IsolationForest(contamination=0.1).fit(pipeline_preprocessor.transform(X))
-    joblib.dump(iso_model, "artifact/physical_recommandations/novelty_detector.pkl")
-
+    
+    return model
 # =========================
 # 5. Load Exercise Data
 # =========================
@@ -233,17 +280,6 @@ def load_exercise_data():
     with open(json_path, "r") as f:
         exercises_data = json.load(f)
     ex_df = pd.json_normalize(exercises_data)
-    def tag_role(row):
-        cat = row["category"]
-        if cat == "stretching":
-            return "Stretching"
-        elif cat == "strength":
-            return "Strength"
-        elif cat in ["plyometrics", "powerlifting"]:
-            return "Cardio/Strength"
-        else:
-            return "Warm-Up"
-    ex_df["routine_role"] = ex_df.apply(tag_role, axis=1)
     sbert_model = SentenceTransformer('all-MiniLM-L6-v2')
     ex_df['instructions_text'] = ex_df['instructions'].apply(
         lambda steps: " ".join(steps) if isinstance(steps, list) else ""
@@ -258,51 +294,53 @@ def load_exercise_data():
 # 6. Routine Structure & Home Exercises
 # =========================
 
-# Update routine_structure to include all possible classes
+# Update routine_structure to match dataset labels
 routine_structure = {
-    "class_1": {  # Diabetes management
-        "Warm-Up": 1,
-        "Stretching": 2,
-        "Strength": 2,
-        "Cardio": 1
-    },
-    "class_2": {  # Sedentary reduction
-        "Warm-Up": 1,
-        "Stretching": 2,
-        "Strength": 2,
-        "Cardio": 1
-    },
-    "class_3": {  # Weight loss
-        "Warm-Up": 1,
-        "Stretching": 2,
-        "Strength": 2,
-        "Cardio": 2
-    },
-    "class_4": {  # Muscle gain
-        "Warm-Up": 1,
-        "Stretching": 2,
-        "Strength": 3,
-        "Cardio": 1
-    },
-    "class_5": {  # Flexibility
-        "Warm-Up": 1,
-        "Stretching": 3,
-        "Strength": 1,
-        "Cardio": 1
-    },
-    "class_flexibility": {  # Add new class for flexibility
-        "Warm-Up": 1,
-        "Stretching": 3,
-        "Strength": 1,
-        "Cardio": 1
-    },
-    "class_flexibility_pain": {  # Add class for flexibility with pain
-        "Warm-Up": 1,
-        "Stretching": 3,
-        "Strength": 1,
-        "Cardio": 1
-    }
+    # Classes present in your dataset
+    "class_flexibility":                {"Warm-Up": 1, "Stretching": 4, "Strength": 1, "Cardio": 0},
+    "class_flexibility_pain":           {"Warm-Up": 2, "Stretching": 3, "Strength": 0, "Cardio": 1},
+    "class_general_fitness":            {"Warm-Up": 1, "Stretching": 1, "Strength": 2, "Cardio": 2},
+    "class_high_diabetes_cardiac":      {"Warm-Up": 3, "Stretching": 2, "Strength": 1, "Cardio": 1},
+    "class_high_diabetes_general":      {"Warm-Up": 2, "Stretching": 2, "Strength": 2, "Cardio": 1},
+    "class_high_diabetes_obesity":      {"Warm-Up": 2, "Stretching": 2, "Strength": 2, "Cardio": 2},
+    "class_high_diabetes_pain":         {"Warm-Up": 3, "Stretching": 3, "Strength": 1, "Cardio": 0},
+
+    # These are missing in your original routine_structure but are in your dataset:
+    "class_diabetes_maintenance_active": {"Warm-Up": 2, "Stretching": 2, "Strength": 2, "Cardio": 2},
+    "class_high_diabetes_sedentary":     {"Warm-Up": 3, "Stretching": 2, "Strength": 1, "Cardio": 2},
+    "class_moderate_diabetes_general":   {"Warm-Up": 2, "Stretching": 2, "Strength": 2, "Cardio": 2},
+    "class_moderate_diabetes_obesity":   {"Warm-Up": 2, "Stretching": 2, "Strength": 2, "Cardio": 3},
+    "class_moderate_diabetes_young":     {"Warm-Up": 2, "Stretching": 1, "Strength": 2, "Cardio": 2},
+    "class_muscle_gain":                 {"Warm-Up": 2, "Stretching": 1, "Strength": 4, "Cardio": 0},
+    "class_muscle_gain_diabetes":        {"Warm-Up": 2, "Stretching": 2, "Strength": 3, "Cardio": 0},
+    "class_obesity":                     {"Warm-Up": 2, "Stretching": 1, "Strength": 2, "Cardio": 3},
+    "class_overweight":                  {"Warm-Up": 2, "Stretching": 1, "Strength": 2, "Cardio": 2},
+
+    # (Optional) Fallbacks for unseen/rare cases
+    "class_1":                           {"Warm-Up": 2, "Stretching": 2, "Strength": 1, "Cardio": 1},
+    "class_2":                           {"Warm-Up": 1, "Stretching": 1, "Strength": 2, "Cardio": 2},
+    "class_3":                           {"Warm-Up": 1, "Stretching": 1, "Strength": 2, "Cardio": 3},
+    "class_4":                           {"Warm-Up": 1, "Stretching": 1, "Strength": 3, "Cardio": 1},
+    "class_5":                           {"Warm-Up": 2, "Stretching": 3, "Strength": 1, "Cardio": 1},
 }
+
+
+
+
+# Update reps and sets based on class
+def get_reps_sets(pred_class):
+    """
+    Get appropriate reps and sets based on predicted class
+    """
+    reps_sets_mapping = {
+        "muscle_gain": "4x8",         # Strength focus
+        "flexibility": "30s hold",    # Duration for stretches
+        "weight_loss": "4x15",        # Higher reps for endurance
+        "general_fitness": "3x12",    # Balanced approach
+        "diabetes_management": "2x10", # Moderate intensity
+        "flexibility_pain": "2x10"    # Lower intensity for pain
+    }
+    return reps_sets_mapping.get(pred_class, "3x12")  # Default to 3x12 if class not found
 
 home_exercises = {
     "Warm-Up": [
@@ -344,6 +382,46 @@ def get_risk_sentences(user_input):
 # =========================
 # 8. Main Recommend Function
 # =========================
+def get_safety_recommendations(user_input, is_novel):
+    """
+    Generate safety recommendations when novelty is detected
+    """
+    safety_notes = []
+    exercise_modifications = {}
+
+    if is_novel:
+        # 1. Diabetes Risk Check
+        if user_input.get('diabetesRisk', 0) > 0.7:
+            safety_notes.append("High diabetes risk: Start with low-intensity exercises")
+            exercise_modifications.update({
+                "intensity": "low",
+                "rest_periods": "increased",
+                "monitoring": "blood sugar levels"
+            })
+
+        # 2. Cardiovascular Check
+        if user_input.get('Cardiovascular_Health') == 1:
+            safety_notes.append("Monitor heart rate during exercise")
+            exercise_modifications.update({
+                "cardio_intensity": "low to moderate",
+                "rest_intervals": "frequent",
+                "duration": "shorter sessions"
+            })
+
+        # 3. Pain/Discomfort Check
+        if user_input.get('Pain_or_Discomfort') == 1:
+            safety_notes.append("Exercise with caution due to reported pain")
+            exercise_modifications.update({
+                "impact": "low",
+                "range_of_motion": "modified",
+                "intensity": "reduced"
+            })
+
+    return {
+        "safety_notes": safety_notes,
+        "modifications": exercise_modifications
+    }
+
 def recommend(user_input, user_prompt=None):
     try:
         # Process user prompt if provided
@@ -379,18 +457,18 @@ def recommend(user_input, user_prompt=None):
         
         pred_class = model.predict(user_df)[0]
         
-        # Handle class mapping
+        # Verify predicted class exists in routine structure
         if pred_class not in routine_structure:
-            # Map unknown classes to closest matching routine
-            if "flexibility" in pred_class.lower():
-                pred_class = "class_5"  # Map to flexibility class
-            elif "pain" in pred_class.lower():
-                pred_class = "class_5"  # Map to flexibility class for pain cases
-            else:
-                pred_class = "class_2"  # Default to general fitness class
+            print(f"Warning: Predicted class {pred_class} not found in routine structure")
+            # Default to general fitness if class not found
+            pred_class = "class_general_fitness"
         
         pipeline_preprocessor = model.named_steps['prep']
         is_novel = iso.predict(pipeline_preprocessor.transform(user_df))[0] == -1
+        
+        # Get safety recommendations if novel case
+        safety_recs = get_safety_recommendations(user_input, is_novel)
+        
         recommendations = {
             "class": pred_class,
             "is_novel": bool(is_novel),
@@ -398,10 +476,22 @@ def recommend(user_input, user_prompt=None):
             "goal": user_input.get('goal', 'general_fitness'),
             "bmi": user_input['BMI'],
             "sitting_time": user_input.get('Sitting_Time', 0),
-            "physical_activity_risk": user_input.get('PhysicalActivityRisk', 0)
+            "physical_activity_risk": user_input.get('PhysicalActivityRisk', 0),
+             "safety_notes": safety_recs["safety_notes"] if is_novel else [],
+            "modifications": safety_recs["modifications"] if is_novel else {}
         }
-        filtered = ex_df[ex_df["level"] == "beginner"]
 
+        # Get user's exercise level
+        valid_levels = ["beginner", "intermediate", "expert"]
+        user_level = user_input.get('level', 'beginner').lower()
+        
+        if user_level not in valid_levels:
+            print(f"Invalid level. Using 'beginner'. Valid levels are: {valid_levels}")
+            user_level = 'beginner'
+        filtered = ex_df[ex_df["level"] == user_level]
+        if len(filtered) == 0:
+            print(f"No exercises found for level '{user_level}'. Using all exercises.")
+            filtered = ex_df
         # Filtering based on prompt info
         if prompt_info:
             # Filter out exercises to avoid
@@ -429,12 +519,12 @@ def recommend(user_input, user_prompt=None):
                         if area.lower() in row['name'].lower():
                             score += 2
                         if any(area.lower() in muscle.lower() 
-                               for muscle in row['primaryMuscles']):
+                              for muscle in row['primaryMuscles']):
                             score += 1
                     return score
                 filtered['focus_score'] = filtered.apply(get_focus_score, axis=1)
                 filtered = filtered.sort_values('focus_score', ascending=False)
-
+        
         # Apply risk-based filtering
         risk_sents = get_risk_sentences(user_input)
         if risk_sents:
@@ -443,7 +533,7 @@ def recommend(user_input, user_prompt=None):
                 exercise_embeddings_matrix = np.vstack(filtered['embedding'].values)
                 similarities = cosine_similarity([user_risk_embedding], exercise_embeddings_matrix)[0]
                 filtered = filtered[similarities < 0.5]
-
+        
         # Generate routine based on class and goal
         routine_plan = routine_structure[pred_class]
         for role, count in routine_plan.items():
@@ -451,27 +541,18 @@ def recommend(user_input, user_prompt=None):
             use_home = user_prompt and "home" in user_prompt.lower() and role in home_exercises
             if use_home:
                 home_exs = filtered[filtered['name'].isin(home_exercises[role])]
-                block = home_exs if len(home_exs) > 0 else filtered[filtered["routine_role"] == role]
+                block = home_exs if len(home_exs) > 0 else filtered
             else:
-                block = filtered[filtered["routine_role"] == role]
+                block = filtered
+            
             if len(block) == 0:
                 continue
+            
+            # Sample exercises from the available block
             samples = block.sample(n=min(count, len(block)))
             role_exercises = []
             for _, row in samples.iterrows():
-                # Customize reps and sets based on class
-                if pred_class == "class_1":
-                    reps_sets = "2x10"
-                elif pred_class == "class_2":
-                    reps_sets = "3x12"
-                elif pred_class == "class_3":
-                    reps_sets = "4x15"
-                elif pred_class == "class_4":
-                    reps_sets = "4x8"
-                elif pred_class == "class_5":
-                    reps_sets = "30s hold"
-                else:
-                    reps_sets = "3x12"
+                reps_sets = get_reps_sets(pred_class)
                 exercise = {
                     "name": row['name'],
                     "level": row['level'],
