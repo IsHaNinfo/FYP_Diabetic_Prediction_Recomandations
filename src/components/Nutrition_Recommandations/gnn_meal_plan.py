@@ -35,7 +35,6 @@ USER_NUTR_COLS = ['Carbohydrate_Consumption', 'Protein_Intake', 'Fat_Intake', 'C
 FOOD_NUTR_COLS = ['calories', 'carbs', 'protein', 'fat', 'glycemic_index']
 
 # ================= DATA LOADING ===============
-print("Loading CSVs …")
 user_df = pd.read_csv(os.path.join(BASE_DIR, 'Updated_User_Nutrition_Parameters.csv'))
 food_df = pd.read_csv(os.path.join(BASE_DIR, 'Foods_Datasets.csv'))
 nutrient_df = pd.read_csv(os.path.join(BASE_DIR, 'nutrients.csv'))
@@ -73,7 +72,6 @@ data['nutrient'].x = torch.randn(len(nutrient_df), HIDDEN_DIM)
 data['disease'].x = torch.randn(len(disease_df), HIDDEN_DIM)
 
 # Edges
-print("Populating KG edges …")
 edge_lists = defaultdict(list)
 for _, row in edge_df.iterrows():
     s, rel, t = row['source'], row['relation'], row['target']
@@ -168,7 +166,6 @@ class NRKGSystem(nn.Module):
         return dot_scores + mlp_scores
 
 # ================= TRAINING ===================
-print("Preparing training pairs …")
 pos_pairs = [(uid_map[u], fid_map[f]) for u,f in zip(edge_df[edge_df['relation'] == INTERACT_REL]['source'], edge_df[edge_df['relation'] == INTERACT_REL]['target']) if u in uid_map and f in fid_map]
 
 if len(pos_pairs) == 0:
@@ -192,7 +189,7 @@ food_nutr_ctx = torch.tensor(scaler.transform(food_df[FOOD_NUTR_COLS]), dtype=to
 pairs_t = torch.tensor(pairs, dtype=torch.long)
 
 # ================= TRAINING & MODEL LOADING ===================
-MODEL_PATH = "D:/FYP/FYP_Diabetic_Prediction_Recomandations/artifact/nutrition_recommendations/model_checkpoint.pth"
+MODEL_PATH = "G:/FYP_Diabetic_Prediction_Recomandations/artifact/nutrition_recommendations/model_checkpoint.pth"
 
 def train_model():
     print("Preparing training pairs …")
@@ -219,7 +216,6 @@ def train_model():
     bce = nn.BCEWithLogitsLoss()
     pairs_t = torch.tensor(pairs, dtype=torch.long)
 
-    print("Training …")
     for epoch in range(1, N_EPOCHS + 1):
         model.train()
         perm = torch.randperm(len(train_idx))
@@ -239,7 +235,6 @@ def train_model():
 
     os.makedirs(os.path.dirname(MODEL_PATH), exist_ok=True)
     torch.save(model.state_dict(), MODEL_PATH)
-    print("✅ Model saved to:", MODEL_PATH)
     return model
 
 # Initialize model and either load or train
@@ -252,15 +247,114 @@ else:
     model = train_model()
 
 # ================= INFERENCE ==================
+def is_food_risky(row, user_diseases):
+    """
+    Checks if a food row is risky for a user given their diseases.
+    Uses both explicit food features and common-sense heuristics.
+    """
+    risky = False
+    reasons = []
+
+    # Metabolic/Endocrine Diseases
+    if 'd1' in user_diseases:  # Diabetes
+        if row.get('carbs', 0) > 50:
+            risky = True
+            reasons.append('High carbohydrate for diabetes')
+        if row.get('glycemic_index', 0) > 60:
+            risky = True
+            reasons.append('High glycemic index for diabetes')
+        if row.get('sugar', 0) > 20:
+            risky = True
+            reasons.append('High sugar for diabetes')
+
+    # Obesity
+    if 'd2' in user_diseases:  # Obesity
+        if row.get('calories', 0) > 600:
+            risky = True
+            reasons.append('High calorie for obesity')
+        if row.get('fat', 0) > 25:
+            risky = True
+            reasons.append('High fat for obesity')
+
+    # Cardiovascular Conditions
+    if any(d in user_diseases for d in ['d3', 'd4', 'd5', 'd6']):  # Hypertension, Heart Disease, CAD, Stroke
+        if row.get('sodium', 0) > 400:
+            risky = True
+            reasons.append('High sodium for cardiovascular conditions')
+        if row.get('fat', 0) > 25:
+            risky = True
+            reasons.append('High fat for cardiovascular disease')
+        if row.get('sat_fat', 0) and row['sat_fat'] > 8:
+            risky = True
+            reasons.append('High saturated fat for cardiovascular disease')
+
+    # Kidney Disease
+    if 'd7' in user_diseases:  # Chronic Kidney Disease
+        if row.get('protein', 0) > 30:
+            risky = True
+            reasons.append('High protein for kidney disease')
+        if row.get('potassium', 0) and row['potassium'] > 700:
+            risky = True
+            reasons.append('High potassium for kidney disease')
+        if row.get('phosphorus', 0) and row['phosphorus'] > 350:
+            risky = True
+            reasons.append('High phosphorus for kidney disease')
+
+    # Liver Conditions
+    if 'd8' in user_diseases:  # Non-Alcoholic Fatty Liver Disease
+        if row.get('fat', 0) > 25:
+            risky = True
+            reasons.append('High fat for fatty liver disease')
+
+    # PCOS and Related
+    if any(d in user_diseases for d in ['d9', 'd11', 'd12']):  # PCOS, Insulin Resistance, Metabolic Syndrome
+        if row.get('carbs', 0) > 45:
+            risky = True
+            reasons.append('High carbohydrate for metabolic conditions')
+
+    # Lipid Disorders
+    if 'd10' in user_diseases:  # Hyperlipidemia
+        if row.get('fat', 0) > 25:
+            risky = True
+            reasons.append('High fat for hyperlipidemia')
+        if row.get('sat_fat', 0) and row['sat_fat'] > 8:
+            risky = True
+            reasons.append('High saturated fat for hyperlipidemia')
+
+    # Gout
+    if 'd14' in user_diseases:  # Gout
+        if any(food in row.get('food_item', '').lower() for food in ['beef', 'lamb', 'liver']):
+            risky = True
+            reasons.append('Purine-rich food for gout')
+
+    # Pancreatitis
+    if 'd16' in user_diseases:  # Pancreatitis
+        if row.get('fat', 0) > 10:
+            risky = True
+            reasons.append('High fat for pancreatitis')
+
+    # GERD
+    if 'd37' in user_diseases:  # GERD
+        if any(food in row.get('food_item', '').lower() for food in ['citrus', 'tomato', 'spicy']):
+            risky = True
+            reasons.append('May trigger GERD symptoms')
+
+    return risky, reasons
+
 def get_risky_food_ids_for_diseases(edge_df, food_df, disease_ids):
-    # Find all food_ids that are "notRecommended" or "riskFor" for these diseases
+    """
+    Find foods that are risky for given diseases based on the knowledge graph.
+    """
     risky_food_ids = set()
-    for rel in ['notRecommended', 'riskFor']:  # adjust relation names as in your KG
-        mask = (edge_df['relation'] == rel) & (edge_df['target'].isin(disease_ids))
+    
+    # Only check valid disease IDs that exist in our updated disease list
+    valid_disease_ids = [d for d in disease_ids if d in [f'd{i}' for i in range(1, 59)]]
+    
+    for rel in ['notRecommended', 'riskFor']:
+        mask = (edge_df['relation'] == rel) & (edge_df['target'].isin(valid_disease_ids))
         risky_food_ids.update(edge_df[mask]['source'])
-    # Make sure only food_ids present in food_df
-    risky_food_ids = {fid for fid in risky_food_ids if fid in set(food_df['food_id'])}
-    return risky_food_ids
+    
+    return {fid for fid in risky_food_ids if fid in set(food_df['food_id'])}
 
 def adjust_portion(base_portion, diabetes_risk, nutrition_risk, user_diseases):
     portion = base_portion
@@ -385,176 +479,6 @@ def adjust_portion(base_portion, diabetes_risk, nutrition_risk, user_diseases):
 
     return round(portion, 1)
 
-def is_food_risky(row, user_diseases):
-    """
-    Checks if a food row is risky for a user given their diseases.
-    Uses both explicit food features and common-sense heuristics.
-    """
-    risky = False
-    reasons = []
-
-    # Diabetes (d1)
-    if 'd1' in user_diseases:
-        if row.get('carbs', 0) > 50:
-            risky = True
-            reasons.append('High carbohydrate for diabetes')
-        if row.get('glycemic_index', 0) > 55:  # even lower GI for higher safety
-            risky = True
-            reasons.append('High glycemic index for diabetes')
-        if row.get('sugar', 0) > 15:
-            risky = True
-            reasons.append('High sugar for diabetes')
-
-    # Obesity (d2, d73)
-    if 'd2' in user_diseases or 'd73' in user_diseases:
-        if row.get('calories', 0) > 600:
-            risky = True
-            reasons.append('High calorie for obesity')
-        if row.get('fat', 0) > 25:
-            risky = True
-            reasons.append('High fat for obesity')
-
-    # Hypertension (d3, d75)
-    if 'd3' in user_diseases or 'd75' in user_diseases:
-        if row.get('sodium', 0) > 350:
-            risky = True
-            reasons.append('High sodium for hypertension')
-        if row.get('fat', 0) > 20:
-            risky = True
-            reasons.append('High fat for hypertension')
-
-    # Heart Disease (d4, d5, d6, d76)
-    if any(d in user_diseases for d in ['d4', 'd5', 'd6', 'd76']):
-        if row.get('fat', 0) > 25:
-            risky = True
-            reasons.append('High fat for heart/cardiovascular disease')
-        if row.get('sat_fat', 0) and row['sat_fat'] > 8:
-            risky = True
-            reasons.append('High saturated fat for heart disease')
-        if 'beef' in row.get('food_item', '').lower() or 'lamb' in row.get('food_item', '').lower():
-            risky = True
-            reasons.append('Red meat for heart disease')
-
-    # Chronic Kidney Disease (d7, d23)
-    if 'd7' in user_diseases or 'd23' in user_diseases:
-        if row.get('protein', 0) > 30:
-            risky = True
-            reasons.append('High protein for kidney disease')
-        if row.get('potassium', 0) and row['potassium'] > 700:
-            risky = True
-            reasons.append('High potassium for kidney disease')
-        if row.get('phosphorus', 0) and row['phosphorus'] > 350:
-            risky = True
-            reasons.append('High phosphorus for kidney disease')
-
-    # Fatty Liver (d8, d54)
-    if 'd8' in user_diseases or 'd54' in user_diseases:
-        if row.get('fat', 0) > 25:
-            risky = True
-            reasons.append('High fat for fatty liver disease')
-
-    # PCOS & Insulin Resistance (d9, d11, d12, d33)
-    if any(d in user_diseases for d in ['d9', 'd11', 'd12', 'd33']):
-        if row.get('carbs', 0) > 45:
-            risky = True
-            reasons.append('High carbohydrate for PCOS/insulin resistance/metabolic syndrome')
-
-    # Hyperlipidemia, High Cholesterol (d10, d61)
-    if 'd10' in user_diseases or 'd61' in user_diseases:
-        if row.get('fat', 0) > 20:
-            risky = True
-            reasons.append('High fat for cholesterol')
-        if row.get('sat_fat', 0) and row['sat_fat'] > 7:
-            risky = True
-            reasons.append('High saturated fat for cholesterol')
-
-    # Gout (d14, d74)
-    if 'd14' in user_diseases or 'd74' in user_diseases:
-        if 'beef' in row.get('food_item', '').lower() or 'lamb' in row.get('food_item', '').lower() or 'liver' in row.get('food_item', '').lower():
-            risky = True
-            reasons.append('Purine-rich food for gout')
-
-    # Pancreatitis (d16)
-    if 'd16' in user_diseases:
-        if row.get('fat', 0) > 10:
-            risky = True
-            reasons.append('High fat for pancreatitis')
-
-    # Gallbladder Disease (d34)
-    if 'd34' in user_diseases:
-        if row.get('fat', 0) > 15:
-            risky = True
-            reasons.append('High fat for gallbladder disease')
-
-    # Celiac Disease, Gluten Sensitivity (d69, d71)
-    if 'd69' in user_diseases or 'd71' in user_diseases:
-        if 'wheat' in row.get('food_item', '').lower() or 'bread' in row.get('food_item', '').lower():
-            risky = True
-            reasons.append('Contains gluten for celiac/gluten sensitivity')
-
-    # Lactose Intolerance (d63, d70)
-    if 'd63' in user_diseases or 'd70' in user_diseases:
-        if 'milk' in row.get('food_item', '').lower() or 'cheese' in row.get('food_item', '').lower() or 'yogurt' in row.get('food_item', '').lower():
-            risky = True
-            reasons.append('Contains lactose for lactose intolerance')
-
-    # Nut Allergy (d65)
-    if 'd65' in user_diseases:
-        if 'nut' in row.get('food_item', '').lower():
-            risky = True
-            reasons.append('Contains nuts (nut allergy)')
-
-    # Shellfish Allergy (d66)
-    if 'd66' in user_diseases:
-        if 'shellfish' in row.get('food_item', '').lower() or 'shrimp' in row.get('food_item', '').lower() or 'crab' in row.get('food_item', '').lower():
-            risky = True
-            reasons.append('Contains shellfish (shellfish allergy)')
-
-    # Egg Allergy (d67)
-    if 'd67' in user_diseases:
-        if 'egg' in row.get('food_item', '').lower():
-            risky = True
-            reasons.append('Contains egg (egg allergy)')
-
-    # Soy Allergy (d68)
-    if 'd68' in user_diseases:
-        if 'soy' in row.get('food_item', '').lower() or 'tofu' in row.get('food_item', '').lower():
-            risky = True
-            reasons.append('Contains soy (soy allergy)')
-
-    # Peanut Allergy (d72)
-    if 'd72' in user_diseases:
-        if 'peanut' in row.get('food_item', '').lower():
-            risky = True
-            reasons.append('Contains peanuts (peanut allergy)')
-
-    # IBS (d62): (heuristic) avoid high-fat, beans, cabbage, onion
-    if 'd62' in user_diseases:
-        if row.get('fat', 0) > 20:
-            risky = True
-            reasons.append('High fat for IBS')
-        if any(food in row.get('food_item', '').lower() for food in ['bean', 'cabbage', 'onion']):
-            risky = True
-            reasons.append('Gas-forming foods for IBS')
-
-    # Add more as needed for your diseases!
-    if any(d in user_diseases for d in ['d4','d5','d6','d10','d61','d76']):
-        if 'beef' in row.get('food_item', '').lower() or 'lamb' in row.get('food_item', '').lower():
-            risky = True
-            reasons.append('Red meat not allowed for heart or cholesterol issues')
-            
-    if any(d in user_diseases for d in ['d10', 'd61', 'd4', 'd5', 'd6', 'd76']):
-        if row.get('fat', 0) > 20:
-            risky = True
-            reasons.append('High fat for cholesterol/heart disease')
-        if row.get('sat_fat', 0) and row['sat_fat'] > 7:
-            risky = True
-            reasons.append('High saturated fat for cholesterol/heart disease')
-        if 'beef' in row.get('food_item', '').lower() or 'lamb' in row.get('food_item', '').lower():
-            risky = True
-            reasons.append('Red meat not allowed for cholesterol/heart disease')
-    return risky, reasons
-
 
 # Updated Meal Plan Generator
 def generate_meal_plan_for_user_from_data(user_data, days=7):
@@ -623,6 +547,6 @@ def generate_meal_plan_for_user_from_data(user_data, days=7):
             })
 
     # Optional: return excluded_rows for review
-    return plan
+    return plan   
 
 
