@@ -36,7 +36,7 @@ FOOD_NUTR_COLS = ['calories', 'carbs', 'protein', 'fat', 'glycemic_index']
 
 # ================= DATA LOADING ===============
 user_df = pd.read_csv(os.path.join(BASE_DIR, 'Updated_User_Nutrition_Parameters.csv'))
-food_df = pd.read_csv(os.path.join(BASE_DIR, 'Foods_Datasets.csv'))
+food_df = pd.read_csv(os.path.join(BASE_DIR, 'Food_Datasets.csv'))
 nutrient_df = pd.read_csv(os.path.join(BASE_DIR, 'nutrients.csv'))
 disease_df = pd.read_csv(os.path.join(BASE_DIR, 'diseases.csv'))
 edge_df = pd.read_csv(os.path.join(BASE_DIR, 'Updated_Edges_Dataset.csv'))
@@ -548,5 +548,3 @@ def generate_meal_plan_for_user_from_data(user_data, days=7):
 
     # Optional: return excluded_rows for review
     return plan   
-
-

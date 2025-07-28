@@ -37,12 +37,7 @@ class ModelTrainer:
             X_test, y_test = test_array[:, :-1], test_array[:, -1]
 
             models = {
-                # Random Forest is ideal for nutrition risk prediction because:
-                # 1. Handles non-linear relationships between nutrition factors
-                # 2. Manages multiple input features effectively (age, BMI, dietary habits, etc.)
-                # 3. Resistant to overfitting through ensemble learning
-                # 4. Can capture complex interactions between different nutritional factors
-                # 5. Provides feature importance scores to understand key risk factors
+                
                 "Random Forest": RandomForestRegressor(
                     n_jobs=-1,  # Use all CPU cores for faster training
                     random_state=42  # For reproducibility
