@@ -254,7 +254,6 @@ def exercise_recommendations():
     except Exception as e:
         print(f"Error in exercise recommendations: {str(e)}")
         return jsonify({"error": str(e)}), 400
-
 @app.route("/generate_meal_plan", methods=["POST"])
 def generate_meal_plan():
     try:
