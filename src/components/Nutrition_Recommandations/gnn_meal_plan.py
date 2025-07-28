@@ -192,7 +192,7 @@ food_nutr_ctx = torch.tensor(scaler.transform(food_df[FOOD_NUTR_COLS]), dtype=to
 pairs_t = torch.tensor(pairs, dtype=torch.long)
 
 # ================= TRAINING & MODEL LOADING ===================
-MODEL_PATH = "G:/FYP_Diabetic_Prediction_Recomandations/artifact/nutrition_recommendations/model_checkpoint.pth"
+MODEL_PATH = "F:/FYP/FYP_Diabetic_Prediction_Recomandations/artifact/nutrition_recommendations/model_checkpoint.pth"
 
 def train_model():
     print("Preparing training pairs …")
