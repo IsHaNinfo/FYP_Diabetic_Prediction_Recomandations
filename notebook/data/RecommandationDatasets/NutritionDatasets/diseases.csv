@@ -25,7 +25,7 @@ d23,Nephropathy
 d24,Foot Ulcers
 d25,Periodontal Disease
 d26,Cognitive Decline
-d27,Alzheimer’s Disease
+d27,Alzheimer's Disease
 d28,Osteoporosis
 d29,Vitamin D Deficiency
 d30,Insomnia
@@ -46,21 +46,14 @@ d44,Reactive Hypoglycemia
 d45,Diabetic Dermopathy
 d46,Acanthosis Nigricans
 d47,Chronic Pain
-d48,Skin Infections
-d49,Bacterial Infections
-d50,Urinary Tract Infections
-d51,Yeast Infections
-d52,Fungal Infections
-d53,ADHD
-d54,Liver Cirrhosis
-d55,Insulinoma
-d56,Cushing’s Syndrome
-d57,Addison’s Disease
-d58,Anemia
-d59,Asthma
-d60,COPD
-d61,High Cholesterol
-d62,IBS
-d63,Lactose Intolerance
-d64,Chronic Constipation
-
+d48,Liver Cirrhosis
+d49,Insulinoma
+d50,Cushing's Syndrome
+d51,Addison's Disease
+d52,Anemia
+d53,Asthma
+d54,COPD
+d55,High Cholesterol
+d56,IBS
+d57,Chronic Constipation
+d58,Cardiovascular Disease
